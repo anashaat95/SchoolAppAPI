@@ -1,3 +1,4 @@
+using SchoolApp.API.MiddleWares;
 using SchoolApp.DependencyInjectionConfigurationProject;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services
     .RegisterProjectsDependencies(builder.Configuration);
 #endregion
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +24,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+#region Middlewares
+app.UseMiddleware<ErrorHandlerMiddleware>();
+#endregion
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

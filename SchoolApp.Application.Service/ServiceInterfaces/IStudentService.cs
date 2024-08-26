@@ -12,4 +12,5 @@ public interface IStudentService
     Task<IEnumerable<Student>> GetAllStudentsAsync();
     Task<Student> GetStudentByIdAsync(int id);
     Task<string> AddAsync(Student student);
+    Task<bool> IsNameExist(string Name);
 }

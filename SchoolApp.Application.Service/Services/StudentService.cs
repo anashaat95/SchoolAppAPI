@@ -49,5 +49,13 @@ public class StudentService : IStudentService
 
     }
 
+    public async  Task<bool> IsNameExist(string Name)
+    { 
+        return _studentRepository
+            .GetTableNoTracking()
+            .Where(s => s.Name.Equals(Name))
+            .FirstOrDefault() != null;
+    }
+
     #endregion
 }
