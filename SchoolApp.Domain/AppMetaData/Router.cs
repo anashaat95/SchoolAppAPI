@@ -16,5 +16,6 @@ public static class Router
         public const string List = Prefix + "/list";
         // api/v1/Student/{id}
         public const string GetById = Prefix + SingleRoute;
+        public const string Create = Prefix + "/Create";
     }
 }

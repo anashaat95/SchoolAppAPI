@@ -2,9 +2,9 @@
 
 public class StudentSubject
 {
-    public virtual required int Id { get; set; }
-    public virtual required int SubjectId { get; set; }
-    public virtual required Subject Subject { get; set; } = null!;
-    public virtual required int StudentId { get; set; }
-    public virtual required Student Student { get; set; } = null!;
+    public  int Id { get; set; }
+    public  int SubjectId { get; set; }
+    public  Subject Subject { get; set; } = null!;
+    public  int StudentId { get; set; }
+    public  Student Student { get; set; } = null!;
 }

@@ -18,7 +18,7 @@ public class StudentService : IStudentService
     }
     #endregion
 
-    #region Handlers
+    #region Action Methods
     public async Task<IEnumerable<Student>> GetAllStudentsAsync()
     {
         return await _studentRepository.GetStudentListAsync();

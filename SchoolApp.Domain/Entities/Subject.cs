@@ -2,11 +2,11 @@
 
 public class Subject
 {
-    public virtual required int Id { get; set; }
-    public virtual required string Name { get; set; }
-    public virtual required DateTime Period { get; set; }
-    public virtual ICollection<Student> Students { get; } = [];
-    public virtual ICollection<Department> Departments { get; } = [];
-    public virtual ICollection<DepartmentSubject> DepartmentSubjects { get; } = [];
-    public virtual ICollection<StudentSubject> StudentSubjects { get; } = [];
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public DateTime Period { get; set; }
+    public ICollection<Student> Students { get; } = [];
+    public ICollection<Department> Departments { get; } = [];
+    public ICollection<DepartmentSubject> DepartmentSubjects { get; } = [];
+    public ICollection<StudentSubject> StudentSubjects { get; } = [];
 }

@@ -2,9 +2,9 @@
 
 public class Department
 {
-    public virtual required int Id { get; set; }
-    public virtual required string Name { get; set; }
-    public virtual ICollection<Student> Students { get; } = [];
-    public virtual ICollection<Subject> Subjects { get; } = [];
-    public virtual ICollection<DepartmentSubject> DepartmentSubjects { get; } = [];
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public ICollection<Student> Students { get; } = [];
+    public ICollection<Subject> Subjects { get; } = [];
+    public ICollection<DepartmentSubject> DepartmentSubjects { get; } = [];
 }

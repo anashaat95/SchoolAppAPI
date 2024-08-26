@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SchoolApp.Application.Core.Features.StudentFeature.Commands;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries.GetSignleStudentById;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries.StudentListQuery;
 using SchoolApp.Domain.AppMetaData;
+using SchoolApp.Domain.Entities;
 
 namespace School.API.Controllers
 {
@@ -33,10 +35,16 @@ namespace School.API.Controllers
             return Ok(response);
         }
 
-        // POST api/<StudentController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // POST api/<StudentController>/Create
+        [HttpPost(Router.StudentRoute.Create)]
+        public async Task<IActionResult> Post([FromBody] AddStudentCommandRequest command)
         {
+            if (command == null)
+            {
+                return BadRequest("Invalid data sent!");
+            }
+            var response = await _mediator.Send(command);
+            return Ok(response);
         }
 
         // PUT api/<StudentController>/5

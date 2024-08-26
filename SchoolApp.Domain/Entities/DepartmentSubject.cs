@@ -2,9 +2,9 @@
 
 public class DepartmentSubject
 {
-    public virtual required int Id { get; set; }
-    public virtual required int SubjectId { get; set; }
-    public virtual required int DepartmentId { get; set; }
-    public virtual required Subject Subject { get; set; } = null!;
-    public virtual required Department Department { get; set; } = null!;
+    public int Id { get; set; }
+    public int SubjectId { get; set; }
+    public int DepartmentId { get; set; }
+    public Subject Subject { get; set; } = null!;
+    public Department Department { get; set; } = null!;
 }

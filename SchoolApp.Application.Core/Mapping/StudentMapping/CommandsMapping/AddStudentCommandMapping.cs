@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SchoolApp.Application.Core.Features.StudentFeature.Commands;
+using SchoolApp.Domain.Entities;
 
-namespace SchoolApp.Application.Core.Mapping.StudentMapping.CommandsMapping
+namespace SchoolApp.Application.Core.Mapping.StudentMapping;
+
+public partial class StudentProfile
 {
-    internal class AddStudentCommandMapping
+    public void AddStudentCommandMapping()
     {
+        CreateMap<AddStudentCommandRequest, Student>();
     }
 }

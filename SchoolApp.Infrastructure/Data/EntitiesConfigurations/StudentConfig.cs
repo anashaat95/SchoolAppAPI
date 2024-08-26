@@ -10,7 +10,7 @@ public class StudentConfig : IEntityTypeConfiguration<Student>
     {
         builder.ToTable("Students", schema: "dbo");
         builder.HasKey(s => s.Id);
-        //builder.Property(s => s.Id).ValueGeneratedNever();
+        builder.Property(s => s.Id).ValueGeneratedOnAdd();
 
         builder
             .Property(s => s.Name)

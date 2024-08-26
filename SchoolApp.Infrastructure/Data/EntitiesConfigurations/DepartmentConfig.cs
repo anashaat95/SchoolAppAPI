@@ -10,7 +10,7 @@ public class DepartmentConfig : IEntityTypeConfiguration<Department>
     {
         builder.ToTable("Departments", schema: "dbo");
         builder.HasKey(dept => dept.Id);
-        //builder.Property(dept => dept.Id).ValueGeneratedNever();
+        builder.Property(dept => dept.Id).ValueGeneratedOnAdd();
 
         builder
             .Property(dept => dept.Name)

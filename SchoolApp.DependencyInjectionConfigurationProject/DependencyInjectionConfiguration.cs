@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using SchoolApp.Application.Core;
 using SchoolApp.Application.Service;
 using SchoolApp.Infrastructure;
-using System.ComponentModel.Design;
 
 namespace SchoolApp.DependencyInjectionConfigurationProject
 {

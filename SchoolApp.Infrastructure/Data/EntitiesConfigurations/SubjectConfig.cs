@@ -15,7 +15,7 @@ public class SubjectConfig : IEntityTypeConfiguration<Subject>
     {
         builder.ToTable("Subjects", schema: "dbo");
         builder.HasKey(sub => sub.Id);
-        //builder.Property(sub => sub.Id).ValueGeneratedNever();
+        builder.Property(sub => sub.Id).ValueGeneratedOnAdd();
 
         builder
             .Property(sub => sub.Name)
