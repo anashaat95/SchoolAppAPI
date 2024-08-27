@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore;
-using SchoolApp.Domain.RepositoriesInterfaces.Bases;
-using SchoolApp.Infrastructure.Data.Contexts;
-
-namespace SchoolApp.Infrastructure.Data.Repositories.Bases;
+﻿namespace SchoolApp.Infrastructure.Data.Repositories.Bases;
 
 public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : class
 {

@@ -1,14 +1,8 @@
-﻿using FluentValidation;
-using SchoolApp.Application.Service.ServiceInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
 
-public class EditStudentCommandValidator:AbstractValidator<EditStudentCommandRequest>
+public class EditStudentCommandValidator : AbstractValidator<EditStudentCommandRequest>
 {
     #region Fields
     private readonly IStudentService _studentService;
@@ -23,26 +17,29 @@ public class EditStudentCommandValidator:AbstractValidator<EditStudentCommandReq
     }
     #endregion
 
-    #region Actions
+    #region Action(s)
     public void ApplyValidationRules()
     {
         RuleFor(s => s.Name)
             .NotEmpty().WithMessage("This field is required. {PropertyName} cannot be empty")
             .NotNull().WithMessage("{PropertyName} cannot be null")
             .MinimumLength(5).WithMessage("{PropertyName} must be at least 5 characters")
-            .MaximumLength(50).WithMessage("{PropertyName} must be less than or equal 50 characters");
+            .MaximumLength(100).WithMessage("{PropertyName} must be less than or equal 50 characters");
 
         RuleFor(s => s.Address)
             .NotEmpty().WithMessage("This field is required. {PropertyName} cannot be empty")
             .NotNull().WithMessage("{PropertyName} cannot be null")
             .MinimumLength(5).WithMessage("{PropertyName} must be at least 5 characters")
-            .MaximumLength(50).WithMessage("{PropertyName} must be less than or equal 50 characters");
+            .MaximumLength(100).WithMessage("{PropertyName} must be less than or equal 50 characters");
     }
     public void ApplyCustomValidationRules()
     {
         RuleFor(s => s.Name)
-            .MustAsync(async (Key, cancellationToken) => await _studentService.IsNameExist(Key)
-            ).WithMessage("This field is required. {PropertyName} Exists");
+            .MustAsync(async (model, Key, cancellationToken) =>
+            {
+                return !( await _studentService.IsNameExistExcludeSelf(Key, model.Id));
+            }
+            ).WithMessage("{PropertyName} is required. {PropertyName} Exists");
     }
     #endregion
 }

@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-
-namespace SchoolApp.Application.Core.Mapping.StudentMapping;
+﻿namespace SchoolApp.Application.Core.Mapping.StudentMapping;
 
 public partial class StudentProfile : Profile
 {
@@ -9,5 +7,6 @@ public partial class StudentProfile : Profile
         GetStudentListMapping();
         GetSingleStudentByIdMapping();
         AddStudentCommandMapping();
+        EditStudentCommandMapping();
     }
 }

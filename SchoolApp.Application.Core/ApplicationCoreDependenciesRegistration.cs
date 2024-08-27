@@ -1,10 +1,4 @@
-﻿using MediatR.Extensions.FluentValidation.AspNetCore;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using FluentValidation;
-
-namespace SchoolApp.Application.Core;
+﻿namespace SchoolApp.Application.Core;
 
 public static class ApplicationCoreDependenciesRegistration
 {

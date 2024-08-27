@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SchoolApp.Domain.Entities;
-using SchoolApp.Domain.RepositoriesInterfaces;
-using SchoolApp.Infrastructure.Data.Contexts;
-using SchoolApp.Infrastructure.Data.Repositories.Bases;
-
-namespace SchoolApp.Infrastructure.Data.Repositories;
+﻿namespace SchoolApp.Infrastructure.Data.Repositories;
 
 public class StudentRepositoryAsync : GenericRepositoryAsync<Student>, IStudentRepositoryAsync
 {

@@ -17,5 +17,6 @@ public static class Router
         // api/v1/Student/{id}
         public const string GetById = Prefix + SingleRoute;
         public const string Create = Prefix + "/Create";
+        public const string Edit = Prefix + "/Edit";
     }
 }

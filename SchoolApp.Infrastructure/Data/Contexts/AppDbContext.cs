@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SchoolApp.Domain.Entities;
-using SchoolApp.Infrastructure.Data.EntitiesConfigurations;
-
-namespace SchoolApp.Infrastructure.Data.Contexts;
+﻿namespace SchoolApp.Infrastructure.Data.Contexts;
 
 public class AppDbContext : DbContext
 {

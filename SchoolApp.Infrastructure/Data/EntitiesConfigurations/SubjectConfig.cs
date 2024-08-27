@@ -1,13 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using SchoolApp.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SchoolApp.Infrastructure.Data.EntitiesConfigurations;
+﻿namespace SchoolApp.Infrastructure.Data.EntitiesConfigurations;
 
 public class SubjectConfig : IEntityTypeConfiguration<Subject>
 {

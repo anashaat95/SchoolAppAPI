@@ -11,11 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolApp.Application.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolApp.Domain", "SchoolApp.Domain\SchoolApp.Domain.csproj", "{BF44FFB3-742B-4E4E-9E62-EBB615A8E921}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolApp.Common", "SchoolApp.Common\SchoolApp.Common.csproj", "{7093F274-B4AA-4755-95F4-63B48563BFDB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolApp.API", "SchoolApp.API\SchoolApp.API.csproj", "{2D0BC7B5-AEF5-4515-8144-D1C64DD0B6C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolApp.DependencyInjectionConfigurationProject", "SchoolApp.DependencyInjectionConfigurationProject\SchoolApp.DependencyInjectionConfigurationProject.csproj", "{6497BC4D-8C16-4B5B-9A3F-675BB7812AAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolApp.DependencyInjectionConfigurationProject", "SchoolApp.DependencyInjectionConfigurationProject\SchoolApp.DependencyInjectionConfigurationProject.csproj", "{6497BC4D-8C16-4B5B-9A3F-675BB7812AAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +37,6 @@ Global
 		{BF44FFB3-742B-4E4E-9E62-EBB615A8E921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF44FFB3-742B-4E4E-9E62-EBB615A8E921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF44FFB3-742B-4E4E-9E62-EBB615A8E921}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7093F274-B4AA-4755-95F4-63B48563BFDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7093F274-B4AA-4755-95F4-63B48563BFDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7093F274-B4AA-4755-95F4-63B48563BFDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7093F274-B4AA-4755-95F4-63B48563BFDB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D0BC7B5-AEF5-4515-8144-D1C64DD0B6C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D0BC7B5-AEF5-4515-8144-D1C64DD0B6C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D0BC7B5-AEF5-4515-8144-D1C64DD0B6C3}.Release|Any CPU.ActiveCfg = Release|Any CPU

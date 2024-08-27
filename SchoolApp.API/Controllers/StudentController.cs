@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using SchoolApp.API.Bases;
 using SchoolApp.Application.Core.Features.StudentFeature.Commands;
+using SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries.StudentListQuery;
 using SchoolApp.Domain.AppMetaData;
@@ -37,10 +38,12 @@ namespace School.API.Controllers
             return NewResult(response);
         }
 
-        // PUT api/<StudentController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT api/<StudentController>/Edit
+        [HttpPut(Router.StudentRoute.Edit)]
+        public async Task<IActionResult> Put([FromBody] EditStudentCommandRequest command)
         {
+            var response = await Mediator.Send(command);
+            return NewResult(response);
         }
 
         // DELETE api/<StudentController>/5

@@ -1,0 +1,16 @@
+﻿global using AutoMapper;
+global using FluentValidation;
+global using MediatR;
+global using MediatR.Extensions.FluentValidation.AspNetCore;
+global using Microsoft.Extensions.DependencyInjection;
+global using SchoolApp.Application.Core.Bases;
+global using SchoolApp.Application.Core.Features.StudentFeature.Queries.GetSignleStudentById;
+global using SchoolApp.Application.Core.Features.StudentFeature.Queries.GetStudentListQuery;
+global using SchoolApp.Application.Core.Features.StudentFeature.Queries.StudentListQuery;
+global using SchoolApp.Application.Service.ServiceInterfaces;
+global using SchoolApp.Domain.Entities;
+global using System.ComponentModel.DataAnnotations;
+global using System.Reflection;
+global using SchoolApp.Application.Core.Features.StudentFeature.Commands;
+global using System.Net;
+global using SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;

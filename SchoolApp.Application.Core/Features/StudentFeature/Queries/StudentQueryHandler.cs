@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
-using SchoolApp.Application.Core.Bases;
-using SchoolApp.Application.Core.Features.StudentFeature.Queries.GetSignleStudentById;
-using SchoolApp.Application.Core.Features.StudentFeature.Queries.GetStudentListQuery;
-using SchoolApp.Application.Core.Features.StudentFeature.Queries.StudentListQuery;
-using SchoolApp.Application.Service.ServiceInterfaces;
-
-namespace SchoolApp.Application.Core.Features.StudentFeature.Queries;
+﻿namespace SchoolApp.Application.Core.Features.StudentFeature.Queries;
 
 public class StudentQueryHandler : ResponseHandler,
       IRequestHandler<GetStudentListQueryRequest, Response<IList<GetStudentListQueryResponse>>>,

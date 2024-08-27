@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using SchoolApp.Application.Service.ServiceInterfaces;
-
-namespace SchoolApp.Application.Core.Features.StudentFeature.Commands.AddStudentCommand;
+﻿namespace SchoolApp.Application.Core.Features.StudentFeature.Commands.AddStudentCommand;
 
 public class AddStudentCommandValidator : AbstractValidator<AddStudentCommandRequest>
 {

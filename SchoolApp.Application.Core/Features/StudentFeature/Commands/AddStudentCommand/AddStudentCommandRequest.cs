@@ -1,8 +1,4 @@
-﻿using MediatR;
-using SchoolApp.Application.Core.Bases;
-using System.ComponentModel.DataAnnotations;
-
-namespace SchoolApp.Application.Core.Features.StudentFeature.Commands;
+﻿namespace SchoolApp.Application.Core.Features.StudentFeature.Commands;
 
 public class AddStudentCommandRequest : IRequest<Response<string>>
 {

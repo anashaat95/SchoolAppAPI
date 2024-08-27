@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using MediatR;
-
-namespace SchoolApp.API.Behaviors;
+﻿namespace SchoolApp.API.Behaviors;
 
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
    where TRequest : IRequest<TResponse>
@@ -27,7 +24,7 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
             var message = failures
                              .Select(x => x.ErrorMessage)
                              .FirstOrDefault();
-            throw new ValidationException(message);
+            throw new FluentValidation.ValidationException(message);
         }
 
         return await next();

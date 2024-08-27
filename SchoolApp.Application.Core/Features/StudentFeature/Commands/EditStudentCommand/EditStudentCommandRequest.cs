@@ -1,7 +1,4 @@
-﻿using MediatR;
-using SchoolApp.Application.Core.Bases;
-
-namespace SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
+﻿namespace SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
 
 public class EditStudentCommandRequest : IRequest<Response<string>>
 {

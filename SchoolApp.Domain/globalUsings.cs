@@ -1,0 +1,3 @@
+﻿global using Microsoft.EntityFrameworkCore.Storage;
+global using SchoolApp.Domain.Entities;
+global using SchoolApp.Domain.RepositoriesInterfaces.Bases;

@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SchoolApp.Application.Service.ServiceInterfaces;
-using SchoolApp.Domain.Entities;
-using SchoolApp.Domain.RepositoriesInterfaces;
-
+﻿
 namespace SchoolApp.Application.Service.Services;
 
 public class StudentService : IStudentService
@@ -49,12 +45,34 @@ public class StudentService : IStudentService
 
     }
 
-    public async  Task<bool> IsNameExist(string Name)
+    public async Task<bool> IsNameExist(string Name)
     { 
         return _studentRepository
             .GetTableNoTracking()
             .Where(s => s.Name.Equals(Name))
             .FirstOrDefault() != null;
+    }
+
+    public async Task<bool> IsNameExistExcludeSelf(string Name, int Id)
+    {
+        var student = _studentRepository
+            .GetTableNoTracking()
+            .Where(s => !s.Id.Equals(Id) && s.Name.Equals(Name))
+            .FirstOrDefault();
+        return  student != null;
+    }
+
+    public async Task<string> EditAsync(Student editedStudent)
+    {
+        try
+        {
+            await _studentRepository .UpdateAsync(editedStudent);
+            return "Success";
+        }
+        catch (Exception)
+        {
+            return "Failure";
+        }
     }
 
     #endregion

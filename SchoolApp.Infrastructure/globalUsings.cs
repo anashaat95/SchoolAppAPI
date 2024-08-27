@@ -1,0 +1,12 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.EntityFrameworkCore.Storage;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using SchoolApp.Domain.Entities;
+global using SchoolApp.Domain.RepositoriesInterfaces;
+global using SchoolApp.Domain.RepositoriesInterfaces.Bases;
+global using SchoolApp.Infrastructure.Data.Contexts;
+global using SchoolApp.Infrastructure.Data.EntitiesConfigurations;
+global using SchoolApp.Infrastructure.Data.Repositories;
+global using SchoolApp.Infrastructure.Data.Repositories.Bases;

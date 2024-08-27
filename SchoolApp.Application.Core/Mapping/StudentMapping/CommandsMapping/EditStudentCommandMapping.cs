@@ -2,8 +2,8 @@
 
 public partial class StudentProfile
 {
-    public void AddStudentCommandMapping()
+    public void EditStudentCommandMapping()
     {
-        CreateMap<AddStudentCommandRequest, Student>();
+        CreateMap<EditStudentCommandRequest, Student>();
     }
 }

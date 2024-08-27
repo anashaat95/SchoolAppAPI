@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-
-namespace SchoolApp.Domain.RepositoriesInterfaces.Bases;
+﻿namespace SchoolApp.Domain.RepositoriesInterfaces.Bases;
 
 public interface IGenericRepositoryAsync<T> where T : class
 {
