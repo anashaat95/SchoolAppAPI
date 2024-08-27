@@ -15,3 +15,6 @@ global using SchoolApp.Application.Core.Features.StudentFeature.Commands;
 global using System.Net;
 global using SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
 global using SchoolApp.Application.Core.Features.StudentFeature.Commands.DeleteStudentCommand;
+global using Microsoft.EntityFrameworkCore;
+global using SchoolApp.Application.Core.Features.StudentFeature.Queries.GetStudentPaginatedList;
+global using SchoolApp.Application.Core.Wrappers;

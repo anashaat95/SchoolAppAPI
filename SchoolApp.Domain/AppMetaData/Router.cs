@@ -14,6 +14,7 @@ public static class Router
         public const string Prefix = Rule + "/Student";
         // api/v1/Student/list
         public const string List = Prefix;
+        public const string Paginated = Prefix + "/Paginated";
         // api/v1/Student/{id}
         public const string GetById = Prefix + SingleRoute;
         public const string DeleteById = Prefix + SingleRoute;

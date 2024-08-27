@@ -4,6 +4,7 @@ using SchoolApp.Application.Core.Features.StudentFeature.Commands;
 using SchoolApp.Application.Core.Features.StudentFeature.Commands.DeleteStudentCommand;
 using SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries;
+using SchoolApp.Application.Core.Features.StudentFeature.Queries.GetStudentPaginatedList;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries.StudentListQuery;
 using SchoolApp.Domain.AppMetaData;
 
@@ -19,6 +20,14 @@ namespace School.API.Controllers
         {
             var response = await Mediator.Send(new GetStudentListQueryRequest());
             return NewResult(response);
+        }
+
+        // GET api/<StudentController>/list
+        [HttpGet(Router.StudentRoute.Paginated)]
+        public async Task<IActionResult> GetPaginated([FromQuery] GetStudentPaginatedListQueryRequest query)
+        {
+            var response = await Mediator.Send(query);
+            return Ok(response);
         }
 
         // GET api/<StudentController>/5

@@ -1,8 +1,13 @@
-﻿namespace SchoolApp.Application.Core.Features.StudentFeature.Queries;
+﻿
+
+using System.Linq.Expressions;
+
+namespace SchoolApp.Application.Core.Features.StudentFeature.Queries;
 
 public class StudentQueryHandler : ResponseHandler,
       IRequestHandler<GetStudentListQueryRequest, Response<IList<GetStudentListQueryResponse>>>,
-      IRequestHandler<GetSignleStudentByIdQueryRequest, Response<GetSingleStudentByIdQueryResponse>>
+      IRequestHandler<GetSignleStudentByIdQueryRequest, Response<GetSingleStudentByIdQueryResponse>>,
+      IRequestHandler<GetStudentPaginatedListQueryRequest, PaginatedResult<GetStudentPaginatedListQueryResponse>>
 
 {
     private readonly IStudentService _studentService;
@@ -32,6 +37,14 @@ public class StudentQueryHandler : ResponseHandler,
         if (student == null) NotFound<GetSingleStudentByIdQueryResponse>($"Student with {request.Id} is not found!");
         var result = _mapper.Map<GetSingleStudentByIdQueryResponse>(student);
         return Success(result);
+    }
+
+    public async Task<PaginatedResult<GetStudentPaginatedListQueryResponse>> Handle(GetStudentPaginatedListQueryRequest request, CancellationToken cancellationToken)
+    {
+        Expression<Func<Student, GetStudentPaginatedListQueryResponse>> expression = s => new GetStudentPaginatedListQueryResponse(s.Id, s.Name, s.Address, s.Department.Name);
+        var queryable = _studentService.FilterStudentPaginatedQueryable(request.OrderBy!, request.Search!);
+        var paginatedList = await queryable.Select(expression).ToPaginatedListAsync(request.PageNumber, request.PageSize);
+        return paginatedList;
     }
 
     #endregion

@@ -1,4 +1,7 @@
 ﻿
+
+using SchoolApp.Domain.Helpers;
+
 namespace SchoolApp.Application.Service.Services;
 
 public class StudentService : IStudentService
@@ -20,6 +23,59 @@ public class StudentService : IStudentService
         return await _studentRepository.GetStudentListAsync();
     }
 
+
+    public IQueryable<Student> FilterStudentPaginatedQueryable(StudentOrderingEnum[] OrderBy, string Search)
+    {
+        var queryable = _studentRepository.GetTableNoTracking()
+                                          .Include(s => s.Department)
+                                          .AsQueryable();
+
+        // Filter by search criteria
+        if (!string.IsNullOrEmpty(Search))
+        {
+            queryable = queryable.Where(x => x.Name.Contains(Search) ||
+                                             x.Address.Contains(Search) ||
+                                             x.Phone.Contains(Search));
+        }
+
+        // Apply ordering
+        if (OrderBy != null && OrderBy.Length > 0)
+        {
+            IOrderedQueryable<Student> orderedQueryable = null;
+            for (int i = 0; i < OrderBy.Length; i++)
+            {
+                switch (OrderBy[i])
+                {
+                    case StudentOrderingEnum.Id:
+                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Id)
+                                                  : orderedQueryable.ThenBy(s => s.Id);
+                        break;
+                    case StudentOrderingEnum.Name:
+                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Name)
+                                                  : orderedQueryable.ThenBy(s => s.Name);
+                        break;
+                    case StudentOrderingEnum.Address:
+                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Address)
+                                                  : orderedQueryable.ThenBy(s => s.Address);
+                        break;
+                    case StudentOrderingEnum.Phone:
+                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Phone)
+                                                  : orderedQueryable.ThenBy(s => s.Phone);
+                        break;
+                    case StudentOrderingEnum.DepartmentId:
+                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.DepartmentId)
+                                                  : orderedQueryable.ThenBy(s => s.DepartmentId);
+                        break;
+                    default:
+                        continue;
+                }
+            }
+
+            queryable = orderedQueryable ?? queryable;
+        }
+
+        return queryable;
+    }
     public async Task<Student> GetStudentByIdWithIncludeAsync(int id)
     {
         return _studentRepository
@@ -51,7 +107,7 @@ public class StudentService : IStudentService
     }
 
     public async Task<bool> IsNameExist(string Name)
-    { 
+    {
         return _studentRepository
             .GetTableNoTracking()
             .Where(s => s.Name.Equals(Name))
@@ -64,14 +120,14 @@ public class StudentService : IStudentService
             .GetTableNoTracking()
             .Where(s => !s.Id.Equals(Id) && s.Name.Equals(Name))
             .FirstOrDefault();
-        return  student != null;
+        return student != null;
     }
 
     public async Task<string> EditAsync(Student editedStudent)
     {
         try
         {
-            await _studentRepository .UpdateAsync(editedStudent);
+            await _studentRepository.UpdateAsync(editedStudent);
             return "Success";
         }
         catch (Exception)
@@ -96,7 +152,7 @@ public class StudentService : IStudentService
             }
             return "Failure";
         }
-        
+
     }
 
     #endregion
