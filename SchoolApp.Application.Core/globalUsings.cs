@@ -14,3 +14,4 @@ global using System.Reflection;
 global using SchoolApp.Application.Core.Features.StudentFeature.Commands;
 global using System.Net;
 global using SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
+global using SchoolApp.Application.Core.Features.StudentFeature.Commands.DeleteStudentCommand;

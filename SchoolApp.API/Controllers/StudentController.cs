@@ -1,8 +1,7 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SchoolApp.API.Bases;
 using SchoolApp.Application.Core.Features.StudentFeature.Commands;
+using SchoolApp.Application.Core.Features.StudentFeature.Commands.DeleteStudentCommand;
 using SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries;
 using SchoolApp.Application.Core.Features.StudentFeature.Queries.StudentListQuery;
@@ -47,9 +46,11 @@ namespace School.API.Controllers
         }
 
         // DELETE api/<StudentController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete(Router.StudentRoute.DeleteById)]
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            var response = await Mediator.Send(new DeleteStudentCommandRequest(id));
+            return NewResult(response);
         }
     }
 }

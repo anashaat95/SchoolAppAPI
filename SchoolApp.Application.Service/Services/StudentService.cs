@@ -20,13 +20,18 @@ public class StudentService : IStudentService
         return await _studentRepository.GetStudentListAsync();
     }
 
-    public async Task<Student> GetStudentByIdAsync(int id)
+    public async Task<Student> GetStudentByIdWithIncludeAsync(int id)
     {
         return _studentRepository
             .GetTableNoTracking()
             .Include(s => s.Department)
             .Where(s => s.Id.Equals(id))
             .FirstOrDefault()!;
+    }
+
+    public async Task<Student> GetByIdAsync(int id)
+    {
+        return await _studentRepository.GetByIdAsync(id);
     }
 
 
@@ -73,6 +78,25 @@ public class StudentService : IStudentService
         {
             return "Failure";
         }
+    }
+
+    public async Task<string> DeleteAsync(Student student)
+    {
+        using (var transaction = _studentRepository.BeginTransaction())
+        {
+            try
+            {
+                await _studentRepository.DeleteAsync(student);
+                await transaction.CommitAsync();
+                return "Success";
+            }
+            catch (Exception)
+            {
+                _studentRepository.RollBack();
+            }
+            return "Failure";
+        }
+        
     }
 
     #endregion

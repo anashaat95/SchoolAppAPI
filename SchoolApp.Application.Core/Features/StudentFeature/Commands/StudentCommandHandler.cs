@@ -1,10 +1,9 @@
-﻿using SchoolApp.Application.Core.Features.StudentFeature.Commands.EditStudentCommand;
-
-namespace SchoolApp.Application.Core.Features.StudentFeature.Commands;
+﻿namespace SchoolApp.Application.Core.Features.StudentFeature.Commands;
 
 public class StudentCommandHandler : ResponseHandler,
     IRequestHandler<AddStudentCommandRequest, Response<string>>,
-    IRequestHandler<EditStudentCommandRequest, Response<string>>
+    IRequestHandler<EditStudentCommandRequest, Response<string>>,
+    IRequestHandler<DeleteStudentCommandRequest, Response<string>>
 {
     #region Field(s)
     private readonly IStudentService _studentService;
@@ -33,15 +32,25 @@ public class StudentCommandHandler : ResponseHandler,
 
     public async Task<Response<string>> Handle(EditStudentCommandRequest request, CancellationToken cancellationToken)
     {
-        var student = await _studentService.GetStudentByIdAsync(request.Id);
+        var student = await _studentService.GetStudentByIdWithIncludeAsync(request.Id);
         if (student == null)
             return NotFound<string>("No student found with the provided name");
 
         var editedStudent = _mapper.Map<Student>(request);
         var result = await _studentService.EditAsync(editedStudent);
 
-        if (result == "Success")return Created(result);
+        if (result == "Success") return Created(result);
         else return BadRequest<string>();
+    }
+
+    public async Task<Response<string>> Handle(DeleteStudentCommandRequest request, CancellationToken cancellationToken)
+    {
+        var student = await _studentService.GetStudentByIdWithIncludeAsync(request.Id);
+        if (student == null) return NotFound<string>($"No student found with Id={request.Id}");
+
+        var result = await _studentService.DeleteAsync(student);
+        
+        return result == "Success" ?  Deleted<string>(result) : BadRequest<string>("Failed") ;
     }
     #endregion
 }

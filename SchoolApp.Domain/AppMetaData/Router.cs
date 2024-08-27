@@ -13,10 +13,11 @@ public static class Router
         // api/v1/Student
         public const string Prefix = Rule + "/Student";
         // api/v1/Student/list
-        public const string List = Prefix + "/list";
+        public const string List = Prefix;
         // api/v1/Student/{id}
         public const string GetById = Prefix + SingleRoute;
-        public const string Create = Prefix + "/Create";
+        public const string DeleteById = Prefix + SingleRoute;
+        public const string Create = Prefix;
         public const string Edit = Prefix + "/Edit";
     }
 }

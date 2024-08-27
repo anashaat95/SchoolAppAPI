@@ -28,7 +28,7 @@ public class StudentQueryHandler : ResponseHandler,
 
     public async Task<Response<GetSingleStudentByIdQueryResponse>> Handle(GetSignleStudentByIdQueryRequest request, CancellationToken cancellationToken)
     {
-        var student = await _studentService.GetStudentByIdAsync(request.Id);
+        var student = await _studentService.GetStudentByIdWithIncludeAsync(request.Id);
         if (student == null) NotFound<GetSingleStudentByIdQueryResponse>($"Student with {request.Id} is not found!");
         var result = _mapper.Map<GetSingleStudentByIdQueryResponse>(student);
         return Success(result);
