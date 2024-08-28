@@ -38,7 +38,7 @@ public class StudentService : IStudentService
                                              x.Phone.Contains(Search));
         }
 
-        if (OrderBy == null || OrderBy.Length == 0) return queryable;
+        //if (OrderBy == null || OrderBy.Length == 0) return queryable;
 
         // Apply ordering
         IOrderedQueryable<Student> orderedQueryable = null;
@@ -75,6 +75,7 @@ public class StudentService : IStudentService
 
         return queryable;
     }
+
     public async Task<Student> GetStudentByIdWithIncludeAsync(int id)
     {
         return _studentRepository

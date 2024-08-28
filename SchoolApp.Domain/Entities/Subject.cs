@@ -9,4 +9,6 @@ public class Subject
     public ICollection<Department> Departments { get; } = [];
     public ICollection<DepartmentSubject> DepartmentSubjects { get; } = [];
     public ICollection<StudentSubject> StudentSubjects { get; } = [];
+    public ICollection<Instructor> Instructors { get; } = [];
+    public ICollection<InstructorSubject> InstructorSubjects { get; } = [];
 }

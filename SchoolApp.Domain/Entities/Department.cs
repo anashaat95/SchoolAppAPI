@@ -7,4 +7,6 @@ public class Department
     public ICollection<Student> Students { get; } = [];
     public ICollection<Subject> Subjects { get; } = [];
     public ICollection<DepartmentSubject> DepartmentSubjects { get; } = [];
+    public ICollection<Instructor> Instructors { get; } = [];
+    public Instructor? Manager { get; set; }
 }

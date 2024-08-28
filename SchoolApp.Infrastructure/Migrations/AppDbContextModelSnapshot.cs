@@ -71,6 +71,76 @@ namespace SchoolApp.Infrastructure.Migrations
                     b.ToTable("DepartmentSubjects", "dbo");
                 });
 
+            modelBuilder.Entity("SchoolApp.Domain.Entities.Instructor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Address");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ManagerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Name");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("Position");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Salary");
+
+                    b.Property<int?>("SupervisedDepartmentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("ManagerId");
+
+                    b.HasIndex("SupervisedDepartmentId")
+                        .IsUnique()
+                        .HasFilter("[SupervisedDepartmentId] IS NOT NULL");
+
+                    b.ToTable("Instructors", "dbo");
+                });
+
+            modelBuilder.Entity("SchoolApp.Domain.Entities.InstructorSubject", b =>
+                {
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InstructorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("SubjectId", "InstructorId");
+
+                    b.HasIndex("InstructorId");
+
+                    b.ToTable("InstructorSubjects", "dbo");
+                });
+
             modelBuilder.Entity("SchoolApp.Domain.Entities.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -181,6 +251,48 @@ namespace SchoolApp.Infrastructure.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("SchoolApp.Domain.Entities.Instructor", b =>
+                {
+                    b.HasOne("SchoolApp.Domain.Entities.Department", "Department")
+                        .WithMany("Instructors")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolApp.Domain.Entities.Instructor", "Manager")
+                        .WithMany("ManagedInstructors")
+                        .HasForeignKey("ManagerId");
+
+                    b.HasOne("SchoolApp.Domain.Entities.Department", "SupervisedDepartment")
+                        .WithOne("Manager")
+                        .HasForeignKey("SchoolApp.Domain.Entities.Instructor", "SupervisedDepartmentId");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Manager");
+
+                    b.Navigation("SupervisedDepartment");
+                });
+
+            modelBuilder.Entity("SchoolApp.Domain.Entities.InstructorSubject", b =>
+                {
+                    b.HasOne("SchoolApp.Domain.Entities.Instructor", "Instructor")
+                        .WithMany("InstructorSubjects")
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolApp.Domain.Entities.Subject", "Subject")
+                        .WithMany("InstructorSubjects")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Instructor");
+
+                    b.Navigation("Subject");
+                });
+
             modelBuilder.Entity("SchoolApp.Domain.Entities.Student", b =>
                 {
                     b.HasOne("SchoolApp.Domain.Entities.Department", "Department")
@@ -215,7 +327,18 @@ namespace SchoolApp.Infrastructure.Migrations
                 {
                     b.Navigation("DepartmentSubjects");
 
+                    b.Navigation("Instructors");
+
+                    b.Navigation("Manager");
+
                     b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("SchoolApp.Domain.Entities.Instructor", b =>
+                {
+                    b.Navigation("InstructorSubjects");
+
+                    b.Navigation("ManagedInstructors");
                 });
 
             modelBuilder.Entity("SchoolApp.Domain.Entities.Student", b =>
@@ -226,6 +349,8 @@ namespace SchoolApp.Infrastructure.Migrations
             modelBuilder.Entity("SchoolApp.Domain.Entities.Subject", b =>
                 {
                     b.Navigation("DepartmentSubjects");
+
+                    b.Navigation("InstructorSubjects");
 
                     b.Navigation("StudentSubjects");
                 });

@@ -6,9 +6,9 @@ public class StudentQueryHandler : ResponseHandler,
       IRequestHandler<GetStudentPaginatedListQueryRequest, PaginatedResult<GetStudentPaginatedListQueryResponse>>
 
 {
+    #region Field(s)
     private readonly IStudentService _studentService;
     private readonly IMapper _mapper;
-    #region Field(s)
     #endregion
 
     #region Constructor(s)
@@ -23,8 +23,10 @@ public class StudentQueryHandler : ResponseHandler,
     public async Task<Response<IList<GetStudentListQueryResponse>>> Handle(GetStudentListQueryRequest request, CancellationToken cancellationToken)
     {
         var students = await _studentService.GetAllStudentsAsync();
-        var result = _mapper.Map<IList<GetStudentListQueryResponse>>(students);
-        return Success(result);
+        var mappedStudents = _mapper.Map<IList<GetStudentListQueryResponse>>(students);
+        var result = Success(mappedStudents);
+        result.Meta = new { Count = mappedStudents.Count() };
+        return result;
     }
 
     public async Task<Response<GetSingleStudentByIdQueryResponse>> Handle(GetSignleStudentByIdQueryRequest request, CancellationToken cancellationToken)
@@ -40,6 +42,7 @@ public class StudentQueryHandler : ResponseHandler,
         Expression<Func<Student, GetStudentPaginatedListQueryResponse>> expression = s => new GetStudentPaginatedListQueryResponse(s.Id, s.Name, s.Address, s.Department.Name);
         var queryable = _studentService.FilterStudentPaginatedQueryable(request.OrderBy!, request.Search!);
         var paginatedList = await queryable.Select(expression).ToPaginatedListAsync(request.PageNumber, request.PageSize);
+        paginatedList.Meta = new { Count = paginatedList.Data.Count() };
         return paginatedList;
     }
 

@@ -36,7 +36,7 @@ public class StudentCommandHandler : ResponseHandler,
         if (student == null)
             return NotFound<string>("No student found with the provided name");
 
-        var editedStudent = _mapper.Map<Student>(request);
+        var editedStudent = _mapper.Map(request, student);
         var result = await _studentService.EditAsync(editedStudent);
 
         if (result == "Success") return Created(result);
