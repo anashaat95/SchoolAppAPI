@@ -4,6 +4,7 @@ public class AddStudentCommandValidator : AbstractValidator<AddStudentCommandReq
 {
     #region Fields
     private readonly IStudentService _studentService;
+
     #endregion
 
     #region Constructor(s)
@@ -24,11 +25,6 @@ public class AddStudentCommandValidator : AbstractValidator<AddStudentCommandReq
             .MinimumLength(5).WithMessage("{PropertyName} must be at least 5 characters")
             .MaximumLength(50).WithMessage("{PropertyName} must be less than or equal 50 characters");
 
-        RuleFor(s => s.Address)
-            .NotEmpty().WithMessage("This field is required. {PropertyName} cannot be empty")
-            .NotNull().WithMessage("{PropertyName} cannot be null")
-            .MinimumLength(5).WithMessage("{PropertyName} must be at least 5 characters")
-            .MaximumLength(50).WithMessage("{PropertyName} must be less than or equal 50 characters");
     }
     public void ApplyCustomValidationRules()
     {

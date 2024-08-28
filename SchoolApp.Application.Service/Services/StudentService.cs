@@ -38,41 +38,40 @@ public class StudentService : IStudentService
                                              x.Phone.Contains(Search));
         }
 
-        // Apply ordering
-        if (OrderBy != null && OrderBy.Length > 0)
-        {
-            IOrderedQueryable<Student> orderedQueryable = null;
-            for (int i = 0; i < OrderBy.Length; i++)
-            {
-                switch (OrderBy[i])
-                {
-                    case StudentOrderingEnum.Id:
-                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Id)
-                                                  : orderedQueryable.ThenBy(s => s.Id);
-                        break;
-                    case StudentOrderingEnum.Name:
-                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Name)
-                                                  : orderedQueryable.ThenBy(s => s.Name);
-                        break;
-                    case StudentOrderingEnum.Address:
-                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Address)
-                                                  : orderedQueryable.ThenBy(s => s.Address);
-                        break;
-                    case StudentOrderingEnum.Phone:
-                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Phone)
-                                                  : orderedQueryable.ThenBy(s => s.Phone);
-                        break;
-                    case StudentOrderingEnum.DepartmentId:
-                        orderedQueryable = i == 0 ? queryable.OrderBy(s => s.DepartmentId)
-                                                  : orderedQueryable.ThenBy(s => s.DepartmentId);
-                        break;
-                    default:
-                        continue;
-                }
-            }
+        if (OrderBy == null || OrderBy.Length == 0) return queryable;
 
-            queryable = orderedQueryable ?? queryable;
+        // Apply ordering
+        IOrderedQueryable<Student> orderedQueryable = null;
+        for (int i = 0; i < OrderBy.Length; i++)
+        {
+            switch (OrderBy[i])
+            {
+                case StudentOrderingEnum.Id:
+                    orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Id)
+                                              : orderedQueryable.ThenBy(s => s.Id);
+                    continue;
+                case StudentOrderingEnum.Name:
+                    orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Name)
+                                              : orderedQueryable.ThenBy(s => s.Name);
+                    continue;
+                case StudentOrderingEnum.Address:
+                    orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Address)
+                                              : orderedQueryable.ThenBy(s => s.Address);
+                    continue;
+                case StudentOrderingEnum.Phone:
+                    orderedQueryable = i == 0 ? queryable.OrderBy(s => s.Phone)
+                                              : orderedQueryable.ThenBy(s => s.Phone);
+                    continue;
+                case StudentOrderingEnum.DepartmentId:
+                    orderedQueryable = i == 0 ? queryable.OrderBy(s => s.DepartmentId)
+                                              : orderedQueryable.ThenBy(s => s.DepartmentId);
+                    continue;
+                default:
+                    continue;
+            }
         }
+
+        queryable = orderedQueryable ?? queryable;
 
         return queryable;
     }

@@ -18,3 +18,6 @@ global using SchoolApp.Application.Core.Features.StudentFeature.Commands.DeleteS
 global using Microsoft.EntityFrameworkCore;
 global using SchoolApp.Application.Core.Features.StudentFeature.Queries.GetStudentPaginatedList;
 global using SchoolApp.Application.Core.Wrappers;
+global using Microsoft.Extensions.Localization;
+global using System.Linq.Expressions;
+global using SchoolApp.Application.Core.Resources;

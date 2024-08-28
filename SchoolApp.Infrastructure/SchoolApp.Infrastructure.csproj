@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SchoolApp.Common\SchoolApp.Common.csproj" />
     <ProjectReference Include="..\SchoolApp.Domain\SchoolApp.Domain.csproj" />
   </ItemGroup>
 

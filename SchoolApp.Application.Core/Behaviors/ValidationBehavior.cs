@@ -4,9 +4,11 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
    where TRequest : IRequest<TResponse>
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
-    public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
+    private readonly IStringLocalizer<SharedResources> _localizer;
+    public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators, IStringLocalizer<SharedResources> localizer)
     {
         _validators = validators;
+        _localizer = localizer;
     }
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
@@ -22,7 +24,7 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
         if (failures.Count != 0)
         {
             var message = failures
-                             .Select(x => x.ErrorMessage)
+                             .Select(x => $"{_localizer[x.ErrorMessage]} : {_localizer[SharedResourcesKeys.NotEmpty]}" )
                              .FirstOrDefault();
             throw new FluentValidation.ValidationException(message);
         }

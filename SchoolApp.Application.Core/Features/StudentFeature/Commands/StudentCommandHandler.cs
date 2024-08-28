@@ -11,7 +11,7 @@ public class StudentCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public StudentCommandHandler(IStudentService studentService, IMapper mapper)
+    public StudentCommandHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
     {
         _studentService = studentService;
         _mapper = mapper;

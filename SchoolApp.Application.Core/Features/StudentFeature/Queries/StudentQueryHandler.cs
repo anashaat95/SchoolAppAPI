@@ -1,8 +1,4 @@
-﻿
-
-using System.Linq.Expressions;
-
-namespace SchoolApp.Application.Core.Features.StudentFeature.Queries;
+﻿namespace SchoolApp.Application.Core.Features.StudentFeature.Queries;
 
 public class StudentQueryHandler : ResponseHandler,
       IRequestHandler<GetStudentListQueryRequest, Response<IList<GetStudentListQueryResponse>>>,
@@ -16,7 +12,7 @@ public class StudentQueryHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public StudentQueryHandler(IStudentService studentService, IMapper mapper)
+    public StudentQueryHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
     {
         _studentService = studentService;
         _mapper = mapper;
@@ -34,7 +30,7 @@ public class StudentQueryHandler : ResponseHandler,
     public async Task<Response<GetSingleStudentByIdQueryResponse>> Handle(GetSignleStudentByIdQueryRequest request, CancellationToken cancellationToken)
     {
         var student = await _studentService.GetStudentByIdWithIncludeAsync(request.Id);
-        if (student == null) NotFound<GetSingleStudentByIdQueryResponse>($"Student with {request.Id} is not found!");
+        if (student == null) return NotFound<GetSingleStudentByIdQueryResponse>($"Student with {request.Id} is not found!");
         var result = _mapper.Map<GetSingleStudentByIdQueryResponse>(student);
         return Success(result);
     }
