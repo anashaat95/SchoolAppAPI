@@ -1,8 +1,7 @@
 ﻿namespace SchoolApp.Domain.Entities;
 
-public class DepartmentSubject
+public class DepartmentSubject : BaseEntity
 {
-    public int Id { get; set; }
     public int SubjectId { get; set; }
     public int DepartmentId { get; set; }
     public Subject Subject { get; set; } = null!;

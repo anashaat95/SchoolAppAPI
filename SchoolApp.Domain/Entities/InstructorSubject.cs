@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SchoolApp.Domain.Entities;
 
-namespace SchoolApp.Domain.Entities;
-
-public class InstructorSubject
+public class InstructorSubject : BaseEntity
 {
-    public int Id { get; set; } 
     public int SubjectId { get; set; }
     public int InstructorId { get; set; }
     public Instructor Instructor { get; set; } = null!;

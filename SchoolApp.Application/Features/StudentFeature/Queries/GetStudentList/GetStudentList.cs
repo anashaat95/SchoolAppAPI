@@ -6,13 +6,13 @@ using SchoolApp.Application.Services.StudentService;
 
 namespace SchoolApp.Application.Features.StudentFeature.Queries.StudentListQuery;
 
-public class GetStudentListQuery : IRequest<Response<IList<StudentDTO>>>
+public class GetStudentListQuery : IRequest<Response<IList<StudentQueryDTO>>>
 {
 }
 
 
 public class GetStudentListQueryHandler : ResponseHandler,
-      IRequestHandler<GetStudentListQuery, Response<IList<StudentDTO>>>
+      IRequestHandler<GetStudentListQuery, Response<IList<StudentQueryDTO>>>
 
 {
     #region Field(s)
@@ -29,10 +29,10 @@ public class GetStudentListQueryHandler : ResponseHandler,
     #endregion
 
     #region Handler(s)
-    public async Task<Response<IList<StudentDTO>>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
+    public async Task<Response<IList<StudentQueryDTO>>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
     {
-        var students = await _service.GetAllStudents().ProjectTo<StudentDTO>(_mapper.ConfigurationProvider).ToListAsync();
-        return new Response<IList<StudentDTO>> { Data = students, Meta = new { Count = students.Count() } };
+        var students = await _service.GetAllStudents().ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider).ToListAsync();
+        return new Response<IList<StudentQueryDTO>> { Data = students, Meta = new { Count = students.Count() } };
     }
     #endregion
 }

@@ -1,6 +1,6 @@
 ﻿namespace SchoolApp.Application.Features.StudentFeature;
 
-public class StudentDTO
+public class StudentQueryDTO
 {
     public int Id { get; set; }
     public string? Name { get; set; }
@@ -11,7 +11,7 @@ public class StudentDTO
     {
         public Mapping()
         {
-            CreateMap<Student, StudentDTO>();
+            CreateMap<Student, StudentQueryDTO>();
         }
     }
 }

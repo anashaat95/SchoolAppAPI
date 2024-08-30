@@ -73,7 +73,7 @@ public class StudentService : IStudentService
         return queryable;
     }
 
-    public async Task<Student> AddAsync(Student student)
+    public async Task<int> AddAsync(Student student)
     {
         return await _repo.AddAsync(student);
     }

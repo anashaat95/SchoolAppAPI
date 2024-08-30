@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolApp.Application.Core\SchoolApp.Application.csproj" />
+    <ProjectReference Include="..\SchoolApp.Application\SchoolApp.Application.csproj" />
     <ProjectReference Include="..\SchoolApp.Infrastructure\SchoolApp.Infrastructure.csproj" />
   </ItemGroup>
 

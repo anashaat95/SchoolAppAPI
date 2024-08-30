@@ -1,12 +1,12 @@
 ﻿namespace SchoolApp.Domain.RepositoriesInterfaces.Bases;
 
-public interface IGenericRepository<T> where T : class
+public interface IGenericRepository<T> where T : BaseEntity
 {
     IQueryable<T> GetById(int id);
     IQueryable<T> GetTableNoTracking();
     IQueryable<T> GetTableAsTracking();
     Task<bool> IsExistsByIdAsync(int id);
-    Task<T> AddAsync(T entity);
+    Task<int> AddAsync(T entity);
     Task<bool> UpdateAsync(T entity);
     Task<bool> DeleteAsync(T entity);
     Task<bool> AddRangeAsync(ICollection<T> entities);

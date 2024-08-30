@@ -1,6 +1,6 @@
 ﻿namespace SchoolApp.Infrastructure.Data.Repositories.Bases;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : class
+public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
     #region Vars / Props
     protected readonly AppDbContext _context;
@@ -33,12 +33,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         return _set.AsQueryable().AsQueryable();
     }
 
-    public virtual async Task<T> AddAsync(T entity)
+    public virtual async Task<int> AddAsync(T entity)
     {
         await _set.AddAsync(entity);
         await _context.SaveChangesAsync();
 
-        return entity;
+        return entity.Id;
     }
 
     public virtual async Task<bool> UpdateAsync(T entity)

@@ -1,6 +1,6 @@
 ﻿namespace SchoolApp.Application.Features.StudentFeature.Queries.GetStudentPaginatedList;
 
-public class GetStudentPaginatedListQuery : IRequest<PaginatedResult<StudentDTO>>
+public class GetStudentPaginatedListQuery : IRequest<PaginatedResult<StudentQueryDTO>>
 {
     public int PageNumber { get; set; }
     public int PageSize { get; set; }
@@ -9,7 +9,7 @@ public class GetStudentPaginatedListQuery : IRequest<PaginatedResult<StudentDTO>
 }
 
 public class GetStudentPaginatedListQueryHandler : ResponseHandler,
-      IRequestHandler<GetStudentPaginatedListQuery, PaginatedResult<StudentDTO>>
+      IRequestHandler<GetStudentPaginatedListQuery, PaginatedResult<StudentQueryDTO>>
 
 {
     #region Field(s)
@@ -26,11 +26,11 @@ public class GetStudentPaginatedListQueryHandler : ResponseHandler,
     #endregion
 
     #region Handler(s)
-    public async Task<PaginatedResult<StudentDTO>> Handle(GetStudentPaginatedListQuery request, CancellationToken cancellationToken)
+    public async Task<PaginatedResult<StudentQueryDTO>> Handle(GetStudentPaginatedListQuery request, CancellationToken cancellationToken)
     {
-        Expression<Func<Student, StudentDTO>> expression = s => new StudentDTO { Id = s.Id, Name = s.Name, Address = s.Address, DepartmentName = s.Department.Name };
+        Expression<Func<Student, StudentQueryDTO>> expression = s => new StudentQueryDTO { Id = s.Id, Name = s.Name, Address = s.Address, DepartmentName = s.Department.Name };
         var result = await _service.FilterStudentAndPaginate(request.OrderBy!, request.Search!)
-                                .ProjectTo<StudentDTO>(_mapper.ConfigurationProvider)
+                                .ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider)
                                 .ToPaginatedListAsync(request.PageNumber, request.PageSize);
         result.Meta = new { Count = result.Data.Count() };
         return result;

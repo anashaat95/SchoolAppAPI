@@ -6,7 +6,7 @@ public interface IStudentService
     IQueryable<Student> GetStudentById(int id);
     IQueryable<Student> GetAllStudents();
 
-    Task<Student> AddAsync(Student student);
+    Task<int> AddAsync(Student student);
     Task<bool> UpdateAsync(Student editedStudent);
     Task<bool> DeleteAsync(Student student);
     Task<bool> IsNameExistAsync(string Name);

@@ -1,6 +1,6 @@
 ﻿namespace SchoolApp.Application.Features.StudentFeature.Queries.GetStudentById;
 
-public record GetStudentByIdQuery : IRequest<Response<StudentDTO>>
+public record GetStudentByIdQuery : IRequest<Response<StudentQueryDTO>>
 {
     public GetStudentByIdQuery(int Id)
     {
@@ -12,7 +12,7 @@ public record GetStudentByIdQuery : IRequest<Response<StudentDTO>>
 
 
 public class GetStudentByIdQueryHandler : ResponseHandler,
-      IRequestHandler<GetStudentByIdQuery, Response<StudentDTO>>
+      IRequestHandler<GetStudentByIdQuery, Response<StudentQueryDTO>>
 
 {
     #region Field(s)
@@ -29,10 +29,10 @@ public class GetStudentByIdQueryHandler : ResponseHandler,
     #endregion
 
     #region Handler(s)
-    public async Task<Response<StudentDTO>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
+    public async Task<Response<StudentQueryDTO>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
     {
-        var student = await _service.GetStudentById(request.Id).ProjectTo<StudentDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
-        if (student == null) return NotFound<StudentDTO>($"Student with {request.Id} is not found!");
+        var student = await _service.GetStudentById(request.Id).ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
+        if (student == null) return NotFound<StudentQueryDTO>($"Student with {request.Id} is not found!");
         return Success(student);
     }
     #endregion
