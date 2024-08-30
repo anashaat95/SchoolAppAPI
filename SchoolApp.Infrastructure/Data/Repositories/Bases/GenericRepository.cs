@@ -43,7 +43,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
     public virtual async Task<bool> UpdateAsync(T entity)
     {
-        _set.Update(entity);
+        _context.Set<T>().Update(entity);
         await _context.SaveChangesAsync();
         return true;
     }
@@ -101,9 +101,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         _context.Database.RollbackTransaction();
     }
 
-    public Task<bool> IsExistsByIdAsync(int id)
+    public async Task<bool> IsExistsByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _set.AnyAsync(s => s.Id == id);
     }
     #endregion
 }

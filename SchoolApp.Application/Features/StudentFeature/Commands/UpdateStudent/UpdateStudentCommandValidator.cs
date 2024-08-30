@@ -18,13 +18,13 @@ public class UpdateStudentCommandValidator : AbstractValidator<UpdateStudentComm
     #region Action(s)
     public void ApplyValidationRules()
     {
-        RuleFor(s => s.Name)
+        RuleFor(s => s.StudentData.Name)
             .NotEmpty().WithMessage("This field is required. {PropertyName} cannot be empty")
             .NotNull().WithMessage("{PropertyName} cannot be null")
             .MinimumLength(5).WithMessage("{PropertyName} must be at least 5 characters")
             .MaximumLength(100).WithMessage("{PropertyName} must be less than or equal 50 characters");
 
-        RuleFor(s => s.Address)
+        RuleFor(s => s.StudentData.Address)
             .NotEmpty().WithMessage("This field is required. {PropertyName} cannot be empty")
             .NotNull().WithMessage("{PropertyName} cannot be null")
             .MinimumLength(5).WithMessage("{PropertyName} must be at least 5 characters")
@@ -32,12 +32,7 @@ public class UpdateStudentCommandValidator : AbstractValidator<UpdateStudentComm
     }
     public void ApplyCustomValidationRules()
     {
-        RuleFor(s => s.Name)
-            .MustAsync(async (model, Key, cancellationToken) =>
-            {
-                return !await _studentService.IsNameExistExcludeSelfAsync(Key, model.Id);
-            }
-            ).WithMessage("{PropertyName} is required. {PropertyName} Exists");
+
     }
     #endregion
 }

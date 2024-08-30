@@ -109,7 +109,13 @@ public class StudentService : IStudentService
 
     public async Task<bool> IsNameExistExcludeSelfAsync(string Name, int Id)
     {
-        return (await _repo.GetTableNoTracking().Where(s => !s.Id.Equals(Id) && s.Name.Equals(Name)).FirstOrDefaultAsync()) != null;
+        var currentStudent = await _repo.GetTableNoTracking()
+                            .Where(s => s.Id == Id && s.Name.Equals(Name))
+                            .FirstOrDefaultAsync();
+        if (currentStudent != null) return true;
+        
+
+        return await IsNameExistAsync(Name);
     }
 
     #endregion

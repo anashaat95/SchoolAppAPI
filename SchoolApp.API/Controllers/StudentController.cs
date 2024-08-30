@@ -37,10 +37,10 @@ public class StudentController : AppControllerBase
     }
 
     // PUT api/<StudentController>/Edit
-    [HttpPut(Router.StudentRoute.BASE)]
-    public async Task<IActionResult> Put([FromBody] UpdateStudentCommand command)
+    [HttpPut(Router.StudentRoute.ById)]
+    public async Task<IActionResult> Put(int id, [FromBody] UpdateStudentDTO data)
     {
-        var response = await Mediator.Send(command);
+        var response = await Mediator.Send(new UpdateStudentCommand { Id = id, StudentData = data });
         return NewResult(response);
     }
 
