@@ -18,7 +18,6 @@ public class SubjectConfig : IEntityTypeConfiguration<Subject>
         builder
             .Property(sub => sub.Period)
             .HasColumnName("Period")
-            .HasColumnType("datetime")
             .IsRequired();
 
         builder.HasData(LoadSubjects());
@@ -28,8 +27,8 @@ public class SubjectConfig : IEntityTypeConfiguration<Subject>
     {
         return new List<Subject>
         {
-            new Subject {Id=1, Name="React", Period=new DateTime(2023, 10, 12)},
-            new Subject {Id=2, Name="Math", Period=new DateTime(2023, 11, 30)},
+            new Subject {Id=1, Name="React", Period=1},
+            new Subject {Id=2, Name="Math", Period=2},
         };
     }
 }

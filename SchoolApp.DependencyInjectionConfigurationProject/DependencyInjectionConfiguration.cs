@@ -11,9 +11,9 @@ namespace SchoolApp.DependencyInjectionConfigurationProject
         public static IServiceCollection RegisterProjectsDependencies(this IServiceCollection services, IConfiguration cfg)
         {
             services
+                .RegisterInfrastructureDependencies(cfg)
                 .RegisterApplicationCoreDependencies()
-                .RegisterApplicationServiceDependencies()
-                .RegisterInfrastructureDependencies(cfg);
+                .RegisterApplicationServiceDependencies();
             return services;
         }
     }

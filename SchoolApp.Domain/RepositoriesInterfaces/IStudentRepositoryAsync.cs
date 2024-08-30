@@ -1,6 +1,8 @@
 ﻿namespace SchoolApp.Domain.RepositoriesInterfaces;
 
-public interface IStudentRepositoryAsync : IGenericRepositoryAsync<Student>
+public interface IStudentRepository : IGenericRepository<Student>
 {
-    Task<IEnumerable<Student>> GetStudentListAsync();
+    IQueryable<Student> GetAllStudents();
+    IQueryable<Student> GetStudentById(int id);
+
 }

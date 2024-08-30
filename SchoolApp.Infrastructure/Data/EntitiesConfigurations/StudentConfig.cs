@@ -30,18 +30,28 @@ public class StudentConfig : IEntityTypeConfiguration<Student>
             .HasMaxLength(50)
             .IsRequired();
 
+
+        builder
+            .Property(s => s.Grade)
+            .HasColumnName("Grade")
+            .HasColumnType("decimal(18, 2)")
+            .HasMaxLength(50)
+            .IsRequired();
+
         builder
             .HasOne(s => s.Department)
             .WithMany(d => d.Students)
-            .HasForeignKey(s => s.DepartmentId);
+            .HasForeignKey(s => s.DepartmentId)
+            .IsRequired(true)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder
             .HasMany(s => s.Subjects)
             .WithMany(sub => sub.Students)
             .UsingEntity<StudentSubject>
             (
-                left => left.HasOne(stSub => stSub.Subject).WithMany(sub => sub.StudentSubjects).HasForeignKey(stSub => stSub.SubjectId),
-                right => right.HasOne(stSub => stSub.Student).WithMany(st => st.StudentSubjects).HasForeignKey(stSub => stSub.StudentId),
+                left => left.HasOne(stSub => stSub.Subject).WithMany(sub => sub.StudentSubjects).HasForeignKey(stSub => stSub.SubjectId).OnDelete(DeleteBehavior.Restrict),
+                right => right.HasOne(stSub => stSub.Student).WithMany(st => st.StudentSubjects).HasForeignKey(stSub => stSub.StudentId).OnDelete(DeleteBehavior.Restrict),
                 table =>
                 {
                     table.HasKey(stSub => new { stSub.SubjectId, stSub.StudentId });

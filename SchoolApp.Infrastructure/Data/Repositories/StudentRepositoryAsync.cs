@@ -1,22 +1,29 @@
-﻿namespace SchoolApp.Infrastructure.Data.Repositories;
+﻿
 
-public class StudentRepositoryAsync : GenericRepositoryAsync<Student>, IStudentRepositoryAsync
+namespace SchoolApp.Infrastructure.Data.Repositories;
+
+public class StudentRepository : GenericRepository<Student>, IStudentRepository
 {
     #region Fields
-    private readonly DbSet<Student> _students;
+    private new readonly DbSet<Student> _set;
     #endregion
 
     #region Constructors
-    public StudentRepositoryAsync(AppDbContext context) : base(context)
+    public StudentRepository(AppDbContext context) : base(context)
     {
-        _students = _dbContext.Set<Student>();
+        _set = context.Set<Student>();
     }
     #endregion
 
     #region Actions
-    public async Task<IEnumerable<Student>> GetStudentListAsync()
+    public IQueryable<Student> GetAllStudents()
     {
-        return await _students.Include(s => s.Department).AsNoTracking().ToListAsync();
+        return _set.Include(s => s.Department).AsNoTracking();
+    }
+
+    public IQueryable<Student> GetStudentById(int id)
+    {
+        return _set.Where(s => s.Id.Equals(id)).Include(s => s.Department);
     }
     #endregion
 }

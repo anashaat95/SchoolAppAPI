@@ -34,24 +34,27 @@ public class InstructorConfig : IEntityTypeConfiguration<Instructor>
         builder.HasOne(i => i.Department)
             .WithMany(dept => dept.Instructors)
             .HasForeignKey(i => i.DepartmentId)
-            .IsRequired(true);
+            .IsRequired(true)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(i => i.SupervisedDepartment)
             .WithOne(dept => dept.Manager)
-            .HasForeignKey<Instructor>(i=>i.SupervisedDepartmentId)
-            .IsRequired(false);
+            .HasForeignKey<Instructor>(i => i.SupervisedDepartmentId)
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasOne(i => i.Manager)
             .WithMany(m => m.ManagedInstructors)
             .HasForeignKey(i => i.ManagerId)
-            .IsRequired(false);
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasMany(i => i.Subjects)
             .WithMany(s => s.Instructors)
             .UsingEntity<InstructorSubject>
             (
-                left => left.HasOne(inSub => inSub.Subject).WithMany(s => s.InstructorSubjects).HasForeignKey(inSub => inSub.SubjectId),
-                right => right.HasOne(inSub => inSub.Instructor).WithMany(i => i.InstructorSubjects).HasForeignKey(inSub => inSub.InstructorId),
+                left => left.HasOne(inSub => inSub.Subject).WithMany(s => s.InstructorSubjects).HasForeignKey(inSub => inSub.SubjectId).OnDelete(DeleteBehavior.Restrict),
+                right => right.HasOne(inSub => inSub.Instructor).WithMany(i => i.InstructorSubjects).HasForeignKey(inSub => inSub.InstructorId).OnDelete(DeleteBehavior.Restrict),
                 table =>
                 {
                     table.HasKey(inSub => new { inSub.SubjectId, inSub.InstructorId });

@@ -25,8 +25,8 @@ public class DepartmentConfig : IEntityTypeConfiguration<Department>
             .WithMany(sub => sub.Departments)
             .UsingEntity<DepartmentSubject>
             (
-                left => left.HasOne(deptSub => deptSub.Subject).WithMany(sub => sub.DepartmentSubjects).HasForeignKey(deptSub => deptSub.SubjectId),
-                right => right.HasOne(deptSub => deptSub.Department).WithMany(dept => dept.DepartmentSubjects).HasForeignKey(deptSub => deptSub.DepartmentId),
+                left => left.HasOne(deptSub => deptSub.Subject).WithMany(sub => sub.DepartmentSubjects).HasForeignKey(deptSub => deptSub.SubjectId).OnDelete(DeleteBehavior.Restrict),
+                right => right.HasOne(deptSub => deptSub.Department).WithMany(dept => dept.DepartmentSubjects).HasForeignKey(deptSub => deptSub.DepartmentId).OnDelete(DeleteBehavior.Restrict),
                 table =>
                 {
                     table.HasKey(deptSub => new { deptSub.SubjectId, deptSub.DepartmentId });

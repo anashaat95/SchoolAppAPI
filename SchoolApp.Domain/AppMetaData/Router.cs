@@ -11,14 +11,10 @@ public static class Router
     public static class StudentRoute
     {
         // api/v1/Student
-        public const string Prefix = Rule + "/Student";
-        // api/v1/Student/list
-        public const string List = Prefix;
-        public const string Paginated = Prefix + "/Paginated";
+        public const string BASE = Rule + "/Student";
+        // api/v1/Student/query? key=value
+        public const string Paginated = BASE + "/query";
         // api/v1/Student/{id}
-        public const string GetById = Prefix + SingleRoute;
-        public const string DeleteById = Prefix + SingleRoute;
-        public const string Create = Prefix;
-        public const string Edit = Prefix + "/Edit";
+        public const string ById = BASE + SingleRoute;
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Localization;
 using SchoolApp.API.MiddleWares;
-using SchoolApp.DependencyInjectionConfigurationProject;
+using SchoolApp.Infrastructure;
+using SchoolApp.Application;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,8 @@ builder.Services.AddSwaggerGen();
 
 #region DependenciesRegistration
 builder.Services
-    .RegisterProjectsDependencies(builder.Configuration);
+    .RegisterInfrastructureDependencies(builder.Configuration)
+    .RegisterApplicationDependencies();
 #endregion
 
 #region Localization

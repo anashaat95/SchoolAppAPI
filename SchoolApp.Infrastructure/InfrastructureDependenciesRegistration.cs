@@ -6,8 +6,8 @@ public static class InfrastructureDependenciesRegistration
     {
         services.AddDbContext<AppDbContext>
             (options => options.UseSqlServer(cfg.GetConnectionString("SchoolDBConnectionString")));
-        services.AddTransient<IStudentRepositoryAsync, StudentRepositoryAsync>();
-        services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
+        services.AddTransient<IStudentRepository, StudentRepository>();
+        services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         return services;
     }
 }

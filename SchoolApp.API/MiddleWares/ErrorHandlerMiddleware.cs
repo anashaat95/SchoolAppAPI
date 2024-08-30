@@ -1,10 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.EntityFrameworkCore;
-using SchoolApp.Application.Core.Bases;
-using System.Net;
-using System.Text.Json;
-
-namespace SchoolApp.API.MiddleWares;
+﻿namespace SchoolApp.API.MiddleWares;
 
 // Global middleware to catch errors
 public class ErrorHandlerMiddleware
