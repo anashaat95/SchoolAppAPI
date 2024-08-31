@@ -29,13 +29,11 @@ public class GetStudentPaginatedListQueryHandler : ResponseHandler,
     public async Task<PaginatedResult<StudentQueryDTO>> Handle(GetStudentPaginatedListQuery request, CancellationToken cancellationToken)
     {
         Expression<Func<Student, StudentQueryDTO>> expression = s => new StudentQueryDTO { Id = s.Id, Name = s.Name, Address = s.Address, DepartmentName = s.Department.Name };
-        var result = await _service
+        return await _service
                                 .FilterStudentAndPaginate(request.OrderBy!, request.Search!)
-                                .Select(s => new StudentQueryDTO(s.Id, s.Name, s.Address, s.Department.Name))
-                                //.ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider)
+                                //.Select(s => new StudentQueryDTO(s.Id, s.Name, s.Address, s.Department.Name))
+                                .ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider)
                                 .ToPaginatedListAsync(request.PageNumber, request.PageSize);
-        result.Meta = new { Count = result.Data.Count() };
-        return result;
     }
     #endregion
 }

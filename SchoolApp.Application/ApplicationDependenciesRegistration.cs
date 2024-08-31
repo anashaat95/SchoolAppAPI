@@ -1,6 +1,4 @@
-﻿using SchoolApp.Application.Services.StudentService;
-
-namespace SchoolApp.Application;
+﻿namespace SchoolApp.Application;
 
 public static class ApplicationDependenciesRegistration
 {
