@@ -31,7 +31,10 @@ public class GetStudentListQueryHandler : ResponseHandler,
     #region Handler(s)
     public async Task<Response<IList<StudentQueryDTO>>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
     {
-        var students = await _service.GetAllStudents().ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider).ToListAsync();
+        var students = await _service.GetAllStudents()
+                                     .Select(s => new StudentQueryDTO(s.Id, s.Name, s.Address, s.Department.Name))
+                                    //.ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider)
+                                    .ToListAsync();
         return new Response<IList<StudentQueryDTO>> { Data = students, Meta = new { Count = students.Count() } };
     }
     #endregion

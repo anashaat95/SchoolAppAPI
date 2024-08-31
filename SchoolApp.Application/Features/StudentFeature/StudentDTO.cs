@@ -7,6 +7,16 @@ public class StudentQueryDTO
     public string? Address { get; set; }
     public string? DepartmentName { get; set; }
 
+    public StudentQueryDTO() { }
+
+    public StudentQueryDTO(int id, string name, string address, string departmentName)
+    {
+        Id = id;
+        Name = name;
+        Address = address;
+        DepartmentName = departmentName;
+    }
+
     class Mapping : Profile
     {
         public Mapping()

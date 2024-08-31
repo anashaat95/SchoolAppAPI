@@ -1,6 +1,5 @@
 ﻿namespace School.API.Controllers;
 
-[Route("")]
 [ApiController]
 public class StudentController : AppControllerBase
 {

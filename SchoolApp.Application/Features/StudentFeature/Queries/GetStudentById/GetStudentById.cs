@@ -31,7 +31,10 @@ public class GetStudentByIdQueryHandler : ResponseHandler,
     #region Handler(s)
     public async Task<Response<StudentQueryDTO>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
     {
-        var student = await _service.GetStudentById(request.Id).ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
+        var student = await _service.GetStudentById(request.Id)
+                                    .Select(s => new StudentQueryDTO(s.Id, s.Name, s.Address, s.Department.Name))
+                                    //.ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider)
+                                    .FirstOrDefaultAsync();
         if (student == null) return NotFound<StudentQueryDTO>($"Student with {request.Id} is not found!");
         return Success(student);
     }

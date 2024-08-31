@@ -41,6 +41,20 @@ builder.Services
     });
 #endregion
 
+#region AllowingCORS
+var AllowAllCORS = "_AllowAll";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowAllCORS,
+    builder =>
+    {
+        builder.AllowAnyOrigin();
+        builder.AllowAnyHeader();
+        builder.AllowAnyMethod();
+    });
+});
+#endregion
+
 
 var app = builder.Build();
 
@@ -63,5 +77,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(AllowAllCORS);
 
 app.Run();

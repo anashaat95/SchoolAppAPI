@@ -3,14 +3,13 @@
 public class AddStudentCommandValidator : AbstractValidator<AddStudentCommand>
 {
     #region Fields
-    private readonly IStudentService _studentService;
-
+    private readonly IStudentService _service;
     #endregion
 
     #region Constructor(s)
-    public AddStudentCommandValidator(IStudentService studentService)
+    public AddStudentCommandValidator(IStudentService service)
     {
-        _studentService = studentService;
+        _service = service;
         ApplyValidationRules();
         ApplyCustomValidationRules();
     }
@@ -25,11 +24,15 @@ public class AddStudentCommandValidator : AbstractValidator<AddStudentCommand>
             .MinimumLength(5).WithMessage("{PropertyName} must be at least 5 characters")
             .MaximumLength(50).WithMessage("{PropertyName} must be less than or equal 50 characters");
 
+        RuleFor(s => s.DepartmentId)
+            .NotEmpty().WithMessage("This field is required. {PropertyName} cannot be empty")
+            .NotNull().WithMessage("{PropertyName} cannot be null");
+
     }
     public void ApplyCustomValidationRules()
     {
         RuleFor(s => s.Name)
-            .MustAsync(async (Key, cancellationToken) => !(await _studentService.IsNameExistAsync(Key))
+            .MustAsync(async (Key, cancellationToken) => !(await _service.IsNameExistAsync(Key))
             ).WithMessage("This field is required. {PropertyName} cannot be empty");
     }
     #endregion
