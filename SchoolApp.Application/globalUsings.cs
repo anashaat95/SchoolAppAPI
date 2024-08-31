@@ -18,3 +18,5 @@ global using System.ComponentModel.DataAnnotations;
 global using System.Linq.Expressions;
 global using System.Net;
 global using System.Reflection;
+global using Microsoft.AspNetCore.Identity;
+global using SchoolApp.Domain.Entities.Identity;

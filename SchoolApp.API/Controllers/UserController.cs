@@ -1,33 +1,27 @@
 ﻿using SchoolApp.Application.Features.UserFeature.Commands.AddUser;
+using SchoolApp.Application.Features.UserFeature.Queries.GetUser;
+using SchoolApp.Application.Features.UserFeature.Queries.GetUserList;
 
 namespace School.API.Controllers;
 
 [ApiController]
 public class UserController : AppControllerBase
 {
-    //// GET api/<UserController>
-    //[HttpGet("/")]
-    //public async Task<IActionResult> Get()
-    //{
-    //    var response = await Mediator.Send(new GetStudentListQuery());
-    //    return NewResult(response);
-    //}
+    // GET api/<UserController>/query
+    [HttpGet(Router.UserRouter.Query)]
+    public async Task<IActionResult> GetPaginated([FromQuery] GetUserListPaginatedQuery query)
+    {
+        var response = await Mediator.Send(query);
+        return Ok(response);
+    }
 
-    //// GET api/<UserController>/query
-    //[HttpGet(Router.Query)]
-    //public async Task<IActionResult> GetPaginated([FromQuery] GetStudentPaginatedListQuery query)
-    //{
-    //    var response = await Mediator.Send(query);
-    //    return Ok(response);
-    //}
-
-    //// GET api/<UserController>/{id}
-    //[HttpGet(Router.ById)]
-    //public async Task<IActionResult> Get([FromRoute] int Id)
-    //{
-    //    var response = await Mediator.Send(new GetStudentByIdQuery(Id));
-    //    return NewResult(response);
-    //}
+    // GET api/<UserController>/{id}
+    [HttpGet(Router.UserRouter.ById)]
+    public async Task<IActionResult> Get([FromRoute] int Id)
+    {
+        var response = await Mediator.Send(new GetUserByIdQuery(Id));
+        return NewResult(response);
+    }
 
     // POST api/<UserController>/Create
     [HttpPost((Router.UserRouter.BASE))]
