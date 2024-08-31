@@ -2,19 +2,29 @@
 
 public static class Router
 {
-    public const string SingleRoute = "/{id}";
-    public const string root = "api";
-    public const string version = "v1";
+    private const string _root = "api";
+    private const string _version = "v1";
+    
     // api/v1
-    public const string Rule = root + "/" + version;
+    private const string _Rule = _root + "/" + _version;
 
-    public static class StudentRoute
+    // sub routes
+    // api/v1/Student/{Id}
+    private const string _ById = "/{Id}";
+    // api/v1/<Controller>/query? key=value & key=value
+    private const string _Query = "/query";
+
+    public class StudentRouter()
     {
-        // api/v1/Student
-        public const string BASE = Rule + "/Student";
-        // api/v1/Student/query? key=value
-        public const string Paginated = BASE + "/query";
-        // api/v1/Student/{id}
-        public const string ById = BASE + SingleRoute;
+        public const string BASE = _Rule + "/Student";
+        public const string ById = BASE + _ById;
+        public const string Query = BASE + _Query;
+    }
+
+    public class UserRouter()
+    {
+        public const string BASE = _Rule + "/User";
+        public const string ById = BASE + _ById;
+        public const string Query = BASE + _Query;
     }
 }
