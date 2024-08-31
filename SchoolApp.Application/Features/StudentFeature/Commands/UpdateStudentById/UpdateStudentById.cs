@@ -1,15 +1,15 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudent;
+﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudentById;
 
-public partial class UpdateStudentCommand : IRequest<Response<StudentQueryDTO>>
+public partial class UpdateStudentByIdCommand : IRequest<Response<StudentQueryDTO>>
 {
     public int Id { get; set; }
-    public UpdateStudentDTO StudentData { get; set; }
+    public UpdateStudentByIdDTO StudentData { get; set; }
 
     private class Mapping : Profile
     {
         public Mapping()
         {
-            CreateMap<UpdateStudentCommand, Student>()
+            CreateMap<UpdateStudentByIdCommand, Student>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.StudentData.Name))
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.StudentData.Address))
                 .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.StudentData.Phone))

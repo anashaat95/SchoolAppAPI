@@ -1,6 +1,7 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudent;
+﻿
+namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudentById;
 
-public class UpdateStudentDTO
+public class UpdateStudentByIdDTO
 {
     public required string Name { get; set; }
     public required string Address { get; set; }
