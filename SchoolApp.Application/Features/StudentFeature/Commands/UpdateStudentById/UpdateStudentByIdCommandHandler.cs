@@ -1,9 +1,9 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudent;
+﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudentById;
 
 public partial class UpdateStudentCommand
 {
     public class UpdateStudentCommandHandler : ResponseHandler,
-        IRequestHandler<UpdateStudentCommand, Response<StudentQueryDTO>>
+        IRequestHandler<UpdateStudentByIdCommand, Response<StudentQueryDTO>>
     {
         #region Field(s)
         private readonly IStudentService _service;
@@ -20,7 +20,7 @@ public partial class UpdateStudentCommand
 
         #region Handler(s)
 
-        public async Task<Response<StudentQueryDTO>> Handle(UpdateStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Response<StudentQueryDTO>> Handle(UpdateStudentByIdCommand request, CancellationToken cancellationToken)
         {
             var student = await _service.GetStudentById(request.Id).FirstOrDefaultAsync();
             if (student == null)
