@@ -4,7 +4,7 @@ global using SchoolApp.Application.Features.StudentFeature.Queries.GetStudentPag
 global using SchoolApp.Domain.AppMetaData;
 global using SchoolApp.Application.Features.StudentFeature.Commands.AddStudent;
 global using SchoolApp.Application.Features.StudentFeature.Commands.DeleteStudentCommand;
-global using SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudent;
+global using SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudentById;
 global using SchoolApp.Application.Features.StudentFeature.Queries.GetStudentById;
 global using SchoolApp.Application.Features.StudentFeature.Queries.StudentListQuery;
 global using FluentValidation;

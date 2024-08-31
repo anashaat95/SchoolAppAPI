@@ -37,9 +37,9 @@ public class StudentController : AppControllerBase
 
     // PUT api/<StudentController>/{id}
     [HttpPut(Router.StudentRouter.ById)]
-    public async Task<IActionResult> Put(int Id, [FromBody] UpdateStudentDTO data)
+    public async Task<IActionResult> Put(int Id, [FromBody] UpdateStudentByIdDTO data)
     {
-        var response = await Mediator.Send(new UpdateStudentCommand { Id = Id, StudentData = data });
+        var response = await Mediator.Send(new UpdateStudentByIdCommand { Id = Id, StudentData = data });
         return NewResult(response);
     }
 

@@ -1,4 +1,5 @@
 ﻿using SchoolApp.Application.Features.UserFeature.Commands.AddUser;
+using SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
 using SchoolApp.Application.Features.UserFeature.Queries.GetUser;
 using SchoolApp.Application.Features.UserFeature.Queries.GetUserList;
 
@@ -31,13 +32,13 @@ public class UserController : AppControllerBase
         return NewResult(response);
     }
 
-    //// PUT api/<UserController>/{id}
-    //[HttpPut(Router.ById)]
-    //public async Task<IActionResult> Put(int Id, [FromBody] UpdateStudentDTO data)
-    //{
-    //    var response = await Mediator.Send(new UpdateStudentCommand { Id = Id, StudentData = data });
-    //    return NewResult(response);
-    //}
+    // PUT api/<UserController>/{id}
+    [HttpPut(Router.UserRouter.ById)]
+    public async Task<IActionResult> Put(int Id, [FromBody] UpdateUserByIdDTO data)
+    {
+        var response = await Mediator.Send(new UpdateUserByIdCommand { Id = Id, UserData = data });
+        return NewResult(response);
+    }
 
     //// DELETE api/<UserController>/{id}
     //[HttpDelete(Router.ById)]

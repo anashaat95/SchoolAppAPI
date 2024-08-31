@@ -20,3 +20,5 @@ global using System.Net;
 global using System.Reflection;
 global using Microsoft.AspNetCore.Identity;
 global using SchoolApp.Domain.Entities.Identity;
+global using SchoolApp.Application.Features.UserFeature.Queries;
+global using SchoolApp.Application.Common.Validations; 
