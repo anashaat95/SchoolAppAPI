@@ -1,13 +1,15 @@
-﻿namespace SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
 
 
-public class AddUserCommandValidator : AbstractValidator<UpdateUserByIdCommand>
+public class UpdateUserCommandValidator : AbstractValidator<UpdateUserByIdCommand>
 {
     #region Field(s)
     #endregion
 
     #region Constructor(s)
-    public AddUserCommandValidator()
+    public UpdateUserCommandValidator()
     {
         ApplyValidationRules();
         ApplyCustomValidationRules();
@@ -28,6 +30,7 @@ public class AddUserCommandValidator : AbstractValidator<UpdateUserByIdCommand>
     }
     public void ApplyCustomValidationRules()
     {
+       
     }
     #endregion
 }

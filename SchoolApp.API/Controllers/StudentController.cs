@@ -50,4 +50,5 @@ public class StudentController : AppControllerBase
         var response = await Mediator.Send(new DeleteStudentCommand(Id));
         return NewResult(response);
     }
+
 }

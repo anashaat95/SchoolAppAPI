@@ -1,4 +1,5 @@
 ﻿using SchoolApp.Application.Features.UserFeature.Commands.AddUser;
+using SchoolApp.Application.Features.UserFeature.Commands.ChangeUserPasswordById;
 using SchoolApp.Application.Features.UserFeature.Commands.DeleteUserById;
 using SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
 using SchoolApp.Application.Features.UserFeature.Queries.GetUser;
@@ -46,6 +47,15 @@ public class UserController : AppControllerBase
     public async Task<IActionResult> Delete([FromRoute] int Id)
     {
         var response = await Mediator.Send(new DeleteUserByIdCommand(Id));
+        return NewResult(response);
+    }
+
+
+    // POST api/<StudentController>/change-password
+    [HttpPost(Router.UserRouter.ChangePassword)]
+    public async Task<IActionResult> ChangePassword([FromRoute] int Id, [FromBody] ChangeUserPasswordByIdDTO data)
+    {
+        var response = await Mediator.Send(new ChangeUserPasswordByIdCommand(Id, data));
         return NewResult(response);
     }
 }

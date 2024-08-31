@@ -26,5 +26,6 @@ public static class Router
         public const string BASE = _Rule + "/User";
         public const string ById = BASE + _ById;
         public const string Query = BASE + _Query;
+        public const string ChangePassword = BASE + _ById + "/change-password";
     }
 }
