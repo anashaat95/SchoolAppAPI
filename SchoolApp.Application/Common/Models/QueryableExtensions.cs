@@ -16,12 +16,13 @@ public static class QueryableExtensions
 
         if (count == 0)
         {
+            pageSize = 0;
             return PaginatedResult<T>.Success(new List<T>(), count, pageNumber, pageSize);
         }
         else
         {
             var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
-            return PaginatedResult<T>.Success(items, count, pageNumber, pageSize);
+            return PaginatedResult<T>.Success(items, count, pageNumber, items.Count >= 10 ? pageSize : items.Count);
         }
     }
 }

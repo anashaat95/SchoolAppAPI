@@ -9,7 +9,7 @@ public class PaginatedResult<T> where T : class
         CurrentPage = page;
         Succeeded = succeeded;
         PageSize = pageSize;
-        TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+        TotalPages = count > 0 ? (int)Math.Ceiling(count / (double)pageSize) : 0;
         TotalCount = count;
     }
 

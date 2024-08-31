@@ -1,4 +1,5 @@
 ﻿using SchoolApp.Application.Features.UserFeature.Commands.AddUser;
+using SchoolApp.Application.Features.UserFeature.Commands.DeleteUserById;
 using SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
 using SchoolApp.Application.Features.UserFeature.Queries.GetUser;
 using SchoolApp.Application.Features.UserFeature.Queries.GetUserList;
@@ -40,11 +41,11 @@ public class UserController : AppControllerBase
         return NewResult(response);
     }
 
-    //// DELETE api/<UserController>/{id}
-    //[HttpDelete(Router.ById)]
-    //public async Task<IActionResult> Delete([FromRoute] int Id)
-    //{
-    //    var response = await Mediator.Send(new DeleteStudentCommand(Id));
-    //    return NewResult(response);
-    //}
+    // DELETE api/<UserController>/{id}
+    [HttpDelete(Router.UserRouter.ById)]
+    public async Task<IActionResult> Delete([FromRoute] int Id)
+    {
+        var response = await Mediator.Send(new DeleteUserByIdCommand(Id));
+        return NewResult(response);
+    }
 }
