@@ -1,18 +1,20 @@
-﻿namespace SchoolApp.Application.Features.UserFeature.Queries.GetUserList;
+﻿using SchoolApp.Application.Services.UserService;
+
+namespace SchoolApp.Application.Features.UserFeature.Queries.GetUserList;
 
 public class GetUserListPaginatedQueryHandler : ResponseHandler,
     IRequestHandler<GetUserListPaginatedQuery, PaginatedResult<UserQueryDTO>>
 {
     #region Field(s)
     private readonly IMapper _mapper;
-    private readonly UserManager<User> _userManager;
+    private readonly IUserService _service;
     #endregion
 
     #region Constructor(s)
-    public GetUserListPaginatedQueryHandler(UserManager<User> userManager, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public GetUserListPaginatedQueryHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
     {
         _mapper = mapper;
-        _userManager = userManager;
+        _service = service;
 
     }
     #endregion
@@ -20,10 +22,9 @@ public class GetUserListPaginatedQueryHandler : ResponseHandler,
     #region Handler
     public async Task<PaginatedResult<UserQueryDTO>> Handle(GetUserListPaginatedQuery request, CancellationToken cancellationToken)
     {
-        return await _userManager.Users
+        return await _service.GetAllUsers()
             .ProjectTo<UserQueryDTO>(_mapper.ConfigurationProvider)
             .ToPaginatedListAsync(request.PageNumber, request.PageSize);
-
     }
     #endregion
 }

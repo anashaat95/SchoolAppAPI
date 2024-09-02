@@ -1,20 +1,20 @@
-﻿using SchoolApp.Application.Common.Validations;
-using System.Diagnostics;
+﻿using MediatR;
+using SchoolApp.Application.Services.UserService;
 
 namespace SchoolApp.Application.Features.UserFeature.Commands.AddUser;
 
 public class AddUserCommandValidator : AbstractValidator<AddUserCommand>
 {
     #region Field(s)
-    private UserManager<User> _userManager { get; set;  }
+    private readonly IUserService _service;
     #endregion
 
     #region Constructor(s)
-    public AddUserCommandValidator(UserManager<User> userManager)
+    public AddUserCommandValidator(IUserService service)
     {
+        _service = service;
         ApplyValidationRules();
         ApplyCustomValidationRules();
-        _userManager = userManager;
     }
     #endregion
 
@@ -32,10 +32,9 @@ public class AddUserCommandValidator : AbstractValidator<AddUserCommand>
     }
     public void ApplyCustomValidationRules()
     {
-        //RuleFor(x => x.Email)
-        //    .MustAsync(async (Key, CancellationToken) => {
-        //        return !(await _userManager.Users.AnyAsync(x => x.Email!.Equals(Key))); })
-        //    .WithMessage($"A user with this email already exists. you can sign in or recover your password if you forgot");
+        RuleFor(x => new { Email = x.Email, UserName = x.UserName })
+            .MustAsync(async (obj, CancellationToken) => await _service.IsUserExists(obj.Email, obj.UserName))
+            .WithMessage($"A user with the same username and/or email already exists. you can sign in rigt now!");
     }
     #endregion
 }

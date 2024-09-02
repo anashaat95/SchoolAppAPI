@@ -28,4 +28,12 @@ public static class Router
         public const string Query = BASE + _Query;
         public const string ChangePassword = BASE + _ById + "/change-password";
     }
+    public class AuthenticationRouter()
+    {
+        public const string BASE = _Rule + "/Auth";
+        public const string SignIn = BASE + "/signin";
+        public const string RefreshToken = BASE + "/refresh-token";
+        public const string ValidateRefreshToken = BASE + "/validate-refresh-token/{token}";
+        public const string Logout = BASE + "logout";
+    }
 }

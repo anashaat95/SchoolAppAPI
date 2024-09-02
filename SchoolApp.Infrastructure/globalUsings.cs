@@ -11,3 +11,7 @@ global using SchoolApp.Infrastructure.Data.Contexts;
 global using SchoolApp.Infrastructure.Data.EntitiesConfigurations;
 global using SchoolApp.Infrastructure.Data.Repositories;
 global using SchoolApp.Infrastructure.Data.Repositories.Bases;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Text;

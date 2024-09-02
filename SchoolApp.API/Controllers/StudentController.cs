@@ -1,6 +1,9 @@
-﻿namespace School.API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace School.API.Controllers;
 
 [ApiController]
+[Authorize]
 public class StudentController : AppControllerBase
 {
     // GET api/<StudentController>

@@ -2,12 +2,12 @@
 
 public static class ValidationRuleExtension
 {
-    public static IRuleBuilderOptions<T, string> ApplyNotEmptyRule<T>(this IRuleBuilder<T, string> ruleBuilder)
+    public static IRuleBuilderOptions<T, TProperty> ApplyNotEmptyRule<T, TProperty>(this IRuleBuilder<T, TProperty> ruleBuilder)
     {
         return ruleBuilder.NotEmpty().WithMessage("Required! {PropertyName} cannot be empty");
     }
 
-    public static IRuleBuilderOptions<T, string> ApplyNotNullableRule<T>(this IRuleBuilder<T, string> ruleBuilder)
+    public static IRuleBuilderOptions<T, TProperty> ApplyNotNullableRule<T, TProperty>(this IRuleBuilder<T, TProperty> ruleBuilder)
     {
         return ruleBuilder.NotNull().WithMessage("Required! {PropertyName} cannot be null");
     }
