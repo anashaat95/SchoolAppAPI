@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolApp.Infrastructure.Data.Contexts;
 
@@ -11,9 +12,11 @@ using SchoolApp.Infrastructure.Data.Contexts;
 namespace SchoolApp.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240901230848_AddRefreshTokenTable3")]
+    partial class AddRefreshTokenTable3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -295,7 +298,7 @@ namespace SchoolApp.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AccessToken")
-                        .HasColumnType("varchar(MAX)")
+                        .HasColumnType("varchar")
                         .HasColumnName("AccessToken");
 
                     b.Property<DateTime?>("CreatedAt")
@@ -315,11 +318,11 @@ namespace SchoolApp.Infrastructure.Migrations
                         .HasColumnName("IsUsed");
 
                     b.Property<string>("JwtId")
-                        .HasColumnType("varchar(MAX)")
+                        .HasColumnType("varchar")
                         .HasColumnName("JwtId");
 
                     b.Property<string>("RefreshToken")
-                        .HasColumnType("varchar(MAX)")
+                        .HasColumnType("varchar")
                         .HasColumnName("RefreshToken");
 
                     b.Property<int?>("UserId")

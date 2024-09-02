@@ -24,7 +24,7 @@ public class GetStudentListQueryHandler : ResponseHandler,
                                      .Select(s => new StudentQueryDTO(s.Id, s.Name, s.Address, s.Department.Name))
                                     //.ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider)
                                     .ToListAsync();
-        return new Response<IList<StudentQueryDTO>> { Data = students, Meta = new { Count = students.Count() } };
+        return Success<IList<StudentQueryDTO>>(students, new { Count = students.Count() });
     }
     #endregion
 }

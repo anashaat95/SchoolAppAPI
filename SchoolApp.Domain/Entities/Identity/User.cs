@@ -7,5 +7,7 @@ public class User : IdentityUser<int>
     public string? Address { get; set; }
     public string? Country { get; set; }
 
+    public ICollection<UserRefreshToken>? RefreshTokens { get; } = [];
+
     public string FullName => FirstName + " " + LastName;
 }

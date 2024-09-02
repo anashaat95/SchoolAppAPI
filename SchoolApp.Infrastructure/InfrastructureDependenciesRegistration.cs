@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SchoolApp.Domain.Entities.Identity;
+using SchoolApp.Domain.Helpers;
 
 namespace SchoolApp.Infrastructure;
 
@@ -9,6 +10,11 @@ public static class InfrastructureDependenciesRegistration
     {
         services.AddDbContext<AppDbContext>
             (options => options.UseSqlServer(cfg.GetConnectionString("SchoolDBConnectionString")));
+
+        services.AddTransient<IStudentRepository, StudentRepository>();
+        services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
         services.AddIdentityCore<User>(options =>
         {
             // Password settings
@@ -32,8 +38,6 @@ public static class InfrastructureDependenciesRegistration
             //options.SignIn.RequireConfirmedEmail = false;
         }).AddEntityFrameworkStores<AppDbContext>();
 
-        services.AddTransient<IStudentRepository, StudentRepository>();
-        services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         return services;
     }
 }

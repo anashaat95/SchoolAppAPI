@@ -19,9 +19,6 @@ public class AddStudentCommandHandler : ResponseHandler,
     #region Handler(s)
     public async Task<Response<object>> Handle(AddStudentCommand request, CancellationToken cancellationToken)
     {
-        if (await _service.IsNameExistAsync(request.Name))
-            return UnprocessableEntity<object>("This student was added before");
-
         int StudentId = await _service.AddAsync(_mapper.Map<Student>(request));
 
         if (StudentId != 0) return Created<object>(new { Id = StudentId });

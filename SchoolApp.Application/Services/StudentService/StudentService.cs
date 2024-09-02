@@ -39,7 +39,7 @@ public class StudentService : IStudentService
 
         // Apply ordering
         IOrderedQueryable<Student> orderedQueryable = null;
-        for (int i = 0; i < OrderBy.Length; i++)
+        for (int i = 0; i < OrderBy?.Length; i++)
         {
             switch (OrderBy[i])
             {

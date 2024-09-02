@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 #region DependenciesRegistration
 builder.Services
     .RegisterInfrastructureDependencies(builder.Configuration)
-    .RegisterApplicationDependencies();
+    .RegisterApplicationDependencies(builder.Configuration);
 #endregion
 
 #region Localization
@@ -74,6 +74,7 @@ app.UseMiddleware<ErrorHandlerMiddleware>();
 #endregion
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

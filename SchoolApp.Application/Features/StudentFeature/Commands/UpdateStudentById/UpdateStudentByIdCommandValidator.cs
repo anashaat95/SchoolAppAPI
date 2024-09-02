@@ -20,6 +20,8 @@ public class UpdateStudentByIdCommandValidator : AbstractValidator<UpdateStudent
     {
         RuleFor(s => s.StudentData.Name).ApplyCommonStringRules(5, 50);
         RuleFor(s => s.StudentData.Address).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.StudentData.Phone).ApplyCommonStringRules(10, 50);
+        RuleFor(s => s.StudentData.Phone).ApplyNotEmptyRule().ApplyNotNullableRule();
     }
     public void ApplyCustomValidationRules()
     {
