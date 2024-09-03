@@ -1,5 +1,7 @@
 ﻿
 
+using AutoMapper.QueryableExtensions;
+
 namespace SchoolApp.Application.Features.AuthorizationFeatrue.Commands.DeleteRoleById;
 
 public class DeleteRoleByIdCommandHandler : ResponseHandler,
@@ -7,12 +9,14 @@ public class DeleteRoleByIdCommandHandler : ResponseHandler,
 {
     #region Field(s)
     private readonly IAuthorizationService _authorizationService;
+    private readonly IMapper _mapper;
     #endregion
 
     #region Constructor(s)
-    public DeleteRoleByIdCommandHandler(IAuthorizationService authorizationService, IStringLocalizer<SharedResoruces> stringLocalizer) : base(stringLocalizer)
+    public DeleteRoleByIdCommandHandler(IAuthorizationService authorizationService, IMapper mapper, IStringLocalizer<SharedResoruces> stringLocalizer) : base(stringLocalizer)
     {
         _authorizationService = authorizationService;
+        _mapper = mapper;
     }
     #endregion
 
@@ -20,7 +24,9 @@ public class DeleteRoleByIdCommandHandler : ResponseHandler,
     #region Method(s)
     public async Task<Response<string>> Handle(DeleteRoleByIdCommand request, CancellationToken cancellationToken)
     {
-        var existingRole = await _authorizationService.GetRoleByIdAsync(request.Id);
+        var existingRole = await _authorizationService.GetRoleById(request.Id)
+                                                      .ProjectTo<Role>(_mapper.ConfigurationProvider)
+                                                      .FirstOrDefaultAsync();
         if (existingRole == null) return NotFound<string>("Cannot delete the role because it was not found");
 
         try

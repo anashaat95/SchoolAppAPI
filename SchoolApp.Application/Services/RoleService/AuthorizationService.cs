@@ -18,9 +18,14 @@ public class AuthorizationService : IAuthorizationService
     #endregion
 
     #region Method(s)
-    public async Task<Role?> GetRoleByIdAsync(int Id)
+    public IQueryable GetRoleById(int Id)
     {
-        return await _roleManager.FindByIdAsync(Id.ToString());
+        return _roleManager.Roles.Where(r => r.Id == Id);
+    }
+
+    public IQueryable GetRolesList()
+    {
+        return _roleManager.Roles;
     }
 
     public async Task<IdentityResult> AddRoleAsync(Role NewRole)

@@ -21,13 +21,16 @@ public class UpdateRoleByIdCommandHandler : ResponseHandler,
     #region Method(s)
     public async Task<Response<RoleQueryDTO>> Handle(UpdateRoleByIdCommand request, CancellationToken cancellationToken)
     {
-        var existingRole = await _authorizationService.GetRoleByIdAsync(request.Id);
+        var existingRole = await _authorizationService.GetRoleById(request.Id)
+                                                      .ProjectTo<Role>(_mapper.ConfigurationProvider)
+                                                      .FirstOrDefaultAsync();
         if (existingRole == null)
             return NotFound<RoleQueryDTO>("Cannot update the role because there is no role with the provided id");
 
         var mappedRole = _mapper.Map(request, existingRole);
 
-        var result = await _authorizationService.UpdateRoleAsync(mappedRole!);
+        var result = await _authorizationService.UpdateRoleAsync(mappedRole);
+
         if (result.Succeeded)
             return Success(_mapper.Map<RoleQueryDTO>(mappedRole));
         else return BadRequest<RoleQueryDTO>(result.ErrorsToString());

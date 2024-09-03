@@ -12,13 +12,13 @@ public class UpdateRoleByIdCommandValidator : AbstractValidator<UpdateRoleByIdCo
     public UpdateRoleByIdCommandValidator(IAuthorizationService authorizationService)
     {
         _authorizationService = authorizationService;
-        ApplyValidationRoles();
+        ApplyValidationRules();
         ApplyCustomValidationRoles();
     }
     #endregion
 
     #region Method(s)
-    public void ApplyValidationRoles()
+    public void ApplyValidationRules()
     {
         RuleFor(x => x.Id).ApplyNotEmptyrule().ApplyNotNullablerule();
         RuleFor(x => x.RoleData.Name).ApplyCommonStringrules(3, 50);
