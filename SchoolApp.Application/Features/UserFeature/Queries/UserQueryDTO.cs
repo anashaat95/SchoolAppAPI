@@ -1,4 +1,4 @@
-﻿using SchoolApp.Application.Features.UserFeature.Commands.AddUser;
+﻿using SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
 using SchoolApp.Domain.Entities.Identity;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolApp.Application.Features.UserFeature.Queries;
+namespace SchoolApp.Application.Features.UserFeatrue.Queries;
 
 public class UserQueryDTO
 {

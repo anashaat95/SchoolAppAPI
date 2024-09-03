@@ -1,8 +1,8 @@
-﻿namespace SchoolApp.Application.Features.UserFeature.Commands.ChangeUserPasswordById;
+﻿namespace SchoolApp.Application.Features.UserFeatrue.Commands.ChangeUserPasswordById;
 
 public class ChangeUserPasswordByIdDTO
 {
-    public required string CurrentPassword { get; set; }
+    public required string CrurentPassword { get; set; }
     public required string NewPassword { get; set; }
     public required string ConfirmNewPassword { get; set; }
 }

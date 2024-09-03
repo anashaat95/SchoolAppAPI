@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Queries.StudentListQuery;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Queries.StudentListQuery;
 
 public class GetStudentListQueryHandler : ResponseHandler,
       IRequestHandler<GetStudentListQuery, Response<IList<StudentQueryDTO>>>
@@ -10,7 +10,7 @@ public class GetStudentListQueryHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public GetStudentListQueryHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public GetStudentListQueryHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _service = service;
         _mapper = mapper;

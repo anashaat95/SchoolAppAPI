@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.AddStudent;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Commands.AddStudent;
 
 public class AddStudentCommandHandler : ResponseHandler,
     IRequestHandler<AddStudentCommand, Response<object>>
@@ -9,7 +9,7 @@ public class AddStudentCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public AddStudentCommandHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public AddStudentCommandHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _studentService = studentService;
         _mapper = mapper;

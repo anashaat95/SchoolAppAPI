@@ -1,6 +1,6 @@
 ﻿using SchoolApp.Domain.Entities.Identity;
 
-namespace SchoolApp.Application.Features.UserFeature.Commands.AddUser;
+namespace SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
 
 public class AddUserCommand : IRequest<Response<string>>
 {

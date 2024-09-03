@@ -1,5 +1,5 @@
 ﻿
-namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudentById;
+namespace SchoolApp.Application.Features.StudentFeatrue.Commands.UpdateStudentById;
 
 public class UpdateStudentByIdDTO
 {

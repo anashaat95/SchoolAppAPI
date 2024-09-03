@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.DeleteStudentCommand;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Commands.DeleteStudentCommand;
 
 public class DeleteStudentCommandHandler : ResponseHandler,
     IRequestHandler<DeleteStudentCommand, Response<string>>
@@ -9,7 +9,7 @@ public class DeleteStudentCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public DeleteStudentCommandHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public DeleteStudentCommandHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _service = service;
         _mapper = mapper;

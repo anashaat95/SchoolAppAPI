@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudentById;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Commands.UpdateStudentById;
 
 public class UpdateStudentByIdCommandValidator : AbstractValidator<UpdateStudentByIdCommand>
 {
@@ -10,20 +10,20 @@ public class UpdateStudentByIdCommandValidator : AbstractValidator<UpdateStudent
     public UpdateStudentByIdCommandValidator(IStudentService studentService)
     {
         _studentService = studentService;
-        ApplyValidationRules();
-        ApplyCustomValidationRules();
+        ApplyValidationrules();
+        ApplyCustomValidationrules();
     }
     #endregion
 
     #region Action(s)
-    public void ApplyValidationRules()
+    public void ApplyValidationrules()
     {
-        RuleFor(s => s.StudentData.Name).ApplyCommonStringRules(5, 50);
-        RuleFor(s => s.StudentData.Address).ApplyCommonStringRules(5, 50);
-        RuleFor(s => s.StudentData.Phone).ApplyCommonStringRules(10, 50);
-        RuleFor(s => s.StudentData.Phone).ApplyNotEmptyRule().ApplyNotNullableRule();
+        RuleFor(s => s.StudentData.Name).ApplyCommonStringrules(5, 50);
+        RuleFor(s => s.StudentData.Address).ApplyCommonStringrules(5, 50);
+        RuleFor(s => s.StudentData.Phone).ApplyCommonStringrules(10, 50);
+        RuleFor(s => s.StudentData.Phone).ApplyNotEmptyrule().ApplyNotNullablerule();
     }
-    public void ApplyCustomValidationRules()
+    public void ApplyCustomValidationrules()
     {
 
     }

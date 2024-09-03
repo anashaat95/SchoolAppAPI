@@ -1,4 +1,7 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Queries.GetStudentPaginatedList;
+﻿using SchoolApp.Application.Features.StudentFeatrue;
+using SchoolApp.Application.Features.StudentFeatrue.Queries.GetStudentPaginatedList;
+
+namespace SchoolApp.Application.Features.StudentFeature.Queries.GetStudentPaginatedList;
 
 public class GetStudentPaginatedListQueryHandler : ResponseHandler,
       IRequestHandler<GetStudentPaginatedListQuery, PaginatedResult<StudentQueryDTO>>
@@ -10,7 +13,7 @@ public class GetStudentPaginatedListQueryHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public GetStudentPaginatedListQueryHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public GetStudentPaginatedListQueryHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _service = service;
         _mapper = mapper;

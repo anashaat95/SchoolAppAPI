@@ -1,6 +1,6 @@
 ﻿using SchoolApp.Domain.Entities.Identity;
 
-namespace SchoolApp.Infrastructure.Data.Repositories;
+namespace SchoolApp.Infrastructrue.Data.Repositories;
 
 public class RefreshTokenRepository : GenericRepository<UserRefreshToken>, IRefreshTokenRepository
 {

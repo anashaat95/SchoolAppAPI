@@ -1,6 +1,6 @@
 ﻿using SchoolApp.Application.Services.UserService;
 
-namespace SchoolApp.Application.Features.UserFeature.Commands.ChangeUserPasswordById;
+namespace SchoolApp.Application.Features.UserFeatrue.Commands.ChangeUserPasswordById;
 
 
 public class ChangeUserPasswordByIdCommandHandler : ResponseHandler,
@@ -12,7 +12,7 @@ public class ChangeUserPasswordByIdCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public ChangeUserPasswordByIdCommandHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public ChangeUserPasswordByIdCommandHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _service = service;
         _mapper = mapper;
@@ -27,7 +27,7 @@ public class ChangeUserPasswordByIdCommandHandler : ResponseHandler,
         if (user == null)
             return NotFound<string>($"User with Id = {request.Id} is not found!");
 
-        var result = await _service.ChangeUserPasswordAsync(user, request.Passwords.CurrentPassword, request.Passwords.NewPassword);
+        var result = await _service.ChangeUserPasswordAsync(user, request.Passwords.CrurentPassword, request.Passwords.NewPassword);
 
         if (result.Succeeded) return Success<string>("Password updated successfully");
         else return BadRequest<string>(result.ErrorsToString());

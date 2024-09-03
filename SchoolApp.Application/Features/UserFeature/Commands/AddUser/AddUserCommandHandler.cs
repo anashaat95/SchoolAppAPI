@@ -2,7 +2,7 @@
 using SchoolApp.Application.Services.UserService;
 using SchoolApp.Domain.Entities.Identity;
 
-namespace SchoolApp.Application.Features.UserFeature.Commands.AddUser;
+namespace SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
 
 public class AddUserCommandHandler : ResponseHandler,
     IRequestHandler<AddUserCommand, Response<string>>
@@ -13,7 +13,7 @@ public class AddUserCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public AddUserCommandHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public AddUserCommandHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _mapper = mapper;
         _service = service;

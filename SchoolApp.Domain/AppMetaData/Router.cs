@@ -6,7 +6,7 @@ public static class Router
     private const string _version = "v1";
     
     // api/v1
-    private const string _Rule = _root + "/" + _version;
+    private const string _rule = _root + "/" + _version;
 
     // sub routes
     // api/v1/Student/{Id}
@@ -16,21 +16,21 @@ public static class Router
 
     public class StudentRouter()
     {
-        public const string BASE = _Rule + "/student";
+        public const string BASE = _rule + "/student";
         public const string ById = BASE + _ById;
         public const string Query = BASE + _Query;
     }
 
     public class UserRouter()
     {
-        public const string BASE = _Rule + "/user";
+        public const string BASE = _rule + "/user";
         public const string ById = BASE + _ById;
         public const string Query = BASE + _Query;
         public const string ChangePassword = BASE + _ById + "/change-password";
     }
     public class AuthenticationRouter()
     {
-        public const string BASE = _Rule + "/authentication";
+        public const string BASE = _rule + "/authentication";
         public const string SignIn = BASE + "/signin";
         public const string RefreshToken = BASE + "/refresh-token";
         public const string ValidateRefreshToken = BASE + "/validate-refresh-token/{token}";
@@ -39,7 +39,7 @@ public static class Router
 
     public class AuthorizationRouter()
     {
-        public const string BASE = _Rule + "/authorization";
+        public const string BASE = _rule + "/authorization";
         public const string ById = BASE + _ById;
         public const string Query = BASE + _Query;
 

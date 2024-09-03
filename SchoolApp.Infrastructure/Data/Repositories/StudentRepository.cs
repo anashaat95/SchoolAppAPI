@@ -1,6 +1,6 @@
 ﻿
 
-namespace SchoolApp.Infrastructure.Data.Repositories;
+namespace SchoolApp.Infrastructrue.Data.Repositories;
 
 public class StudentRepository : GenericRepository<Student>, IStudentRepository
 {

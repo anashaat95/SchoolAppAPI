@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Infrastructure.Data.Seeder;
+﻿namespace SchoolApp.Infrastructrue.Data.Seeder;
 
 public static class UserSeeder
 {
@@ -18,6 +18,7 @@ public static class UserSeeder
                 Country = "Egypt",
                 PhoneNumber = "01069427021",
                 PhoneNumberConfirmed = true,
+                Roles = new List<Role> { new Role { Name = "ADMIN", NormalizedName="ADMIN" } }
             };
 
             var user = new User
@@ -31,12 +32,11 @@ public static class UserSeeder
                 Country = "Egypt",
                 PhoneNumber = "01069427021",
                 PhoneNumberConfirmed = true,
+                Roles = new List<Role> { new Role {Name ="USER", NormalizedName = "USER" } }
             };
 
             await userManager.CreateAsync(admin, "A!a123456");
             await userManager.CreateAsync(user, "A!a123456");
-            await userManager.AddToRoleAsync(admin, "ADMIN" );
-            await userManager.AddToRoleAsync(user, "USER" );
         }
     }
 }

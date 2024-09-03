@@ -6,7 +6,7 @@ public class PaginatedResult<T> where T : class
     internal PaginatedResult(bool succeeded, List<T> data = default, int count = 0, int page = 1, int pageSize = 10)
     {
         Data = data;
-        CurrentPage = page;
+        CrurentPage = page;
         Succeeded = succeeded;
         PageSize = pageSize;
         TotalPages = count > 0 ? (int)Math.Ceiling(count / (double)pageSize) : 0;
@@ -24,7 +24,7 @@ public class PaginatedResult<T> where T : class
         return new PaginatedResult<T>(true, data, count, page, pageSize);
     }
 
-    public int CurrentPage { get; set; }
+    public int CrurentPage { get; set; }
 
     public int TotalPages { get; set; }
 
@@ -34,9 +34,9 @@ public class PaginatedResult<T> where T : class
 
     public int PageSize { get; set; }
 
-    public bool HasPreviousPage => CurrentPage > 1;
+    public bool HasPreviousPage => CrurentPage > 1;
 
-    public bool HasNextPage => CurrentPage < TotalPages;
+    public bool HasNextPage => CrurentPage < TotalPages;
 
     public List<string> Messages { get; set; } = new();
 

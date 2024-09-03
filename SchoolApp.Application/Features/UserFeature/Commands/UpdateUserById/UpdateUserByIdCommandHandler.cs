@@ -1,6 +1,6 @@
 ﻿using SchoolApp.Application.Services.UserService;
 
-namespace SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
+namespace SchoolApp.Application.Features.UserFeatrue.Commands.UpdateUserById;
 
 public class UpdateUserByIdCommandHandler : ResponseHandler,
         IRequestHandler<UpdateUserByIdCommand, Response<UserQueryDTO>>
@@ -11,7 +11,7 @@ public class UpdateUserByIdCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public UpdateUserByIdCommandHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public UpdateUserByIdCommandHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _service = service;
         _mapper = mapper;

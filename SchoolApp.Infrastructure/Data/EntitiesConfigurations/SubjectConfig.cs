@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Infrastructure.Data.EntitiesConfigurations;
+﻿namespace SchoolApp.Infrastructrue.Data.EntitiesConfigurations;
 
 public class SubjectConfig : IEntityTypeConfiguration<Subject>
 {

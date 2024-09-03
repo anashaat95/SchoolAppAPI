@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.DeleteStudentCommand;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Commands.DeleteStudentCommand;
 
 public class DeleteStudentCommand : IRequest<Response<string>>
 {

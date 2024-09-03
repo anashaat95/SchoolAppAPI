@@ -1,12 +1,12 @@
-﻿using SchoolApp.Application.Common.Resources;
+﻿using SchoolApp.Application.Common.Resoruces;
 
 namespace SchoolApp.Application.Common.ResponseBases;
 
 public class ResponseHandler
 {
 
-    private readonly IStringLocalizer<SharedResources> _stringLocalizer;
-    public ResponseHandler(IStringLocalizer<SharedResources> stringLocalizer)
+    private readonly IStringLocalizer<SharedResoruces> _stringLocalizer;
+    public ResponseHandler(IStringLocalizer<SharedResoruces> stringLocalizer)
     {
         _stringLocalizer = stringLocalizer;
     }
@@ -16,7 +16,7 @@ public class ResponseHandler
         {
             StatusCode = HttpStatusCode.OK,
             Succeeded = true,
-            Message = Message == null ? _stringLocalizer[SharedResourcesKeys.Deleted] : Message
+            Message = Message == null ? _stringLocalizer[SharedResorucesKeys.Deleted] : Message
         };
     }
     public Response<T> Success<T>(T entity, object Meta = null)
@@ -26,7 +26,7 @@ public class ResponseHandler
             Data = entity,
             StatusCode = HttpStatusCode.OK,
             Succeeded = true,
-            Message = _stringLocalizer[SharedResourcesKeys.Success],
+            Message = _stringLocalizer[SharedResorucesKeys.Success],
             Meta = Meta
         };
     }
@@ -36,7 +36,7 @@ public class ResponseHandler
         {
             StatusCode = HttpStatusCode.Unauthorized,
             Succeeded = true,
-            Message = _stringLocalizer[SharedResourcesKeys.Unauthorized]
+            Message = _stringLocalizer[SharedResorucesKeys.Unauthorized]
         };
     }
     public Response<T> BadRequest<T>(string Message = null)
@@ -45,7 +45,7 @@ public class ResponseHandler
         {
             StatusCode = HttpStatusCode.BadRequest,
             Succeeded = false,
-            Message = Message == null ? _stringLocalizer[SharedResourcesKeys.BadRequest] : Message
+            Message = Message == null ? _stringLocalizer[SharedResorucesKeys.BadRequest] : Message
         };
     }
 
@@ -55,7 +55,7 @@ public class ResponseHandler
         {
             StatusCode = HttpStatusCode.UnprocessableEntity,
             Succeeded = false,
-            Message = Message == null ? _stringLocalizer[SharedResourcesKeys.UnprocessableEntity] : Message
+            Message = Message == null ? _stringLocalizer[SharedResorucesKeys.UnprocessableEntity] : Message
         };
     }
 
@@ -65,7 +65,7 @@ public class ResponseHandler
         {
             StatusCode = HttpStatusCode.NotFound,
             Succeeded = false,
-            Message = message == null ? _stringLocalizer[SharedResourcesKeys.NotFound] : message
+            Message = message == null ? _stringLocalizer[SharedResorucesKeys.NotFound] : message
         };
     }
 
@@ -76,7 +76,7 @@ public class ResponseHandler
             Data = entity,
             StatusCode = HttpStatusCode.Created,
             Succeeded = true,
-            Message = _stringLocalizer[SharedResourcesKeys.Created],
+            Message = _stringLocalizer[SharedResorucesKeys.Created],
             Meta = Meta
         };
     }

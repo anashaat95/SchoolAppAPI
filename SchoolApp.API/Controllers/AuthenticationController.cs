@@ -1,6 +1,6 @@
-﻿using SchoolApp.Application.Features.AuthenticationFeature.Commands.RefreshToken;
-using SchoolApp.Application.Features.AuthenticationFeature.Commands.SignIn;
-using SchoolApp.Application.Features.AuthenticationFeature.Queries.AuthorizeUser;
+﻿using SchoolApp.Application.Features.AuthenticationFeatrue.Commands.RefreshToken;
+using SchoolApp.Application.Features.AuthenticationFeatrue.Commands.SignIn;
+using SchoolApp.Application.Features.AuthenticationFeatrue.Queries.AuthorizeUser;
 
 namespace School.API.Controllers;
 

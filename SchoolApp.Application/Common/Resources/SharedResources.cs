@@ -1,6 +1,6 @@
-﻿namespace SchoolApp.Application.Common.Resources;
+﻿namespace SchoolApp.Application.Common.Resoruces;
 
-public class SharedResources
+public class SharedResoruces
 
 {
 

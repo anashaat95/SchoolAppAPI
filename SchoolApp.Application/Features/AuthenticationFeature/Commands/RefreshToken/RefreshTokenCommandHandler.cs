@@ -2,7 +2,7 @@
 using SchoolApp.Application.Services.AuthenticationService;
 using SchoolApp.Application.Services.UserService;
 
-namespace SchoolApp.Application.Features.AuthenticationFeature.Commands.RefreshToken;
+namespace SchoolApp.Application.Features.AuthenticationFeatrue.Commands.RefreshToken;
 
 public class RefreshTokenCommandHandler : ResponseHandler,
     IRequestHandler<RefreshTokenCommand, Response<JwtAuthResult>>
@@ -13,7 +13,7 @@ public class RefreshTokenCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor
-    public RefreshTokenCommandHandler(IAuthenticationService authenticationService, IUserService userService, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public RefreshTokenCommandHandler(IAuthenticationService authenticationService, IUserService userService, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _authenticationService = authenticationService;
         _userService = userService;
@@ -44,7 +44,7 @@ public class RefreshTokenCommandHandler : ResponseHandler,
             return BadRequest<JwtAuthResult>("Invalid token");
 
         // 6) get new JwtAuth
-        var jwtAuth = await _authenticationService.GetJwtAuthForUser(user);
+        var jwtAuth = await _authenticationService.GetJwtAuthForuser(user);
 
         return Success(jwtAuth);
     }

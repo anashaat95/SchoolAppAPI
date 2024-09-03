@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.UserFeature.Queries.GetUserList;
+﻿namespace SchoolApp.Application.Features.UserFeatrue.Queries.GetUserList;
 
 public class GetUserListPaginatedQuery : IRequest<PaginatedResult<UserQueryDTO>>
 {

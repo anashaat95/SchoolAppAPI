@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Queries.GetStudentPaginatedList;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Queries.GetStudentPaginatedList;
 
 public class GetStudentPaginatedListQuery : IRequest<PaginatedResult<StudentQueryDTO>>
 {

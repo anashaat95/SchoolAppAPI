@@ -72,9 +72,9 @@ public class UserService : IUserService
         return await _userManager.CreateAsync(NewUser, password);
     }
 
-    public async Task<IdentityResult> ChangeUserPasswordAsync(User User, string CurrentPassword, string NewPassword)
+    public async Task<IdentityResult> ChangeUserPasswordAsync(User User, string CrurentPassword, string NewPassword)
     {
-        return await _userManager.ChangePasswordAsync(User, CurrentPassword, NewPassword);
+        return await _userManager.ChangePasswordAsync(User, CrurentPassword, NewPassword);
     }
 
     public async Task<IdentityResult> UpdateUserAsync(User UpdatedUser)

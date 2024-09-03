@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.AuthorizationFeature.Queries;
+﻿namespace SchoolApp.Application.Features.AuthorizationFeatrue.Queries;
 
 public class RoleQueryDTO
 {

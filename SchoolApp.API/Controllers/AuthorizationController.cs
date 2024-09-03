@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using SchoolApp.Application.Features.AuthorizationFeature.Commands.AddRole;
-using SchoolApp.Application.Features.AuthorizationFeature.Commands.UpdateRoleById;
+﻿using SchoolApp.Application.Features.AuthorizationFeatrue.Commands.AddRole;
+using SchoolApp.Application.Features.AuthorizationFeatrue.Commands.DeleteRoleById;
+using SchoolApp.Application.Features.AuthorizationFeatrue.Commands.UpdateRoleById;
 
 namespace School.API.Controllers;
 
@@ -42,11 +42,11 @@ public class AuthorizationController : AppControllerBase
     }
 
     // DELETE api/<AuthorizationController>/{id}
-    //[HttpDelete(Router.AuthorizationRouter.RoleRouter.ById)]
-    //public async Task<IActionResult> Delete([FromRoute] int Id)
-    //{
-    //    var response = await Mediator.Send(new DeleteStudentCommand(Id));
-    //    return NewResult(response);
-    //}
+    [HttpDelete(Router.AuthorizationRouter.RoleRouter.ById)]
+    public async Task<IActionResult> Delete([FromRoute] int Id)
+    {
+        var response = await Mediator.Send(new DeleteRoleByIdCommand(Id));
+        return NewResult(response);
+    }
 
 }

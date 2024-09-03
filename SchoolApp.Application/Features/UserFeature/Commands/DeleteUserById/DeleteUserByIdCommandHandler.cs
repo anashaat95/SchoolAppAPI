@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.UserFeature.Commands.DeleteUserById;
+﻿namespace SchoolApp.Application.Features.UserFeatrue.Commands.DeleteUserById;
 
 public class DeleteUserByIdCommandHandler : ResponseHandler,
     IRequestHandler<DeleteUserByIdCommand, Response<string>>
@@ -9,7 +9,7 @@ public class DeleteUserByIdCommandHandler : ResponseHandler,
     #endregion
 
     #region Field(s)
-    public DeleteUserByIdCommandHandler(IMapper mapper, UserManager<User> userManager, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public DeleteUserByIdCommandHandler(IMapper mapper, UserManager<User> userManager, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _mapper = mapper;
         _userManager = userManager;

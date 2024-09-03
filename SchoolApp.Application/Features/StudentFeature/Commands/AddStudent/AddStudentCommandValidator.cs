@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Core.Features.StudentFeature.Commands.AddStudent;
+﻿namespace SchoolApp.Application.Core.Features.StudentFeatrue.Commands.AddStudent;
 
 public class AddStudentCommandValidator : AbstractValidator<AddStudentCommand>
 {
@@ -10,18 +10,18 @@ public class AddStudentCommandValidator : AbstractValidator<AddStudentCommand>
     public AddStudentCommandValidator(IStudentService service)
     {
         _service = service;
-        ApplyValidationRules();
-        ApplyCustomValidationRules();
+        ApplyValidationrules();
+        ApplyCustomValidationrules();
     }
     #endregion
 
     #region Actions
-    public void ApplyValidationRules()
+    public void ApplyValidationrules()
     {
-        RuleFor(s => s.Name).ApplyCommonStringRules(5, 50);
-        RuleFor(s => s.DepartmentId).ApplyNotEmptyRule().ApplyNotNullableRule();
+        RuleFor(s => s.Name).ApplyCommonStringrules(5, 50);
+        RuleFor(s => s.DepartmentId).ApplyNotEmptyrule().ApplyNotNullablerule();
     }
-    public void ApplyCustomValidationRules()
+    public void ApplyCustomValidationrules()
     {
         RuleFor(s => s.Name)
             .MustAsync(async (Name, cancellationToken) => !(await _service.IsNameExistAsync(Name))

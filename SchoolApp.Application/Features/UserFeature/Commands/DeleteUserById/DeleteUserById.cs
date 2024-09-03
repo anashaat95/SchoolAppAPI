@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolApp.Application.Features.UserFeature.Commands.DeleteUserById;
+namespace SchoolApp.Application.Features.UserFeatrue.Commands.DeleteUserById;
 
 public class DeleteUserByIdCommand : IRequest<Response<string>>
 {

@@ -1,6 +1,6 @@
-﻿namespace SchoolApp.Application.Common.Resources;
+﻿namespace SchoolApp.Application.Common.Resoruces;
 
-public class SharedResourcesKeys
+public class SharedResorucesKeys
 {
     public const string Required = "Required";
     public const string NotFound = "NotFound";

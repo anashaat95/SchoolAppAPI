@@ -1,22 +1,22 @@
-﻿using SchoolApp.Application.Features.AuthenticationFeature.Commands.RefreshToken;
+﻿using SchoolApp.Application.Features.AuthenticationFeatrue.Commands.RefreshToken;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolApp.Application.Features.AuthenticationFeature.Queries.AuthorizeUser;
+namespace SchoolApp.Application.Features.AuthenticationFeatrue.Queries.AuthorizeUser;
 
 public class AuthorizeUserQueryValidator : AbstractValidator<AuthorizeUserQuery>
 {
 
 public AuthorizeUserQueryValidator()
 {
-    ApplyValidationRules();
+    ApplyValidationrules();
 }
 
-public void ApplyValidationRules()
+public void ApplyValidationrules()
 {
-    RuleFor(x => x.AccessToken).ApplyNotEmptyRule().ApplyNotNullableRule();
+    RuleFor(x => x.AccessToken).ApplyNotEmptyrule().ApplyNotNullablerule();
 }
 }
