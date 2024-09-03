@@ -4,14 +4,14 @@ public class AddStudentCommandHandler : ResponseHandler,
     IRequestHandler<AddStudentCommand, Response<object>>
 {
     #region Field(s)
-    private readonly IStudentService _service;
+    private readonly IStudentService _studentService;
     private readonly IMapper _mapper;
     #endregion
 
     #region Constructor(s)
-    public AddStudentCommandHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public AddStudentCommandHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
     {
-        _service = service;
+        _studentService = studentService;
         _mapper = mapper;
     }
     #endregion
@@ -19,7 +19,7 @@ public class AddStudentCommandHandler : ResponseHandler,
     #region Handler(s)
     public async Task<Response<object>> Handle(AddStudentCommand request, CancellationToken cancellationToken)
     {
-        int StudentId = await _service.AddAsync(_mapper.Map<Student>(request));
+        int StudentId = await _studentService.AddAsync(_mapper.Map<Student>(request));
 
         if (StudentId != 0) return Created<object>(new { Id = StudentId });
         else return BadRequest<object>();

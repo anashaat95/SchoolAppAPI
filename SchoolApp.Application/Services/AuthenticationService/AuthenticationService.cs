@@ -29,7 +29,7 @@ public class AuthenticationService : IAuthenticationService
     public async Task<JwtAuthResult> GetJwtAuthForUser(User User)
     {
         // 1) Generate jwtAccessTokon Object And String
-        var (jwtAccessTokenObj, jwtAccessTokenString) = GenerateAccessToken(User);
+        var (jwtAccessTokenObj, jwtAccessTokenString) = await GenerateAccessToken(User);
 
         // 2) Generate RefreshToken Object
         var refreshTokenObj = GenerateRefreshToken(User);
@@ -82,23 +82,32 @@ public class AuthenticationService : IAuthenticationService
 
 
     #region AccessToken Methods
-    private List<Claim> GenerateUserClaims(User User)
+    private List<Claim> GenerateUserClaims(User User, List<string> Roles)
     {
-        return new List<Claim>
+        var claims = new List<Claim>
         {
-            new Claim(nameof(UserClaimModel.UserName), User.UserName!),
-            new Claim(nameof(UserClaimModel.Email), User.Email!),
-            new Claim(nameof(UserClaimModel.PhoneNumber), User.PhoneNumber!),
-            new Claim(nameof(UserClaimModel.Id), User.Id!.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, User.UserName),
+            new Claim(ClaimTypes.Name, User.UserName),
+            new Claim(ClaimTypes.Email, User.Email),
+            new Claim(nameof(UserClaimModel.Id), User.Id.ToString()),
         };
+
+        foreach (var role in Roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+
+        return claims;
     }
-    private (JwtSecurityToken, string) GenerateAccessToken(User User)
+    private async Task<(JwtSecurityToken, string)> GenerateAccessToken(User User)
     {
+        List<string> roles = await _userService.GetUserRole(User);
+
         var Obj = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,
-            claims: GenerateUserClaims(User),
-            expires: DateTime.UtcNow.AddMicroseconds(_jwtSettings.AccessTokenExpireDate),
+            claims: GenerateUserClaims(User, roles),
+            expires: DateTime.UtcNow.AddDays(_jwtSettings.AccessTokenExpireDate),
             signingCredentials: new SigningCredentials(_signaturekey, _securityAlgorithm)
         );
         var Value = new JwtSecurityTokenHandler().WriteToken(Obj);

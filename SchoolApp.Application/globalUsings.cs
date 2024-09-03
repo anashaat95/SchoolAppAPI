@@ -14,6 +14,7 @@ global using SchoolApp.Application.Common.ResponseBases;
 global using SchoolApp.Application.Common.Validations;
 global using SchoolApp.Application.Features.StudentFeature.Commands.AddStudent;
 global using SchoolApp.Application.Features.UserFeature.Queries;
+global using SchoolApp.Application.Services.RoleService;
 global using SchoolApp.Application.Services.StudentService;
 global using SchoolApp.Domain.Entities;
 global using SchoolApp.Domain.Entities.Identity;

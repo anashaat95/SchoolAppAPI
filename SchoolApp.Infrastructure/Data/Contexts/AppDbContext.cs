@@ -3,7 +3,7 @@ using SchoolApp.Domain.Entities.Identity;
 
 namespace SchoolApp.Infrastructure.Data.Contexts;
 
-public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int,
+public class AppDbContext : IdentityDbContext<User, Role, int,
                             IdentityUserClaim<int>, IdentityUserRole<int>,
                             IdentityUserLogin<int>, IdentityRoleClaim<int>,
                             IdentityUserToken<int>>
