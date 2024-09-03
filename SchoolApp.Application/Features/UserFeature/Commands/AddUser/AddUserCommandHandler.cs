@@ -25,7 +25,7 @@ public class AddUserCommandHandler : ResponseHandler,
     {
         var result = await _service.AddNewUserAsync(_mapper.Map<User>(request), request.Password);
 
-        if (!result.Succeeded) return BadRequest<string>(result.Errors.FirstOrDefault()!.Description);
+        if (!result.Succeeded) return BadRequest<string>(result.ErrorsToString());
         return Created<string>("Added Successfult");
     }
     #endregion
