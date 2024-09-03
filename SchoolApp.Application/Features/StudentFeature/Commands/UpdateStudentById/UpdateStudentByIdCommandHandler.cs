@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.UpdateStudentById;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Commands.UpdateStudentById;
 
 public partial class UpdateStudentCommand
 {
@@ -11,7 +11,7 @@ public partial class UpdateStudentCommand
         #endregion
 
         #region Constructor(s)
-        public UpdateStudentCommandHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+        public UpdateStudentCommandHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
         {
             _service = service;
             _mapper = mapper;

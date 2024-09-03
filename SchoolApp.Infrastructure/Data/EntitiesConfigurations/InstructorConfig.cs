@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Data.SqlClient;
 
-namespace SchoolApp.Infrastructure.Data.EntitiesConfigurations;
+namespace SchoolApp.Infrastructrue.Data.EntitiesConfigurations;
 
 public class InstructorConfig : IEntityTypeConfiguration<Instructor>
 {

@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
+﻿namespace SchoolApp.Application.Features.UserFeatrue.Commands.UpdateUserById;
 public class UpdateUserByIdCommand : IRequest<Response<UserQueryDTO>>
 {
     public int Id { get; set; }

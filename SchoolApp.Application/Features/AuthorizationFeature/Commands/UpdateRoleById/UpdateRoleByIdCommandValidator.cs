@@ -1,6 +1,6 @@
-﻿using SchoolApp.Application.Features.AuthorizationFeature.Commands.UpdateRoleById;
+﻿using SchoolApp.Application.Features.AuthorizationFeatrue.Commands.UpdateRoleById;
 
-namespace SchoolApp.Application.Features.AuthorizationFeature.Commands.UpdateRole;
+namespace SchoolApp.Application.Features.AuthorizationFeatrue.Commands.UpdateRole;
 
 public class UpdateRoleByIdCommandValidator : AbstractValidator<UpdateRoleByIdCommand>
 {
@@ -20,8 +20,8 @@ public class UpdateRoleByIdCommandValidator : AbstractValidator<UpdateRoleByIdCo
     #region Method(s)
     public void ApplyValidationRoles()
     {
-        RuleFor(x => x.Id).ApplyNotEmptyRule().ApplyNotNullableRule();
-        RuleFor(x => x.RoleData.Name).ApplyCommonStringRules(3, 50);
+        RuleFor(x => x.Id).ApplyNotEmptyrule().ApplyNotNullablerule();
+        RuleFor(x => x.RoleData.Name).ApplyCommonStringrules(3, 50);
     }
 
     public void ApplyCustomValidationRoles()

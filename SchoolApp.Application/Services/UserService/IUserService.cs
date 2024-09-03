@@ -20,7 +20,7 @@ public interface IUserService
     IQueryable<User> GetUser(int Id, string UserName, string Email);
     Task<IdentityResult> AddNewUserAsync(User NewUser, string password);
     Task<IdentityResult> UpdateUserAsync(User UpdatedUser);
-    Task<IdentityResult> ChangeUserPasswordAsync(User User, string CurrentPassword, string NewPassword);
+    Task<IdentityResult> ChangeUserPasswordAsync(User User, string CrurentPassword, string NewPassword);
     Task<bool> CheckPasswordAsync(User User, string Password);
     Task<List<string>> GetUserRole(User User);
 }

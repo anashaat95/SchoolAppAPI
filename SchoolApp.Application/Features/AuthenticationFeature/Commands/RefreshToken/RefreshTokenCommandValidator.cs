@@ -1,14 +1,14 @@
-﻿namespace SchoolApp.Application.Features.AuthenticationFeature.Commands.RefreshToken;
+﻿namespace SchoolApp.Application.Features.AuthenticationFeatrue.Commands.RefreshToken;
 
 public class RefreshTokenCommandValidator : AbstractValidator<RefreshTokenCommand>
 {
     public RefreshTokenCommandValidator()
     {
-        ApplyValidationRules();
+        ApplyValidationrules();
     }
 
-    public void ApplyValidationRules()
+    public void ApplyValidationrules()
     {
-        RuleFor(x => x.AccessToken).ApplyNotEmptyRule().ApplyNotNullableRule();
+        RuleFor(x => x.AccessToken).ApplyNotEmptyrule().ApplyNotNullablerule();
     }
 }

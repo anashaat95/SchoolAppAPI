@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.AuthorizationFeature.Commands.AddRole;
+﻿namespace SchoolApp.Application.Features.AuthorizationFeatrue.Commands.AddRole;
 
 public class AddRoleCommand : IRequest<Response<string>>
 {

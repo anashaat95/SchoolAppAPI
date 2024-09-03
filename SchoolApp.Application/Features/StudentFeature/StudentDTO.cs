@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue;
 
 public class StudentQueryDTO
 {

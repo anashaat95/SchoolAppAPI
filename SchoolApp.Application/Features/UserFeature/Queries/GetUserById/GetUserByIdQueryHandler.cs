@@ -1,6 +1,6 @@
 ﻿using SchoolApp.Application.Services.UserService;
 
-namespace SchoolApp.Application.Features.UserFeature.Queries.GetUser;
+namespace SchoolApp.Application.Features.UserFeatrue.Queries.GetUser;
 
 public class GetUserByIdQueryHandler : ResponseHandler,
     IRequestHandler<GetUserByIdQuery, Response<UserQueryDTO>>
@@ -11,7 +11,7 @@ public class GetUserByIdQueryHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public GetUserByIdQueryHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public GetUserByIdQueryHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _mapper = mapper;
         _service = service;

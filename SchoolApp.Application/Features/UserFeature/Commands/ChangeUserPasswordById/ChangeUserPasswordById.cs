@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.UserFeature.Commands.ChangeUserPasswordById;
+﻿namespace SchoolApp.Application.Features.UserFeatrue.Commands.ChangeUserPasswordById;
 
 public class ChangeUserPasswordByIdCommand : IRequest<Response<string>>
 {

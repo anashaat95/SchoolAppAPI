@@ -1,5 +1,4 @@
 ﻿using SchoolApp.Application.Services.UserService;
-using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
 
 namespace SchoolApp.Application.Services.AuthenticationService;
@@ -11,7 +10,7 @@ public class AuthenticationService : IAuthenticationService
     private readonly IRefreshTokenRepository _refreshTokenRepo;
     private readonly IUserService _userService;
     private readonly SymmetricSecurityKey _signaturekey;
-    private static string _securityAlgorithm = SecurityAlgorithms.HmacSha256Signature;
+    private static string _SecurityAlgorithm = SecurityAlgorithms.HmacSha256Signature;
     private static JwtSecurityTokenHandler _tokenHandler = new JwtSecurityTokenHandler();
     #endregion
 
@@ -26,7 +25,7 @@ public class AuthenticationService : IAuthenticationService
     #endregion
 
     #region Methods
-    public async Task<JwtAuthResult> GetJwtAuthForUser(User User)
+    public async Task<JwtAuthResult> GetJwtAuthForuser(User User)
     {
         // 1) Generate jwtAccessTokon Object And String
         var (jwtAccessTokenObj, jwtAccessTokenString) = await GenerateAccessToken(User);
@@ -44,18 +43,18 @@ public class AuthenticationService : IAuthenticationService
         // 4) Save AccessToken, RefreshToken In UserRefreshToken Table
         var refreshTokenEntity = new UserRefreshToken
         {
-            UserId       = User.Id,
-            AccessToken  = jwtAccessTokenString,
+            UserId = User.Id,
+            AccessToken = jwtAccessTokenString,
             RefreshToken = HashString(refreshTokenObj.Value),
-            JwtId        = jwtAccessTokenObj.Id,
-            IsUsed       = true,
-            IsRevoked    = false,
-            CreatedAt    = DateTime.UtcNow,
-            ExpiryDate   = refreshTokenObj.ExpiresAt,
+            JwtId = jwtAccessTokenObj.Id,
+            IsUsed = true,
+            IsRevoked = false,
+            CreatedAt = DateTime.UtcNow,
+            ExpiryDate = refreshTokenObj.ExpiresAt,
         };
         var result = await _refreshTokenRepo.AddAsync(refreshTokenEntity);
 
-        // 5) Return the AuthResult for the user
+        // 5) return the AuthResult for the user
         return jwtAuthResult;
     }
 
@@ -108,7 +107,7 @@ public class AuthenticationService : IAuthenticationService
             audience: _jwtSettings.Audience,
             claims: GenerateUserClaims(User, roles),
             expires: DateTime.UtcNow.AddDays(_jwtSettings.AccessTokenExpireDate),
-            signingCredentials: new SigningCredentials(_signaturekey, _securityAlgorithm)
+            signingCredentials: new SigningCredentials(_signaturekey, _SecurityAlgorithm)
         );
         var Value = new JwtSecurityTokenHandler().WriteToken(Obj);
         return (Obj, Value);
@@ -145,7 +144,7 @@ public class AuthenticationService : IAuthenticationService
         {
             var principal = _tokenHandler.ValidateToken(AccessToken, parameters, out SecurityToken validationToken);
 
-            if (validationToken is JwtSecurityToken jwtToken && jwtToken.Header.Alg.Equals(_securityAlgorithm))
+            if (validationToken is JwtSecurityToken jwtToken && jwtToken.Header.Alg.Equals(_SecurityAlgorithm))
                 return (principal, null);
 
             return (null, new ArgumentNullException("Claims principle is null"));
@@ -180,16 +179,16 @@ public class AuthenticationService : IAuthenticationService
     public async Task<(UserRefreshToken?, Exception?)> ValidateRefreshToken(int UserId, string AccessTokenStr, string RefreshTokenStr)
     {
         var hashedRefreshTokenStr = HashString(RefreshTokenStr);
-        
+
         var refreshTokenEntity = await _refreshTokenRepo
             .GetTableNoTracking()
             .FirstOrDefaultAsync(x =>
                 x.UserId == UserId &&
-                x.AccessToken.Equals(AccessTokenStr) && 
+                x.AccessToken.Equals(AccessTokenStr) &&
                 x.RefreshToken.Equals(hashedRefreshTokenStr)
             );
 
-        if (refreshTokenEntity == null) 
+        if (refreshTokenEntity == null)
             return (null, new SecurityTokenArgumentException("Refresh token entity is null"));
 
         if (refreshTokenEntity.ExpiryDate < DateTime.UtcNow)

@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.AuthorizationFeature.Commands.AddRole;
+﻿namespace SchoolApp.Application.Features.AuthorizationFeatrue.Commands.AddRole;
 
 public class AddRoleCommandHandler : ResponseHandler,
     IRequestHandler<AddRoleCommand, Response<string>>
@@ -9,7 +9,7 @@ public class AddRoleCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public AddRoleCommandHandler(IAuthorizationService roleService, IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer) : base(stringLocalizer)
+    public AddRoleCommandHandler(IAuthorizationService roleService, IMapper mapper, IStringLocalizer<SharedResoruces> stringLocalizer) : base(stringLocalizer)
     {
         _roleService = roleService;
         _mapper = mapper;

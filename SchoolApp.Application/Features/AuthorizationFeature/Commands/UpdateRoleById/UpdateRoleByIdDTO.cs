@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.AuthorizationFeature.Commands.UpdateRoleById;
+﻿namespace SchoolApp.Application.Features.AuthorizationFeatrue.Commands.UpdateRoleById;
 
 public class UpdateRoleByIdDTO
 {

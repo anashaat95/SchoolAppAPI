@@ -1,6 +1,6 @@
-﻿using SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
+﻿using SchoolApp.Application.Features.UserFeatrue.Commands.UpdateUserById;
 
-namespace SchoolApp.Application.Features.UserFeature.Commands.ChangeUserPasswordById;
+namespace SchoolApp.Application.Features.UserFeatrue.Commands.ChangeUserPasswordById;
 
 public class ChangeUserPasswordByIdCommandValidator : AbstractValidator<ChangeUserPasswordByIdCommand>
 {
@@ -10,19 +10,19 @@ public class ChangeUserPasswordByIdCommandValidator : AbstractValidator<ChangeUs
     #region Constructor(s)
     public ChangeUserPasswordByIdCommandValidator()
     {
-        ApplyValidationRules();
-        ApplyCustomValidationRules();
+        ApplyValidationrules();
+        ApplyCustomValidationrules();
     }
     #endregion
 
     #region Handler(s)
-    public void ApplyValidationRules()
+    public void ApplyValidationrules()
     {
-        RuleFor(x => x.Passwords.CurrentPassword).ApplyCommonStringRules(6, 50);
-        RuleFor(x => x.Passwords.NewPassword).ApplyCommonStringRules(6, 50);
-        RuleFor(x => x.Passwords.ConfirmNewPassword).ApplyCommonStringRules(6, 50).Equal(x => x.Passwords.NewPassword);
+        RuleFor(x => x.Passwords.CrurentPassword).ApplyCommonStringrules(6, 50);
+        RuleFor(x => x.Passwords.NewPassword).ApplyCommonStringrules(6, 50);
+        RuleFor(x => x.Passwords.ConfirmNewPassword).ApplyCommonStringrules(6, 50).Equal(x => x.Passwords.NewPassword);
     }
-    public void ApplyCustomValidationRules()
+    public void ApplyCustomValidationrules()
     {
 
     }

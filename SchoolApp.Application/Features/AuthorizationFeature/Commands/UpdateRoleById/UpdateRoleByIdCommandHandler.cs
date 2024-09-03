@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.AuthorizationFeature.Commands.UpdateRole;
+﻿namespace SchoolApp.Application.Features.AuthorizationFeatrue.Commands.UpdateRole;
 
 public class UpdateRoleByIdCommandHandler : ResponseHandler,
     IRequestHandler<UpdateRoleByIdCommand, Response<RoleQueryDTO>>
@@ -10,7 +10,7 @@ public class UpdateRoleByIdCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public UpdateRoleByIdCommandHandler(IAuthorizationService authorizationService, IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer) : base(stringLocalizer)
+    public UpdateRoleByIdCommandHandler(IAuthorizationService authorizationService, IMapper mapper, IStringLocalizer<SharedResoruces> stringLocalizer) : base(stringLocalizer)
     {
         _authorizationService = authorizationService;
         _mapper = mapper;

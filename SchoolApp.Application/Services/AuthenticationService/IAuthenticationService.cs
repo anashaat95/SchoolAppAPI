@@ -2,7 +2,7 @@
 
 public interface IAuthenticationService
 {
-    Task<JwtAuthResult> GetJwtAuthForUser(User User);
+    Task<JwtAuthResult> GetJwtAuthForuser(User User);
     (int, Exception?) GetUserIdFromJwtAccessTokenObj(JwtSecurityToken jwtAccessTokenObj);
     bool IsValidAccessToken(string AccessTokenStr);
     (JwtSecurityToken?, Exception?) GetJwtAccessTokenObjFromAccessTokenString(string AccessToken);

@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Infrastructure.Data.Seeder;
+﻿namespace SchoolApp.Infrastructrue.Data.Seeder;
 
 public static class RoleSeeder
 {
@@ -7,8 +7,8 @@ public static class RoleSeeder
         var userCount = await roleManager.Roles.CountAsync();
         if (userCount < 2)
         {
-            await roleManager.CreateAsync(new Role { Name = "ADMIN"});
-            await roleManager.CreateAsync(new Role { Name = "USER"});
+            await roleManager.CreateAsync(new Role { Name = "ADMIN", NormalizedName = "ADMIN" });
+            await roleManager.CreateAsync(new Role { Name = "USER", NormalizedName = "USER"   });
         }
 
     }

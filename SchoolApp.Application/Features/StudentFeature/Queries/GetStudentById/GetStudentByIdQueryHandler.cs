@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Queries.GetStudentById;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Queries.GetStudentById;
 
 public class GetStudentByIdQueryHandler : ResponseHandler,
       IRequestHandler<GetStudentByIdQuery, Response<StudentQueryDTO>>
@@ -10,7 +10,7 @@ public class GetStudentByIdQueryHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public GetStudentByIdQueryHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public GetStudentByIdQueryHandler(IStudentService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _service = service;
         _mapper = mapper;

@@ -1,9 +1,9 @@
-﻿using SchoolApp.Application.Features.UserFeature.Commands.AddUser;
-using SchoolApp.Application.Features.UserFeature.Commands.ChangeUserPasswordById;
-using SchoolApp.Application.Features.UserFeature.Commands.DeleteUserById;
-using SchoolApp.Application.Features.UserFeature.Commands.UpdateUserById;
-using SchoolApp.Application.Features.UserFeature.Queries.GetUser;
-using SchoolApp.Application.Features.UserFeature.Queries.GetUserList;
+﻿using SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
+using SchoolApp.Application.Features.UserFeatrue.Commands.ChangeUserPasswordById;
+using SchoolApp.Application.Features.UserFeatrue.Commands.DeleteUserById;
+using SchoolApp.Application.Features.UserFeatrue.Commands.UpdateUserById;
+using SchoolApp.Application.Features.UserFeatrue.Queries.GetUser;
+using SchoolApp.Application.Features.UserFeatrue.Queries.GetUserList;
 
 namespace School.API.Controllers;
 

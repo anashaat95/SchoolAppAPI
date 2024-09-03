@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SchoolApp.Domain.Entities.Identity;
 
-namespace SchoolApp.Infrastructure.Data.Contexts;
+namespace SchoolApp.Infrastructrue.Data.Contexts;
 
 public class AppDbContext : IdentityDbContext<User, Role, int,
-                            IdentityUserClaim<int>, IdentityUserRole<int>,
+                            IdentityUserClaim<int>, UserRole,
                             IdentityUserLogin<int>, IdentityRoleClaim<int>,
                             IdentityUserToken<int>>
 {

@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Commands.AddStudent;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Commands.AddStudent;
 
 public class AddStudentCommand : IRequest<Response<object>>
 {

@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.AuthenticationFeature.Commands.RefreshToken;
+﻿namespace SchoolApp.Application.Features.AuthenticationFeatrue.Commands.RefreshToken;
 
 public class RefreshTokenCommand : IRequest<Response<JwtAuthResult>>
 {

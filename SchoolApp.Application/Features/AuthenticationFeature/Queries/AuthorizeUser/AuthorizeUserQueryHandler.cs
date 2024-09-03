@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolApp.Application.Features.AuthenticationFeature.Queries.AuthorizeUser;
+namespace SchoolApp.Application.Features.AuthenticationFeatrue.Queries.AuthorizeUser;
 
 public class AuthorizeUserQueryHandler : ResponseHandler,
     IRequestHandler<AuthorizeUserQuery, Response<string>>
@@ -15,7 +15,7 @@ public class AuthorizeUserQueryHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public AuthorizeUserQueryHandler(IAuthenticationService authService, IStringLocalizer<SharedResources> stringLocalizer) : base(stringLocalizer)
+    public AuthorizeUserQueryHandler(IAuthenticationService authService, IStringLocalizer<SharedResoruces> stringLocalizer) : base(stringLocalizer)
     {
         _authService = authService;
     }

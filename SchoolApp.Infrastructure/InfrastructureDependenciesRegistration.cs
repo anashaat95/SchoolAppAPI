@@ -1,8 +1,8 @@
-﻿namespace SchoolApp.Infrastructure;
+﻿namespace SchoolApp.Infrastructrue;
 
-public static class InfrastructureDependenciesRegistration
+public static class InfrastructrueDependenciesRegistration
 {
-    public static IServiceCollection RegisterInfrastructureDependencies(this IServiceCollection services, IConfiguration cfg)
+    public static IServiceCollection RegisterInfrastructrueDependencies(this IServiceCollection services, IConfiguration cfg)
     {
         services.AddDbContext<AppDbContext>
             (options => options.UseSqlServer(cfg.GetConnectionString("SchoolDBConnectionString")));

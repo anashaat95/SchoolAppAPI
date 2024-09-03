@@ -2,7 +2,7 @@
 using SchoolApp.Application.Services.AuthenticationService;
 using SchoolApp.Application.Services.UserService;
 
-namespace SchoolApp.Application.Features.AuthenticationFeature.Commands.SignIn;
+namespace SchoolApp.Application.Features.AuthenticationFeatrue.Commands.SignIn;
 
 public class SignInCommandHandler : ResponseHandler,
     IRequestHandler<SignInCommand, Response<JwtAuthResult>>
@@ -14,7 +14,7 @@ public class SignInCommandHandler : ResponseHandler,
     #endregion
 
     #region Constructor
-    public SignInCommandHandler(IUserService userService, IAuthenticationService authService, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public SignInCommandHandler(IUserService userService, IAuthenticationService authService, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _userService = userService;
         _authService = authService;
@@ -29,7 +29,7 @@ public class SignInCommandHandler : ResponseHandler,
         if (user == null || !await _userService.CheckPasswordAsync(user, request.Password))
             return BadRequest<JwtAuthResult>($"Invalid username and/or password");
 
-        var JwtAuthResult = await _authService.GetJwtAuthForUser(user);
+        var JwtAuthResult = await _authService.GetJwtAuthForuser(user);
 
         return Success(JwtAuthResult);
     }

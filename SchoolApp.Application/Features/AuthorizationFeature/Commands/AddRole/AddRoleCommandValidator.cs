@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.AuthorizationFeature.Commands.AddRole;
+﻿namespace SchoolApp.Application.Features.AuthorizationFeatrue.Commands.AddRole;
 
 public class AddRoleCommandValidator : AbstractValidator<AddRoleCommand>
 {
@@ -14,7 +14,7 @@ public class AddRoleCommandValidator : AbstractValidator<AddRoleCommand>
     }
     public void ApplyValidationRoles()
     {
-        RuleFor(x => x.Name).ApplyNotEmptyRule().ApplyNotNullableRule();
+        RuleFor(x => x.Name).ApplyNotEmptyrule().ApplyNotNullablerule();
     }
 
     public void ApplyCustomValidationRoles()

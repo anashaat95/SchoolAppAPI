@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SchoolApp.Domain.Entities;
 
-namespace SchoolApp.Infrastructure.Data.EntitiesConfigurations;
+namespace SchoolApp.Infrastructrue.Data.EntitiesConfigurations;
 
 public class DepartmentConfig : IEntityTypeConfiguration<Department>
 {

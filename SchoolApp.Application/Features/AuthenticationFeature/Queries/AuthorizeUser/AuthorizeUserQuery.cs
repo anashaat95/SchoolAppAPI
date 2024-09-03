@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolApp.Application.Features.AuthenticationFeature.Queries.AuthorizeUser;
+namespace SchoolApp.Application.Features.AuthenticationFeatrue.Queries.AuthorizeUser;
 
 public class AuthorizeUserQuery : IRequest<Response<string>>
 {

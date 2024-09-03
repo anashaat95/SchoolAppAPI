@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Infrastructure.Data.Repositories.Bases;
+﻿namespace SchoolApp.Infrastructrue.Data.Repositories.Bases;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {

@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.StudentFeature.Queries.GetStudentById;
+﻿namespace SchoolApp.Application.Features.StudentFeatrue.Queries.GetStudentById;
 
 public record GetStudentByIdQuery : IRequest<Response<StudentQueryDTO>>
 {

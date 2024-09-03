@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Application.Features.UserFeature.Queries.GetUser;
+﻿namespace SchoolApp.Application.Features.UserFeatrue.Queries.GetUser;
 
 public class GetUserByIdQuery : IRequest<Response<UserQueryDTO>>
 {

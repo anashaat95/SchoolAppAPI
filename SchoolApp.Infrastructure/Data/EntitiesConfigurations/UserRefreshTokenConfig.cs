@@ -1,6 +1,6 @@
 ﻿using SchoolApp.Domain.Entities.Identity;
 
-namespace SchoolApp.Infrastructure.Data.EntitiesConfigurations;
+namespace SchoolApp.Infrastructrue.Data.EntitiesConfigurations;
 
 public class UserRefreshTokenConfig : IEntityTypeConfiguration<UserRefreshToken>
 {

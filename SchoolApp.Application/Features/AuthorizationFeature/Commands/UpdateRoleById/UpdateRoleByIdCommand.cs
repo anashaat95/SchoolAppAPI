@@ -1,6 +1,6 @@
-﻿using SchoolApp.Application.Features.AuthorizationFeature.Queries;
+﻿using SchoolApp.Application.Features.AuthorizationFeatrue.Queries;
 
-namespace SchoolApp.Application.Features.AuthorizationFeature.Commands.UpdateRoleById;
+namespace SchoolApp.Application.Features.AuthorizationFeatrue.Commands.UpdateRoleById;
 
 public class UpdateRoleByIdCommand : IRequest<Response<RoleQueryDTO>>
 {

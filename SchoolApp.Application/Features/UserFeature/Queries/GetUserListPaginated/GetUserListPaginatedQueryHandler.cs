@@ -1,6 +1,6 @@
 ﻿using SchoolApp.Application.Services.UserService;
 
-namespace SchoolApp.Application.Features.UserFeature.Queries.GetUserList;
+namespace SchoolApp.Application.Features.UserFeatrue.Queries.GetUserList;
 
 public class GetUserListPaginatedQueryHandler : ResponseHandler,
     IRequestHandler<GetUserListPaginatedQuery, PaginatedResult<UserQueryDTO>>
@@ -11,7 +11,7 @@ public class GetUserListPaginatedQueryHandler : ResponseHandler,
     #endregion
 
     #region Constructor(s)
-    public GetUserListPaginatedQueryHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResources> localizer) : base(localizer)
+    public GetUserListPaginatedQueryHandler(IUserService service, IMapper mapper, IStringLocalizer<SharedResoruces> localizer) : base(localizer)
     {
         _mapper = mapper;
         _service = service;
