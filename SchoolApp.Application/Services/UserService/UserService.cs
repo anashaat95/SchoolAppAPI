@@ -87,5 +87,10 @@ public class UserService : IUserService
         return await _userManager.CheckPasswordAsync(User, Password);
     }
 
+    public async Task<List<string>> GetUserRole(User User)
+    {
+        return (await _userManager.GetRolesAsync(User)).ToList();
+    }
+
     #endregion
 }

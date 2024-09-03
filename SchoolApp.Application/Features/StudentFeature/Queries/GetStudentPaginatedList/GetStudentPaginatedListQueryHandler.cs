@@ -22,10 +22,10 @@ public class GetStudentPaginatedListQueryHandler : ResponseHandler,
     {
         Expression<Func<Student, StudentQueryDTO>> expression = s => new StudentQueryDTO { Id = s.Id, Name = s.Name, Address = s.Address, DepartmentName = s.Department.Name };
         return await _service
-                                .FilterStudentAndPaginate(request.OrderBy!, request.Search!)
-                                //.Select(s => new StudentQueryDTO(s.Id, s.Name, s.Address, s.Department.Name))
-                                .ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider)
-                                .ToPaginatedListAsync(request.PageNumber, request.PageSize);
+                    .FilterStudentAndPaginate(request.OrderBy!, request.Search!)
+                    //.Select(s => new StudentQueryDTO(s.Id, s.Name, s.Address, s.Department.Name))
+                    .ProjectTo<StudentQueryDTO>(_mapper.ConfigurationProvider)
+                    .ToPaginatedListAsync(request.PageNumber, request.PageSize);
     }
     #endregion
 }

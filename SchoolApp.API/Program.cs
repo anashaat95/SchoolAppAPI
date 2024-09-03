@@ -3,6 +3,9 @@ using SchoolApp.API.MiddleWares;
 using SchoolApp.Infrastructure;
 using SchoolApp.Application;
 using System.Globalization;
+using Microsoft.AspNetCore.Identity;
+using SchoolApp.Domain.Entities.Identity;
+using SchoolApp.Infrastructure.Data.Seeder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,7 +59,16 @@ builder.Services.AddCors(options =>
 #endregion
 
 
+
 var app = builder.Build();
+
+#region DataSeeding
+using (var scope = app.Services.CreateScope())
+{
+    await RoleSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<RoleManager<Role>>());
+    await UserSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<UserManager<User>>());
+}
+#endregion
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

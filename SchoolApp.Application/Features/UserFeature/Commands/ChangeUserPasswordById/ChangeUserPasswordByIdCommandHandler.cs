@@ -30,7 +30,7 @@ public class ChangeUserPasswordByIdCommandHandler : ResponseHandler,
         var result = await _service.ChangeUserPasswordAsync(user, request.Passwords.CurrentPassword, request.Passwords.NewPassword);
 
         if (result.Succeeded) return Success<string>("Password updated successfully");
-        else return BadRequest<string>(result.Errors.FirstOrDefault()!.Description);
+        else return BadRequest<string>(result.ErrorsToString());
     }
     #endregion
 }

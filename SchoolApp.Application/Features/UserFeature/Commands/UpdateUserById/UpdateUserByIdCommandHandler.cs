@@ -31,7 +31,7 @@ public class UpdateUserByIdCommandHandler : ResponseHandler,
         var result = await  _service.UpdateUserAsync(_mapper.Map(request, user));
 
         if (result.Succeeded) return Success<UserQueryDTO>(_mapper.Map<UserQueryDTO>(mappedUser));
-        else return BadRequest<UserQueryDTO>();
+        else return BadRequest<UserQueryDTO>(result.ErrorsToString());
     }
     #endregion
 }

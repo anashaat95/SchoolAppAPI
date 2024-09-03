@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using SchoolApp.Application.Services.AuthenticationService;
+using SchoolApp.Application.Services.RoleService;
 using SchoolApp.Application.Services.UserService;
 
 namespace SchoolApp.Application;
@@ -21,6 +22,7 @@ public static class ApplicationDependenciesRegistration
         // Configuration for Services
         services.AddTransient<IStudentService, StudentService>();
         services.AddTransient<IUserService, UserService>();
+        services.AddTransient<IAuthorizationService, AuthorizationService>();
 
         // Configuration for Authentication Services
         services.AddTransient<IAuthenticationService, AuthenticationService>();

@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using SchoolApp.Domain.Entities.Identity;
-using SchoolApp.Domain.Helpers;
-
-namespace SchoolApp.Infrastructure;
+﻿namespace SchoolApp.Infrastructure;
 
 public static class InfrastructureDependenciesRegistration
 {
@@ -34,9 +30,13 @@ public static class InfrastructureDependenciesRegistration
             options.User.AllowedUserNameCharacters =
             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+\r\n\r\n";
             options.User.RequireUniqueEmail = true;
-            
+
             //options.SignIn.RequireConfirmedEmail = false;
-        }).AddEntityFrameworkStores<AppDbContext>();
+        })
+            .AddUserManager<UserManager<User>>()
+            .AddRoles<Role>()
+            .AddRoleManager<RoleManager<Role>>()
+            .AddEntityFrameworkStores<AppDbContext>();
 
         return services;
     }

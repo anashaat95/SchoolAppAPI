@@ -27,7 +27,6 @@ public class GetUserByIdQueryHandler : ResponseHandler,
                                 .FirstOrDefaultAsync();
 
         if (user == null) return NotFound<UserQueryDTO>($"User with Id = {request.Id} is not found!");
-
         return Success<UserQueryDTO>(user);
     }
     #endregion

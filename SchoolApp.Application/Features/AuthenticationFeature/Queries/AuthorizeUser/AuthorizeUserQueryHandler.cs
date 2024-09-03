@@ -25,7 +25,7 @@ public class AuthorizeUserQueryHandler : ResponseHandler,
     public async Task<Response<string>> Handle(AuthorizeUserQuery request, CancellationToken cancellationToken)
     {
         if (_authService.IsValidAccessToken(request.AccessToken))
-            return Success("Valid");
+            return Success<string>("Valid");
         else return BadRequest<string>("Not valid");
         
     }
