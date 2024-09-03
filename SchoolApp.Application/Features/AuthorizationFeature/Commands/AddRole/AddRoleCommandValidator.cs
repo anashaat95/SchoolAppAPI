@@ -9,10 +9,10 @@ public class AddRoleCommandValidator : AbstractValidator<AddRoleCommand>
     public AddRoleCommandValidator(IAuthorizationService authorizationService)
     {
         _authorizationService = authorizationService;
-        ApplyValidationRoles();
+        ApplyValidationRules();
         ApplyCustomValidationRoles();
     }
-    public void ApplyValidationRoles()
+    public void ApplyValidationRules()
     {
         RuleFor(x => x.Name).ApplyNotEmptyrule().ApplyNotNullablerule();
     }

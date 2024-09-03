@@ -6,7 +6,6 @@ public class DeleteRoleByIdCommand : IRequest<Response<string>>
     {
         Id = id;
     }
-
     public int Id { get; set; }  
     
 }

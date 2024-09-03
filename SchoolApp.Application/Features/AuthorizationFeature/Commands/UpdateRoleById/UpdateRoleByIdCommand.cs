@@ -13,6 +13,7 @@ public class UpdateRoleByIdCommand : IRequest<Response<RoleQueryDTO>>
         {
             CreateMap<UpdateRoleByIdCommand, Role>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src=>src.RoleData.Name));
+            CreateMap<Role, Role>();
         }
     }
 }

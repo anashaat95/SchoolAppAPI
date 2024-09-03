@@ -1,6 +1,4 @@
-﻿using SchoolApp.Application.Features.AuthorizationFeatrue.Commands.AddRole;
-using SchoolApp.Application.Features.AuthorizationFeatrue.Commands.DeleteRoleById;
-using SchoolApp.Application.Features.AuthorizationFeatrue.Commands.UpdateRoleById;
+﻿using Swashbuckle.AspNetCore.Annotations;
 
 namespace School.API.Controllers;
 
@@ -10,20 +8,21 @@ namespace School.API.Controllers;
 public class AuthorizationController : AppControllerBase
 {
     // GET api/<AuthorizationController>
-    //[HttpGet(Router.AuthorizationRouter.RoleRouter.BASE)]
-    //public async Task<IActionResult> Get()
-    //{
-    //    var response = await Mediator.Send(new GetStudentListQuery());
-    //    return NewResult(response);
-    //}
+    [HttpGet(Router.AuthorizationRouter.RoleRouter.BASE)]
+    public async Task<IActionResult> Get()
+    {
+        var response = await Mediator.Send(new GetRolesListQuery());
+        return NewResult(response);
+    }
 
     // GET api/<AuthorizationController>/{id}
-    //[HttpGet(Router.AuthorizationRouter.RoleRouter.ById)]
-    //public async Task<IActionResult> Get([FromRoute] int Id)
-    //{
-    //    var response = await Mediator.Send(new GetStudentByIdQuery(Id));
-    //    return NewResult(response);
-    //}
+    [SwaggerOperation(Summary = "Get the role by Id", OperationId = "Get")]
+    [HttpGet(Router.AuthorizationRouter.RoleRouter.ById)]
+    public async Task<IActionResult> Get([FromRoute] int Id)
+    {
+        var response = await Mediator.Send(new GetRoleByIdQuery(Id));
+        return NewResult(response);
+    }
 
     // POST api/<AuthorizationController>/Create
     [HttpPost(Router.AuthorizationRouter.RoleRouter.BASE)]
