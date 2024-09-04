@@ -27,7 +27,6 @@ public class AuthorizationService : IAuthorizationService
     {
         return _roleManager.Roles;
     }
-
     public async Task<IdentityResult> AddRoleAsync(Role NewRole)
     {
         return await _roleManager.CreateAsync(NewRole);
@@ -55,13 +54,6 @@ public class AuthorizationService : IAuthorizationService
     public async Task<IdentityResult> DeleteRoleAsync(Role Role)
     {
         return await _roleManager.DeleteAsync(Role);
-    }
-
-    public async Task<int> GetUsersInRoleAsync(string roleName)
-    {
-        var count = await _roleManager.Roles.Include(r => r.Users).Where(r => r.Name == roleName).CountAsync();
-        if (count > 0) return count;
-        else return 0;
     }
     #endregion
 }

@@ -19,27 +19,27 @@ public class UserService : IUserService
     #endregion
 
     #region Methods
-    public async Task<bool> IsUserExistsById(int Id)
+    public async Task<bool> IsUserExistsByIdAsync(int Id)
     {
         return await _userManager.Users.AnyAsync(x => x.Id == Id);
     }
 
-    public async Task<bool> IsUserExistsByEmail(string Email)
+    public async Task<bool> IsUserExistsByEmailAsync(string Email)
     {
         return await _userManager.Users.AnyAsync(x => x.Email == Email);
     }
 
-    public async Task<bool> IsUserExistsByUserName(string UserName)
+    public async Task<bool> IsUserExistsByUserNameAsync(string UserName)
     {
         return await _userManager.Users.AnyAsync(x => x.UserName == UserName);
     }
 
-    public async Task<bool> IsUserExists(string UserName, string Email)
+    public async Task<bool> IsUserExistsAsync(string UserName, string Email)
     {
         return await _userManager.Users.AnyAsync(x => x.Email == Email || x.UserName == UserName);
     }
 
-    public async Task<bool> IsUserExists(int Id, string UserName, string Email)
+    public async Task<bool> IsUserExistsAsync(int Id, string UserName, string Email)
     {
         return await _userManager.Users.AnyAsync(x => x.Id == Id || x.Email == Email || x.UserName == UserName);
     }
@@ -87,7 +87,7 @@ public class UserService : IUserService
         return await _userManager.CheckPasswordAsync(User, Password);
     }
 
-    public async Task<List<string>> GetUserRole(User User)
+    public async Task<List<string>> GetUserRolesAsync(User User)
     {
         return (await _userManager.GetRolesAsync(User)).ToList();
     }

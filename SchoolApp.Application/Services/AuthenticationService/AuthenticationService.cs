@@ -100,7 +100,7 @@ public class AuthenticationService : IAuthenticationService
     }
     private async Task<(JwtSecurityToken, string)> GenerateAccessToken(User User)
     {
-        List<string> roles = await _userService.GetUserRole(User);
+        List<string> roles = await _userService.GetUserRolesAsync(User);
 
         var Obj = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
