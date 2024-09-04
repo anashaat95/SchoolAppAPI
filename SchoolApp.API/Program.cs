@@ -1,18 +1,23 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using SchoolApp.API.MiddleWares;
-using SchoolApp.Infrastructrue;
 using SchoolApp.Application;
-using System.Globalization;
-using Microsoft.AspNetCore.Identity;
 using SchoolApp.Domain.Entities.Identity;
+using SchoolApp.Domain.Helpers;
+using SchoolApp.Infrastructrue;
 using SchoolApp.Infrastructrue.Data.Seeder;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
 
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Configuration.AddEnvironmentVariables();
 
 #region DependenciesRegistration
 builder.Services
@@ -65,7 +70,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     //await RoleSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<RoleManager<Role>>());
-    await UserSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<UserManager<User>>());
+    await UserSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<UserManager<User>>(), builder.Configuration);
 }
 #endregion
 
@@ -93,3 +98,4 @@ app.MapControllers();
 app.UseCors(AllowAllCORS);
 
 app.Run();
+

@@ -29,6 +29,7 @@ public static class ApplicationDependenciesRegistration
 
 
         //JWT Authentication
+        services.Configure<JwtSettings>(cfg.GetSection("JwtSettings"));
         var JwtSettings = new JwtSettings();
         cfg.GetSection(nameof(JwtSettings)).Bind(JwtSettings);
         services.AddSingleton(JwtSettings);
