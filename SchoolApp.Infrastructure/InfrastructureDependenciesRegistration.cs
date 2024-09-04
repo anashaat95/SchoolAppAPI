@@ -1,11 +1,16 @@
-﻿namespace SchoolApp.Infrastructrue;
+﻿using Microsoft.VisualBasic;
+using System.Diagnostics;
+using System.Diagnostics.Metrics;
+
+namespace SchoolApp.Infrastructrue;
 
 public static class InfrastructrueDependenciesRegistration
 {
     public static IServiceCollection RegisterInfrastructrueDependencies(this IServiceCollection services, IConfiguration cfg)
     {
+        var connStr = cfg["ConnectionStrings:SchoolDBConnectionString"];
         services.AddDbContext<AppDbContext>
-            (options => options.UseSqlServer(cfg.GetConnectionString("SchoolDBConnectionString")));
+            (options => options.UseSqlServer(connStr));
 
         services.AddTransient<IStudentRepository, StudentRepository>();
         services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
@@ -41,3 +46,6 @@ public static class InfrastructrueDependenciesRegistration
         return services;
     }
 }
+
+
+
