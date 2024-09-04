@@ -23,6 +23,7 @@ public class UserQueryDTO
         public Mapping()
         {
             CreateMap<User, UserQueryDTO>();
+            CreateMap<User, User>();
         }
     }
 }

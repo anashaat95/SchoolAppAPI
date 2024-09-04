@@ -40,6 +40,7 @@ public class RefreshTokenCommandHandler : ResponseHandler,
 
         // 5) Get User
         var user = await _userService.GetUserById(userId).FirstOrDefaultAsync();
+                                
         if (user == null)
             return BadRequest<JwtAuthResult>("Invalid token");
 

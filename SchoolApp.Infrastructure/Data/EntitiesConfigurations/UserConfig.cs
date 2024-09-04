@@ -12,7 +12,7 @@ public class UserConfig : IEntityTypeConfiguration<User>
                 left => left.HasOne(ru => ru.User).WithMany(u => u.UserRoles).HasForeignKey(ru => ru.UserId).OnDelete(DeleteBehavior.Restrict),
                 table =>
                 {
-                    table.HasKey(ru => new { ru.UserId, ru.RoleId });
+                    table.HasKey(ru => new { ru.RoleId, ru.UserId });
                     table.ToTable("AspNetUserRoles", schema: "dbo");
                 }
             ); 

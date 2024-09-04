@@ -1,4 +1,5 @@
-﻿using SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
+﻿using SchoolApp.Application.Features.AuthorizationFeature.Queries.GetUserRoles;
+using SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
 using SchoolApp.Application.Features.UserFeatrue.Commands.ChangeUserPasswordById;
 using SchoolApp.Application.Features.UserFeatrue.Commands.DeleteUserById;
 using SchoolApp.Application.Features.UserFeatrue.Commands.UpdateUserById;
@@ -23,6 +24,14 @@ public class UserController : AppControllerBase
     public async Task<IActionResult> Get([FromRoute] int Id)
     {
         var response = await Mediator.Send(new GetUserByIdQuery(Id));
+        return NewResult(response);
+    }
+
+    // GET api/<UserController>/{id}
+    [HttpGet(Router.UserRouter.WithRoles)]
+    public async Task<IActionResult> GetUserWithRoles([FromRoute] int Id)
+    {
+        var response = await Mediator.Send(new GetUserRolesQuery(Id));
         return NewResult(response);
     }
 

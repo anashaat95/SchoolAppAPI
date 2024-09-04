@@ -10,5 +10,4 @@ public interface IAuthorizationService
     Task<bool> IsRoleExistsAsync(string Name);
     Task<bool> IsRoleExistsAsyncExceptSelf(string Name);
     Task<bool> IsRoleExistsAsync(int Id);
-    Task<int> GetUsersInRoleAsync(string roleName);
 }

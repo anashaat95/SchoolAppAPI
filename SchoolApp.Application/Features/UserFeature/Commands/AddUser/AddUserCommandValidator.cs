@@ -33,7 +33,7 @@ public class AddUserCommandValidator : AbstractValidator<AddUserCommand>
     public void ApplyCustomValidationrules()
     {
         RuleFor(x => new { Email = x.Email, UserName = x.UserName })
-            .MustAsync(async (obj, CancellationToken) => await _service.IsUserExists(obj.Email, obj.UserName))
+            .MustAsync(async (obj, CancellationToken) => !(await _service.IsUserExistsAsync(obj.Email, obj.UserName)))
             .WithMessage($"A user with the same username and/or email already exists. you can sign in rigt now!");
     }
     #endregion
