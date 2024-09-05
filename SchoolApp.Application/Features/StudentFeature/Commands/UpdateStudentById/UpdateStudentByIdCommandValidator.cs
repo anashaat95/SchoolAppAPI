@@ -18,10 +18,10 @@ public class UpdateStudentByIdCommandValidator : AbstractValidator<UpdateStudent
     #region Action(s)
     public void ApplyValidationrules()
     {
-        RuleFor(s => s.StudentData.Name).ApplyCommonStringrules(5, 50);
-        RuleFor(s => s.StudentData.Address).ApplyCommonStringrules(5, 50);
-        RuleFor(s => s.StudentData.Phone).ApplyCommonStringrules(10, 50);
-        RuleFor(s => s.StudentData.Phone).ApplyNotEmptyrule().ApplyNotNullablerule();
+        RuleFor(s => s.StudentData.Name).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.StudentData.Address).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.StudentData.Phone).ApplyCommonStringRules(10, 50);
+        RuleFor(s => s.StudentData.Phone).ApplyNotEmptyRule().ApplyNotNullableRule();
     }
     public void ApplyCustomValidationrules()
     {

@@ -7,8 +7,12 @@ public static class RoleSeeder
         var userCount = await roleManager.Roles.CountAsync();
         if (userCount < 2)
         {
-            await roleManager.CreateAsync(new Role { Name = "ADMIN", NormalizedName = "ADMIN" });
-            await roleManager.CreateAsync(new Role { Name = "USER", NormalizedName = "USER"   });
+            IdentityResult result = new IdentityResult();
+            result = await roleManager.CreateAsync(new Role { Name = "ADMIN", NormalizedName = "ADMIN" });
+            result = await roleManager.CreateAsync(new Role { Name = "USER", NormalizedName = "USER"   });
+
+            if (!result.Succeeded)
+                throw new InvalidOperationException(result.Errors.FirstOrDefault().Description);
         }
 
     }

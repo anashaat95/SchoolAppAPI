@@ -17,7 +17,7 @@ public class User : IdentityUser<int>
     public string? Country { get; set; }
 
     public ICollection<UserRefreshToken>? RefreshTokens { get; } = [];
-    public ICollection<UserRole>? UserRoles { get; } = [];
+    public ICollection<UserRole>? UserRoles { get; set; } = [];
     public ICollection<Role>? Roles { get; set; } = [];
 
     public string FullName => FirstName + " " + LastName;

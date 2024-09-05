@@ -2,7 +2,7 @@
 
 public static class UserSeeder
 {
-    public static async Task SeedAsync(UserManager<User> userManager, IConfiguration cfg)
+    public static async Task SeedAsync(UserManager<User> userManager, RoleManager<Role> roleManager, IConfiguration cfg)
     {
         var userCount = await userManager.Users.CountAsync();
         if (userCount < 2)
@@ -29,7 +29,6 @@ public static class UserSeeder
                 Country = "Egypt",
                 PhoneNumber = "01069427021",
                 PhoneNumberConfirmed = true,
-                Roles = new List<Role> { new Role { Name = "ADMIN", NormalizedName="ADMIN" } }
             };
 
             var user = new User
@@ -43,11 +42,26 @@ public static class UserSeeder
                 Country = "Egypt",
                 PhoneNumber = "01069427021",
                 PhoneNumberConfirmed = true,
-                Roles = new List<Role> { new Role {Name ="USER", NormalizedName = "USER" } }
             };
 
-           await userManager.CreateAsync(admin, APP_ADMIN_PASSWORD);
-            await userManager.CreateAsync(user, APP_TEST_PASSWORD);
+            IdentityResult result = new IdentityResult();
+            var adminRole = await roleManager.Roles.Where(r => r.Name == "ADMIN").FirstOrDefaultAsync();
+            var userRole = await roleManager.Roles.Where(r => r.Name == "USER").FirstOrDefaultAsync();
+
+            if (adminRole == null)
+                throw new NullReferenceException("Failed to fetch ADMIN role");
+
+            if (userRole == null)
+                throw new NullReferenceException("Failed to fetch USER role");
+
+            admin.UserRoles!.Add(new UserRole { Role = adminRole });
+            admin.UserRoles!.Add(new UserRole { Role = userRole });
+
+            result = await userManager.CreateAsync(admin, APP_ADMIN_PASSWORD);
+            result = await userManager.CreateAsync(user, APP_TEST_PASSWORD);
+
+            if (!result.Succeeded)
+                throw new InvalidOperationException(result.Errors.FirstOrDefault()!.Description);
         }
     }
 }

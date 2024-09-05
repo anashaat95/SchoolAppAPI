@@ -1,12 +1,4 @@
-﻿using SchoolApp.Application.Features.AuthorizationFeature.Queries.GetUserRoles;
-using SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
-using SchoolApp.Application.Features.UserFeatrue.Commands.ChangeUserPasswordById;
-using SchoolApp.Application.Features.UserFeatrue.Commands.DeleteUserById;
-using SchoolApp.Application.Features.UserFeatrue.Commands.UpdateUserById;
-using SchoolApp.Application.Features.UserFeatrue.Queries.GetUser;
-using SchoolApp.Application.Features.UserFeatrue.Queries.GetUserList;
-
-namespace School.API.Controllers;
+﻿namespace School.API.Controllers;
 
 [ApiController]
 public class UserController : AppControllerBase
@@ -27,14 +19,6 @@ public class UserController : AppControllerBase
         return NewResult(response);
     }
 
-    // GET api/<UserController>/{id}
-    [HttpGet(Router.UserRouter.WithRoles)]
-    public async Task<IActionResult> GetUserWithRoles([FromRoute] int Id)
-    {
-        var response = await Mediator.Send(new GetUserRolesQuery(Id));
-        return NewResult(response);
-    }
-
     // POST api/<UserController>/Create
     [HttpPost((Router.UserRouter.BASE))]
     public async Task<IActionResult> Post([FromBody] AddUserCommand command)
@@ -45,7 +29,7 @@ public class UserController : AppControllerBase
 
     // PUT api/<UserController>/{id}
     [HttpPut(Router.UserRouter.ById)]
-    public async Task<IActionResult> Put(int Id, [FromBody] UpdateUserByIdDTO data)
+    public async Task<IActionResult> PutUser(int Id, [FromBody] UpdateUserByIdDTO data)
     {
         var response = await Mediator.Send(new UpdateUserByIdCommand { Id = Id, UserData = data });
         return NewResult(response);

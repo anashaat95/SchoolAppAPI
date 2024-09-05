@@ -18,8 +18,8 @@ public class AddStudentCommandValidator : AbstractValidator<AddStudentCommand>
     #region Actions
     public void ApplyValidationrules()
     {
-        RuleFor(s => s.Name).ApplyCommonStringrules(5, 50);
-        RuleFor(s => s.DepartmentId).ApplyNotEmptyrule().ApplyNotNullablerule();
+        RuleFor(s => s.Name).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.DepartmentId).ApplyNotEmptyRule().ApplyNotNullableRule();
     }
     public void ApplyCustomValidationrules()
     {

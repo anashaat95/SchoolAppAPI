@@ -19,8 +19,8 @@ public class SignInCommandValidation:AbstractValidator<SignInCommand>
     #region Methods
     private void ApplyCustomValidationrules()
     {
-        RuleFor(x => x.Username).ApplyCommonStringrules(5, 50);
-        RuleFor(x => x.Password).ApplyCommonStringrules(6, 50);
+        RuleFor(x => x.Username).ApplyCommonStringRules(5, 50);
+        RuleFor(x => x.Password).ApplyCommonStringRules(6, 50);
     }
 
     private void ApplyValidationrules()

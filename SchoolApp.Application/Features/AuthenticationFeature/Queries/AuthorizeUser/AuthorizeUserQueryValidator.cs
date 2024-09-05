@@ -17,6 +17,6 @@ public AuthorizeUserQueryValidator()
 
 public void ApplyValidationrules()
 {
-    RuleFor(x => x.AccessToken).ApplyNotEmptyrule().ApplyNotNullablerule();
+    RuleFor(x => x.AccessToken).ApplyNotEmptyRule().ApplyNotNullableRule();
 }
 }

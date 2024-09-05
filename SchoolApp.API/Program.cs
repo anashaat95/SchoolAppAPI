@@ -69,8 +69,8 @@ var app = builder.Build();
 #region DataSeeding
 using (var scope = app.Services.CreateScope())
 {
-    //await RoleSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<RoleManager<Role>>());
-    await UserSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<UserManager<User>>(), builder.Configuration);
+    await RoleSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<RoleManager<Role>>());
+    await UserSeeder.SeedAsync(scope.ServiceProvider.GetRequiredService<UserManager<User>>(), scope.ServiceProvider.GetRequiredService<RoleManager<Role>>(), builder.Configuration);
 }
 #endregion
 
