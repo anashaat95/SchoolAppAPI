@@ -1,5 +1,4 @@
-
-using SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Commands.AddRoleToUser;
+using SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Commands.AddRoleToUserByUserId;
 using SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Commands.UpdateUserRolesByUserId;
 
 namespace School.API.Controllers;
@@ -11,13 +10,13 @@ public class UserRolesController : AppControllerBase
     [HttpGet(Router.UserRouter.WithRoles.ById)]
     public async Task<IActionResult> GetUserWithRoles([FromRoute] int Id)
     {
-        var response = await Mediator.Send(new GetUserRolesQuery(Id));
+        var response = await Mediator.Send(new GetUserRolesByUserIdQuery(Id));
         return NewResult(response);
     }
 
     // POST api/<UserController>/Create
     [HttpPost((Router.UserRouter.WithRoles.BASE))]
-    public async Task<IActionResult> Post([FromBody] AddRoleToUserCommand command)
+    public async Task<IActionResult> Post([FromBody] AddRoleToUserByUserIdCommand command)
     {
         var response = await Mediator.Send(command);
         return NewResult(response);
