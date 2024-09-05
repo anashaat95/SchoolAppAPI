@@ -13,8 +13,6 @@ global using SchoolApp.Application.Common.Models;
 global using SchoolApp.Application.Common.Resoruces;
 global using SchoolApp.Application.Common.ResponseBases;
 global using SchoolApp.Application.Common.Validations;
-global using SchoolApp.Application.Features.AuthorizationFeatrue.Commands.UpdateRoleById;
-global using SchoolApp.Application.Features.AuthorizationFeatrue.Queries;
 global using SchoolApp.Application.Features.StudentFeatrue.Commands.AddStudent;
 global using SchoolApp.Application.Features.UserFeatrue.Queries;
 global using SchoolApp.Application.Services.RoleService;

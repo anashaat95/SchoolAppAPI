@@ -2,8 +2,9 @@
 
 public interface IAuthorizationService
 {
-    IQueryable GetRoleById(int Id);
-    IQueryable GetRolesList();
+    IQueryable<Role> GetRoleById(int Id);
+    IQueryable<Role> GetRoleByName(string RoleName);
+    IQueryable<Role> GetRolesList();
     Task<IdentityResult> AddRoleAsync(Role NewRole);
     Task<IdentityResult> UpdateRoleAsync(Role Role);
     Task<IdentityResult> DeleteRoleAsync(Role Role);

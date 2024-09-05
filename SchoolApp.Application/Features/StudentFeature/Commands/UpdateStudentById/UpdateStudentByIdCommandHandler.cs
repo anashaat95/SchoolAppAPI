@@ -22,7 +22,10 @@ public partial class UpdateStudentCommand
 
         public async Task<Response<StudentQueryDTO>> Handle(UpdateStudentByIdCommand request, CancellationToken cancellationToken)
         {
-            var student = await _service.GetStudentById(request.Id).FirstOrDefaultAsync();
+            var student = await _service.GetStudentById(request.Id)
+                .Select(s => new Student { Id=s.Id })
+                .FirstOrDefaultAsync();
+
             if (student == null)
                 return NotFound<StudentQueryDTO>("No student found with the provided name");
 

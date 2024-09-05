@@ -17,4 +17,6 @@ public interface IUserService
     Task<IdentityResult> UpdateUserAsync(User UpdatedUser);
     Task<IdentityResult> ChangeUserPasswordAsync(User User, string CrurentPassword, string NewPassword);
     Task<bool> CheckPasswordAsync(User User, string Password);
+    Task<IdentityResult> RemoveFromRolesAsync(User User, IEnumerable<string> Roles);
+    Task<IdentityResult> AddToRoleAsync(User User, Role Role);
 }

@@ -1,7 +1,4 @@
-﻿
-using MediatR;
-
-namespace SchoolApp.Application.Services.UserService;
+﻿namespace SchoolApp.Application.Services.UserService;
 
 public class UserService : IUserService
 {
@@ -46,11 +43,11 @@ public class UserService : IUserService
 
     public IQueryable<User> GetAllUsers()
     {
-        return _userManager.Users;
+        return _userManager.Users.Include(u => u.UserRoles);
     }
     public IQueryable<User> GetUserById(int Id)
     {
-        return _userManager.Users.Where(x => x.Id == Id);
+        return _userManager.Users.Where(x => x.Id == Id).Include(u => u.UserRoles);
     }
     public IQueryable<User> GetUserByEmail(string Email)
     {
@@ -59,12 +56,12 @@ public class UserService : IUserService
 
     public IQueryable<User> GetUserByUserName(string UserName)
     {
-         return _userManager.Users.Where(x => x.UserName!.ToLower().Equals(UserName.ToLower()));
+        return _userManager.Users.Where(x => x.UserName!.ToLower().Equals(UserName.ToLower()));
     }
 
     public IQueryable<User> GetUser(int Id, string UserName, string Email)
     {
-         return _userManager.Users.Where(x => x.Id == Id || x.Email!.ToLower().Equals(Email.ToLower()) || x.UserName!.ToLower().Equals(UserName.ToLower()));
+        return _userManager.Users.Where(x => x.Id == Id || x.Email!.ToLower().Equals(Email.ToLower()) || x.UserName!.ToLower().Equals(UserName.ToLower()));
     }
 
     public async Task<IdentityResult> AddNewUserAsync(User NewUser, string password)
@@ -90,6 +87,22 @@ public class UserService : IUserService
     public async Task<List<string>> GetUserRolesAsync(User User)
     {
         return (await _userManager.GetRolesAsync(User)).ToList();
+    }
+
+    public async Task<IdentityResult> RemoveFromRolesAsync(User User, IEnumerable<string> Roles)
+    {
+        return await _userManager.RemoveFromRolesAsync(User, Roles);
+    }
+
+    public async Task<IdentityResult> AddToRoleAsync(User User, Role Role)
+    {
+        User.UserRoles!.Add(new UserRole { Role = Role });
+        return await _userManager.UpdateAsync(User); 
+    }
+
+    public async Task<IdentityResult> UpdateUserRolesAsync(User User, List<string> Roles)
+    {
+        return await _userManager.UpdateAsync(User);
     }
 
     #endregion

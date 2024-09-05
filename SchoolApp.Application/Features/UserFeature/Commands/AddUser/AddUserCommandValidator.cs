@@ -21,13 +21,13 @@ public class AddUserCommandValidator : AbstractValidator<AddUserCommand>
     #region Handler(s)
     public void ApplyValidationrules()
     {
-        RuleFor(s => s.FirstName).ApplyCommonStringrules(5, 50);
-        RuleFor(s => s.LastName).ApplyCommonStringrules(5, 50);
-        RuleFor(s => s.UserName).ApplyCommonStringrules(5, 50);
-        RuleFor(s => s.Email).ApplyCommonStringrules(5, 50).EmailAddress();
-        RuleFor(s => s.PhoneNumber).ApplyCommonStringrules(5, 50);
-        RuleFor(s => s.Password).ApplyCommonStringrules(5, 50);
-        RuleFor(s => s.ConfirmPassword).ApplyCommonStringrules(6, 50)
+        RuleFor(s => s.FirstName).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.LastName).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.UserName).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.Email).ApplyCommonStringRules(5, 50).EmailAddress();
+        RuleFor(s => s.PhoneNumber).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.Password).ApplyCommonStringRules(5, 50);
+        RuleFor(s => s.ConfirmPassword).ApplyCommonStringRules(6, 50)
                                         .Equal(s => s.Password);
     }
     public void ApplyCustomValidationrules()

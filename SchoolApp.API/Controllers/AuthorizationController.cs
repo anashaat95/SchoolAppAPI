@@ -1,5 +1,4 @@
-﻿using Swashbuckle.AspNetCore.Annotations;
-
+﻿
 namespace School.API.Controllers;
 
 //[Authorize(Roles = "ADMIN")]

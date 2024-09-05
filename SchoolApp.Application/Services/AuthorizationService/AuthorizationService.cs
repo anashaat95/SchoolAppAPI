@@ -18,12 +18,17 @@ public class AuthorizationService : IAuthorizationService
     #endregion
 
     #region Method(s)
-    public IQueryable GetRoleById(int Id)
+    public IQueryable<Role> GetRoleById(int Id)
     {
         return _roleManager.Roles.Where(r => r.Id == Id);
     }
 
-    public IQueryable GetRolesList()
+    public IQueryable<Role> GetRoleByName(string RoleName)
+    {
+        return _roleManager.Roles.Where(r => r.Name == RoleName);
+    }
+
+    public IQueryable<Role> GetRolesList()
     {
         return _roleManager.Roles;
     }
@@ -55,5 +60,6 @@ public class AuthorizationService : IAuthorizationService
     {
         return await _roleManager.DeleteAsync(Role);
     }
+
     #endregion
 }

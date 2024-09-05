@@ -18,9 +18,9 @@ public class ChangeUserPasswordByIdCommandValidator : AbstractValidator<ChangeUs
     #region Handler(s)
     public void ApplyValidationrules()
     {
-        RuleFor(x => x.Passwords.CrurentPassword).ApplyCommonStringrules(6, 50);
-        RuleFor(x => x.Passwords.NewPassword).ApplyCommonStringrules(6, 50);
-        RuleFor(x => x.Passwords.ConfirmNewPassword).ApplyCommonStringrules(6, 50).Equal(x => x.Passwords.NewPassword);
+        RuleFor(x => x.Passwords.CrurentPassword).ApplyCommonStringRules(6, 50);
+        RuleFor(x => x.Passwords.NewPassword).ApplyCommonStringRules(6, 50);
+        RuleFor(x => x.Passwords.ConfirmNewPassword).ApplyCommonStringRules(6, 50).Equal(x => x.Passwords.NewPassword);
     }
     public void ApplyCustomValidationrules()
     {
