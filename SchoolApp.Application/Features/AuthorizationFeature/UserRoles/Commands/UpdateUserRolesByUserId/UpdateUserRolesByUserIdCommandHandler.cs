@@ -28,18 +28,17 @@ class UpdateUserRolesByUserIdCommandHandler : ResponseHandler,
 
         if (user == null) return NotFound<string>("No user found with the provided id");
 
-        user.UserRoles!.Clear();
+        var NewUserRoles = new List<Role>();    
 
         foreach (string roleName in request.Roles)
         {
             var role = await _authorizationService.GetRoleByName(roleName).FirstOrDefaultAsync();
             if (role == null)
                 return NotFound<string>($"No role found with the provided name `{roleName}`");
-
-            user.UserRoles.Add(new UserRole { Role = role});
+            NewUserRoles.Add(role);
         }
 
-        var UpdateResult = await _userService.UpdateUserAsync(user);
+        var UpdateResult = await _userService.UpdateUserRolesAsync(user, NewUserRoles);
 
         if (UpdateResult.Succeeded) return Success("Roles for this user updated succesfully");
         return BadRequest<string>(UpdateResult.ErrorsToString());
