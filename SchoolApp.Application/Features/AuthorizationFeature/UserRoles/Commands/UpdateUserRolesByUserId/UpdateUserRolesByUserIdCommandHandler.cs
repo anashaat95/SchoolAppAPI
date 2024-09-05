@@ -1,4 +1,5 @@
 ﻿using SchoolApp.Application.Services.UserService;
+using SchoolApp.Domain.Entities.Identities;
 
 namespace SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Commands.UpdateUserRolesByUserId;
 

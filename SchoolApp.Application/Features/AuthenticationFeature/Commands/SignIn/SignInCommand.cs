@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Features.AuthenticationFeatrue.Commands.SignIn;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Application.Features.AuthenticationFeatrue.Commands.SignIn;
 
 public class SignInCommand : IRequest<Response<JwtAuthResult>>
 {

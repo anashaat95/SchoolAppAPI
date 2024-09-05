@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Infrastructrue.Data.EntitiesConfigurations;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Infrastructrue.Data.EntitiesConfigurations;
 
 public class UserRoleConfig : IEntityTypeConfiguration<UserRole>
 {

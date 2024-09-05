@@ -1,5 +1,5 @@
 ﻿using SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
-using SchoolApp.Domain.Entities.Identity;
+using SchoolApp.Domain.Entities.Identities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

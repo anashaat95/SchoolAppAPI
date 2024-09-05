@@ -1,6 +1,7 @@
 ﻿
 
 using AutoMapper.QueryableExtensions;
+using SchoolApp.Domain.Entities.Identities;
 
 namespace SchoolApp.Application.Features.AuthorizationFeature.Roles.Commands.DeleteRoleById;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using SchoolApp.Domain.Entities.Identity;
+using SchoolApp.Domain.Entities.Identities;
 
 namespace SchoolApp.Infrastructrue.Data.Contexts;
 

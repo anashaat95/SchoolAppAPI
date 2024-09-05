@@ -1,4 +1,5 @@
 ﻿using SchoolApp.Application.Features.AuthorizationFeature.Roles.Queries;
+using SchoolApp.Domain.Entities.Identities;
 
 namespace SchoolApp.Application.Features.AuthorizationFeature.Roles.Commands.UpdateRoleById;
 

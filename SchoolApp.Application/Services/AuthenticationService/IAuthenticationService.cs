@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Services.AuthenticationService;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Application.Services.AuthenticationService;
 
 public interface IAuthenticationService
 {

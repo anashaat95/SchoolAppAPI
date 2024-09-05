@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using SchoolApp.API.MiddleWares;
 using SchoolApp.Application;
-using SchoolApp.Domain.Entities.Identity;
+using SchoolApp.Domain.Entities.Identities;
 using SchoolApp.Domain.Helpers;
 using SchoolApp.Infrastructrue;
 using SchoolApp.Infrastructrue.Data.Seeder;

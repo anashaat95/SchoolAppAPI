@@ -1,4 +1,4 @@
-﻿namespace SchoolApp.Domain.Entities.Identity;
+﻿namespace SchoolApp.Domain.Entities.Identities;
 
 public class User : IdentityUser<int>, IEntity
 {

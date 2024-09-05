@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Features.UserFeatrue.Commands.DeleteUserById;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Application.Features.UserFeatrue.Commands.DeleteUserById;
 
 public class DeleteUserByIdCommandHandler : ResponseHandler,
     IRequestHandler<DeleteUserByIdCommand, Response<string>>

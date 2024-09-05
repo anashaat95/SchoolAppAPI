@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SchoolApp.Application.Services.UserService;
-using SchoolApp.Domain.Entities.Identity;
+using SchoolApp.Domain.Entities.Identities;
 
 namespace SchoolApp.Application.Features.UserFeatrue.Commands.AddUser;
 

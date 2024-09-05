@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Services.UserService;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Application.Services.UserService;
 
 public interface IUserService
 {

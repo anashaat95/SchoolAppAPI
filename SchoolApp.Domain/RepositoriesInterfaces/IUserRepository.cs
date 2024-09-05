@@ -2,6 +2,6 @@
 
 namespace SchoolApp.Domain.RepositoriesInterfaces;
 
-public interface IRefreshTokenRepository : IGenericRepository<UserRefreshToken>
+public interface IUserRepository : IGenericRepository<User>
 {
 }
