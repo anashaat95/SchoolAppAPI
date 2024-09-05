@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using SchoolApp.Infrastructure.Data.Repositories;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 
@@ -13,6 +14,7 @@ public static class InfrastructrueDependenciesRegistration
             (options => options.UseSqlServer(connStr));
 
         services.AddTransient<IStudentRepository, StudentRepository>();
+        services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 

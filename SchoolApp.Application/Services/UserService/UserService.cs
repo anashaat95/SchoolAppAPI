@@ -4,13 +4,17 @@ public class UserService : IUserService
 {
     #region Fields
     private readonly UserManager<User> _userManager;
+    private readonly IAuthorizationService _authorizationService;
+    private readonly IUserRepository _userRepository;
     #endregion
 
 
     #region Constructors
-    public UserService(UserManager<User> userManager)
+    public UserService(UserManager<User> userManager, IAuthorizationService authorizationService, IUserRepository userRepository)
     {
         _userManager = userManager;
+        _userRepository = userRepository;   
+        _authorizationService = authorizationService;
     }
 
     #endregion
@@ -105,15 +109,28 @@ public class UserService : IUserService
         return await _userManager.UpdateAsync(User);
     }
 
-    public Task<IdentityResult> UpdateUserRolesAsync(User User, List<Role> NewRole)
+    public async Task<IdentityResult> UpdateUserRolesAsync(User User, List<Role> NewRoles)
     {
-        throw new NotImplementedException();
-    }
+        var result = new IdentityResult();
+        
+        using (var transaction = _userRepository.BeginTransaction())
+        {
+            try
+            {
+                User.UserRoles!.Clear();
+                foreach (Role role in NewRoles) User.UserRoles.Add(new UserRole { Role = role });
 
-    //public async Task<IdentityResult> UpdateUserRolesAsync(User User, List<Role> NewRole)
-    //{
-    //    return await 
-    //}
+                result = await UpdateUserAsync(User);
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
+            }
+        }
+
+        return result;
+    }
 
     #endregion
 }
