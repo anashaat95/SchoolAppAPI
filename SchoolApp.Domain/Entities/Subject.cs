@@ -1,7 +1,8 @@
 ﻿namespace SchoolApp.Domain.Entities;
 
-public class Subject : BaseEntity
+public class Subject  : IEntity
 {
+    public int Id { get; set; } 
     public string Name { get; set; }
     public int Period { get; set; }
     public ICollection<Student> Students { get; } = [];

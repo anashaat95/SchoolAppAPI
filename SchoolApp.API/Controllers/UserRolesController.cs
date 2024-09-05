@@ -1,5 +1,6 @@
 using SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Commands.AddRoleToUserByUserId;
 using SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Commands.UpdateUserRolesByUserId;
+using SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Queries.GetUserRolesByUserId;
 
 namespace School.API.Controllers;
 

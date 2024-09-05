@@ -1,6 +1,6 @@
 ﻿namespace SchoolApp.Infrastructrue.Data.Repositories.Bases;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+public class GenericRepository<T> : IGenericRepository<T> where T : class, IEntity
 {
     #region Vars / Props
     protected readonly AppDbContext _context;

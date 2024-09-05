@@ -105,5 +105,15 @@ public class UserService : IUserService
         return await _userManager.UpdateAsync(User);
     }
 
+    public Task<IdentityResult> UpdateUserRolesAsync(User User, List<Role> NewRole)
+    {
+        throw new NotImplementedException();
+    }
+
+    //public async Task<IdentityResult> UpdateUserRolesAsync(User User, List<Role> NewRole)
+    //{
+    //    return await 
+    //}
+
     #endregion
 }

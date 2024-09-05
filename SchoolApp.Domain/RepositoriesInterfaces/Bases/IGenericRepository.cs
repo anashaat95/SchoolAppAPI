@@ -1,6 +1,6 @@
 ﻿namespace SchoolApp.Domain.RepositoriesInterfaces.Bases;
 
-public interface IGenericRepository<T> where T : BaseEntity
+public interface IGenericRepository<T> where T : class, IEntity
 {
     IQueryable<T> GetById(int id);
     IQueryable<T> GetTableNoTracking();

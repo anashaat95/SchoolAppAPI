@@ -1,6 +1,6 @@
 ﻿namespace SchoolApp.Domain.Entities.Identity;
 
-public class UserRefreshToken : BaseEntity
+public class UserRefreshToken: IEntity
 {
     public int Id { get; set; }
     public int? UserId { get; set; }

@@ -1,15 +1,16 @@
 ﻿namespace SchoolApp.Domain.Entities.Identity;
 
-public class User : IdentityUser<int>
+public class User : IdentityUser<int>, IEntity
 {
     public User()
     {
-        
+
     }
     public User(int id)
     {
         Id = id;
     }
+
     public int Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
