@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using SchoolApp.Domain.Entities.Identities;
 using SchoolApp.Infrastructure.Data.Repositories;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;

@@ -1,6 +1,6 @@
-﻿namespace SchoolApp.Domain.Entities.Identity;
+﻿namespace SchoolApp.Domain.Entities.Identities;
 
-public class UserRefreshToken: IEntity
+public class UserRefreshToken : IEntity
 {
     public int Id { get; set; }
     public int? UserId { get; set; }

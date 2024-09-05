@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Infrastructrue.Data.Seeder;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Infrastructrue.Data.Seeder;
 
 public static class RoleSeeder
 {

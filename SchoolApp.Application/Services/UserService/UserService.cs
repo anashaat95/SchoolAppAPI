@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Services.UserService;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Application.Services.UserService;
 
 public class UserService : IUserService
 {
@@ -121,11 +123,11 @@ public class UserService : IUserService
                 foreach (Role role in NewRoles) User.UserRoles.Add(new UserRole { Role = role });
 
                 result = await UpdateUserAsync(User);
-                transaction.Commit();
+                await transaction.CommitAsync();
             }
             catch
             {
-                transaction.Rollback();
+                await transaction.RollbackAsync();
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using SchoolApp.Application.Services.UserService;
+using SchoolApp.Domain.Entities.Identities;
 using System.Security.Cryptography;
 
 namespace SchoolApp.Application.Services.AuthenticationService;

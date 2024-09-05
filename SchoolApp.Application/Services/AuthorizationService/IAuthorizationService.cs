@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Services.RoleService;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Application.Services.RoleService;
 
 public interface IAuthorizationService
 {

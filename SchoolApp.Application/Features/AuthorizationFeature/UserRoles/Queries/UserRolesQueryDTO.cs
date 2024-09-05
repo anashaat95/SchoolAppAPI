@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Queries;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Application.Features.AuthorizationFeature.UserRoles.Queries;
 
 public class UserRolesQueryDTO
 {

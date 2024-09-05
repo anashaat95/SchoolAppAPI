@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Features.AuthorizationFeature.Roles.Commands.AddRole;
+﻿using SchoolApp.Domain.Entities.Identities;
+
+namespace SchoolApp.Application.Features.AuthorizationFeature.Roles.Commands.AddRole;
 
 public class AddRoleCommand : IRequest<Response<string>>
 {

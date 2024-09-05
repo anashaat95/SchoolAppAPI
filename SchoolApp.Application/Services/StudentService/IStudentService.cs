@@ -1,4 +1,6 @@
-﻿namespace SchoolApp.Application.Services.StudentService;
+﻿using SchoolApp.Domain.Entities.Enums;
+
+namespace SchoolApp.Application.Services.StudentService;
 
 public interface IStudentService
 {

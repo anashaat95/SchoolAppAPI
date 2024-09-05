@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using SchoolApp.Domain.Entities.Identities;
 
 namespace SchoolApp.Application.Services.RoleService;
 
